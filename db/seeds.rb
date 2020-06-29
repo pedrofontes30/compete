@@ -12,3 +12,4 @@ rio_open = Competition.create!(name: 'Rio Open',
                               prize: 500,
                               registration_deadline: Date.new(2020,7,15),
                               registration_price: 50)
+
