@@ -1,0 +1,2 @@
+class DivisionCriterium < ApplicationRecord
+end
