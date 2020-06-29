@@ -1,0 +1,11 @@
+<p><%= @competition.name %></p>
+<p><%= @competition.address %></p>
+<p><%= @competition.federation.email %></p>
+<p><%= @competition.date %></p>
+<p><%= @competition.registration_deadline %></p>
+<p><%= @competition.description %></p>
+<p><%= @competition.registration_price %></p>
+<p><%= @competition.prize %></p>
+
+<%= link_to 'Affiliate', new_federation_affiliation_path(@competition.federation) %>
+<%= link_to 'Register', new_competition_registration_path(@competition) %>
