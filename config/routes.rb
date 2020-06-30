@@ -8,11 +8,9 @@ Rails.application.routes.draw do
 
   resources :competitions, only: [:show] do
     resources :registrations, only: [:new, :create]
-
   end
 
   resources :federations, only: [:index, :show] do
     resources :affiliations, only: [:new, :create]
-
   end
 end
