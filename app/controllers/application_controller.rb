@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
 
   include Pundit
 
-
-  include Pundit
-
   # Pundit: white-list approach.
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?

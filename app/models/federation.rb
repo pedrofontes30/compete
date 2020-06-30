@@ -5,4 +5,5 @@ class Federation < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :affiliations
+  has_many :competitions
 end

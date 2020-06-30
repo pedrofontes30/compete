@@ -1,0 +1,16 @@
+
+<div class="index_page">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+         <h2><strong>My Competitions</strong></h2>
+      </div>
+      <div class="col-6">
+         <%= link_to "Create", new_federation_competition_path %>
+      </div>
+   </div>
+    <div class="container">
+      <%= render "shared/competition_card" , partial: @competitions %>
+    </div>
+  </div>
+</div>

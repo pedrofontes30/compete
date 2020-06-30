@@ -9,15 +9,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Federation.destroy_all
+
 
 Affiliation.destroy_all
-Division.destroy_all
 Registration.destroy_all
-
 Competition.destroy_all
-Federation.destroy_all
+Division.destroy_all
 CompetitionDivision.destroy_all
+Federation.destroy_all
+User.destroy_all
+
 
 light = Division.create!(name: 'light')
 middle = Division.create!(name: 'middle')
@@ -26,7 +27,7 @@ heavy = Division.create!(name: 'heavy')
 fjjrio = Federation.create!(email: 'fjjrio@gmail.com',
                   password: '123456')
 
-10.times do
+
 rio_open = Competition.create!(name: 'Rio Open',
                               address: 'Tijuca Tênis Clube',
                               federation: fjjrio,
@@ -36,7 +37,7 @@ rio_open = Competition.create!(name: 'Rio Open',
                               registration_deadline: Date.new(2020,7,15),
                               registration_price: 50)
 
-end
+
 
 
 CompetitionDivision.create!(competition: rio_open,
@@ -45,3 +46,4 @@ CompetitionDivision.create!(competition: rio_open,
                             division: middle)
 CompetitionDivision.create!(competition: rio_open,
                             division: heavy)
+
