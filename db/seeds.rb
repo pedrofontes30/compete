@@ -23,8 +23,11 @@ light = Division.create!(name: 'light')
 middle = Division.create!(name: 'middle')
 heavy = Division.create!(name: 'heavy')
 
-fjjrio = Federation.create!(email: 'fjjrio@gmail.com',
-                  password: '123456')
+fjjrio = Federation.create!(name: 'FJJRIO',
+                            location: 'Rio de Janeiro',
+                            affiliation_price: '50',
+                            email: 'fjjrio@gmail.com',
+                            password: '123456')
 
 
 

@@ -38,13 +38,24 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    def devise_parameter_sanitizer
-      if resource_class == User
-        UserParameterSanitizer.new(User, :user, params)
-      elsif resource_class == Federation
-        FederationParameterSanitizer.new(Federation, :federation, params)
-      else
-        super # Use the default one
-      end
-    end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :location, :affiliation_price])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :location, :affiliation_price])
+  end
+# ANDRE
+#     def devise_parameter_sanitizer
+#       if resource_class == User
+#         UserParameterSanitizer.new(User, :user, params)
+#       elsif resource_class == Federation
+#         FederationParameterSanitizer.new(Federation, :federation, params)
+#       else
+#         super # Use the default one
+#       end
+#     end
 end
