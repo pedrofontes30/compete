@@ -1,0 +1,13 @@
+<% @competitions.each do |competition| %>
+  <%= link_to competition_path(competition) do  %>
+      <div class="col-7 pl-4">
+        <h6 class='text-muted'style='letter-spacing: 3px;'><%= competition.name.upcase %></h6>
+        <h2><%= competition.address.capitalize %> <%= competition.date %></h2>
+        <p id="time"><strong><%= competition.description %>, Prize: <%= competition.prize %>, Registration in: <%= competition.registration_deadline %></strong></p>
+        <p>$<%= competition.registration_price %></p>
+      </div>
+  <% end %>
+<% end %>
+
+
+

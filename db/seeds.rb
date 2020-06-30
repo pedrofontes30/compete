@@ -7,13 +7,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Competition = Competition.create( name: "Competition of Jiujtsu",
-               address: "Rua Marechal Deodoro, 102 Centro, 93220-220-640 Sapucaia do Sul ",
-               date: "11",
-               description: "Competition of Jiujtsu at Academia do Minotauro",
-               prize: 5,
-               registration_deadline: date,
-               registration_price: 6)
 
 Federation.destroy_all
 Competition.destroy_all

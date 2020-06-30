@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :define_lesson
+  before_action :defined_lesson
 
   include Pundit
 
@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :age, :role])
   end
 
-  def define_lesson
-    @affiliation = affiliation.new
-  end
+   def defined_lesson
+     @affiliation = Affiliation.new
+   end
 end
 
