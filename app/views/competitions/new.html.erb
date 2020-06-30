@@ -1,0 +1,24 @@
+"new competition"
+
+<%= simple_form_for @competition do |f| %>
+  <%= f.input :name %>
+  <%= f.input :adress %>
+  <%= f.input :date %>
+  <%= f.input :description %>
+  <%= f.input :prize %>
+  <%= f.input :registration_deadline %>
+  <%= f.input :registration_price %>
+<% end %>
+
+
+
+<!-- t.string "name"
+    t.string "address"
+    t.bigint "federation_id", null: false
+    t.date "date"
+    t.text "description"
+    t.integer "prize"
+    t.date "registration_deadline"
+    t.integer "registration_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false -->
