@@ -4,6 +4,10 @@ class CompetitionPolicy < ApplicationPolicy
       scope.all
     end
   end
+  
+  def create?
+    user.is_a? Federation
+  end
 
   def index?
     true
