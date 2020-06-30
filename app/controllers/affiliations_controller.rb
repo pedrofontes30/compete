@@ -1,7 +1,7 @@
 class AffiliationsController < ApplicationController
   def new
     @federation = Federation.find(params[:federation_id])
-    @affiliation = Affiliation.new
+    @affiliation = Affiliation.new(federation_id: params[:federation_id])
     authorize @affiliation
   end
 

@@ -1,4 +1,8 @@
 class Registration < ApplicationRecord
   belongs_to :user
   belongs_to :competition_division
+
+  def competition
+    competition_division.competition
+  end
 end

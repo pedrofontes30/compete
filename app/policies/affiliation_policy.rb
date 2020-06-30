@@ -5,10 +5,6 @@ class AffiliationPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
     user.present? && Affiliation.where(user: user, federation_id: record.federation_id) == []
   end
