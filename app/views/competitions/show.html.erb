@@ -8,6 +8,8 @@
 <p><%= @competition.prize %></p>
 
 <% if @affiliated %>
+  <%= link_to 'Register', new_competition_registration_path(@competition) %>
+<% else %>
   <%= link_to 'Affiliate', new_federation_affiliation_path(@competition.federation) %>
 <% end %>
-<%= link_to 'Register', new_competition_registration_path(@competition) %>
+

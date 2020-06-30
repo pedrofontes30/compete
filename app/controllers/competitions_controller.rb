@@ -8,6 +8,6 @@ class CompetitionsController < ApplicationController
   def show
     @competition = Competition.find(params[:id])
     authorize @competition
-    (@affiliated = (Affiliation.where(user: current_user, federation: @competition.federation) == [])) if current_user.present?
+    @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
   end
 end
