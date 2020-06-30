@@ -26,6 +26,7 @@ heavy = Division.create!(name: 'heavy')
 fjjrio = Federation.create!(email: 'fjjrio@gmail.com',
                   password: '123456')
 
+10.times do
 rio_open = Competition.create!(name: 'Rio Open',
                               address: 'Tijuca Tênis Clube',
                               federation: fjjrio,
@@ -35,9 +36,13 @@ rio_open = Competition.create!(name: 'Rio Open',
                               registration_deadline: Date.new(2020,7,15),
                               registration_price: 50)
 
+<<<<<<< HEAD
+end
+=======
 CompetitionDivision.create!(competition: rio_open,
                             division: light)
 CompetitionDivision.create!(competition: rio_open,
                             division: middle)
 CompetitionDivision.create!(competition: rio_open,
                             division: heavy)
+>>>>>>> 08091e30c14161d35a6755be75003db2cca20be4

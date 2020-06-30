@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :competitions, only: [:show, :index] do
-    resources :registrations, only: [:new]
 
   resources :competitions, only: [:index]
 
