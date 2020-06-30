@@ -24,6 +24,11 @@ class CompetitionsController < ApplicationController
     redirect_to competition_path(@competition)
   end
 
+  def edit
+    @competition = Competition.find(params[:id])
+    authorize @competition
+  end
+
   def update
     @competition = Competition.find(params[:id])
     authorize @competition
@@ -40,6 +45,6 @@ class CompetitionsController < ApplicationController
   private
 
   def competition_params
-    params.require(:competition).permit(:name, :address, :date, :description, :prize, :registration_deadline, :registration_price)
+    params.require(:competition).permit(:name, :address, :date, :description, :prize, :registration_deadline, :registration_price, competition_divisions_attributes: [:id])
   end
 end
