@@ -4,13 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, required: true  %>
-    <%= f.input :location, required: true  %>
+    <%= f.input :first_name, required: true  %>
+    <%= f.input :last_name, required: true  %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :affiliation_price, required: true  %>
+    <%= f.input :date_of_birth, required: true  %>
+    <%= f.input :gender, required: true  %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -18,9 +19,6 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-
-
-
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
