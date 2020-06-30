@@ -4,9 +4,13 @@ class CompetitionPolicy < ApplicationPolicy
       scope.all
     end
   end
-  
+
+  def new?
+    true
+  end
+
   def create?
-    user.is_a? Federation
+    record.federation.is_a? Federation
   end
 
   def index?
@@ -15,5 +19,13 @@ class CompetitionPolicy < ApplicationPolicy
 
   def show?
     true
+  end
+
+  def update?
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user
   end
 end
