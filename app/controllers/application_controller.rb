@@ -2,8 +2,8 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-
 
   include Pundit
 
@@ -11,17 +11,18 @@ class ApplicationController < ActionController::Base
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
-    class FederationParameterSanitizer < Devise::ParameterSanitizer
-  def initialize(*)
-    super
-    @params.permit(:sign_up, keys: [:name, :location, :affiliation_price])
-  end
+
+  class FederationParameterSanitizer < Devise::ParameterSanitizer
+    def initialize(*)
+      super
+      @params.permit(:sign_up, keys: [:name, :location, :affiliation_price])
+    end
   end
 
-    class UserParameterSanitizer < Devise::ParameterSanitizer
-  def initialize(*)
-    super
-    @params.permit(:sign_up, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
+  class UserParameterSanitizer < Devise::ParameterSanitizer
+    def initialize(*)
+      super
+      @params.permit(:sign_up, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
     end
   end
   # Uncomment when you *really understand* Pundit!
@@ -40,7 +41,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :first_name, :last_name, :date_of_birth, :nationality, :gender])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
   end
 
@@ -48,14 +49,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :location, :affiliation_price])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :location, :affiliation_price])
   end
-# ANDRE
-#     def devise_parameter_sanitizer
-#       if resource_class == User
-#         UserParameterSanitizer.new(User, :user, params)
-#       elsif resource_class == Federation
-#         FederationParameterSanitizer.new(Federation, :federation, params)
-#       else
-#         super # Use the default one
-#       end
-#     end
+
+  def devise_parameter_sanitizer
+    if resource_class == User
+      UserParameterSanitizer.new(User, :user, params)
+    elsif resource_class == Federation
+      FederationParameterSanitizer.new(Federation, :federation, params)
+    else
+      super # Use the default one
+    end
+  end
 end
