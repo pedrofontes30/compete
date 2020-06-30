@@ -2,12 +2,14 @@ class AffiliationsController < ApplicationController
   def new
     @federation = Federation.find(params[:federation_id])
     @affiliation = Affiliation.new
+    authorize @affiliation
   end
 
   def create
-    affiliation = Affiliation.new(federation_id: params[:federation_id])
-    affiliation.user = current_user
-    affiliation.save!
+    @affiliation = Affiliation.new(federation_id: params[:federation_id])
+    @affiliation.user = current_user
+    authorize @affiliation
+    @affiliation.save!
     redirect_to competitions_path
   end
 
