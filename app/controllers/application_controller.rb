@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
 
   include Pundit
 
+
+  include Pundit
+
+  # Pundit: white-list approach.
+
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
@@ -25,7 +30,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :age, :role])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :age, :role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :date_of_birth, :nationality, :gender])
   end
 end
