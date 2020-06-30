@@ -3,10 +3,6 @@ class CompetitionsController < ApplicationController
 
   def index
     @competitions = policy_scope(Competition).order(created_at: :desc)
-
-    @competitions = policy_scope(Competition)
-
-    @competitions = Competition.all
   end
 
   def show
