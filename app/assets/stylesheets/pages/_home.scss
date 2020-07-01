@@ -6,14 +6,11 @@
 
 /* Style the search field */
 
-.landing_page {
-  .banner {
-    width: 100vw;
-    img {
-      height: 100%;
-    }
+.banner {
+  width: 100vw;
+  img {
+    height: 100%;
   }
-  background-color: #0E0E0E;
 }
 
 .footer {
@@ -37,8 +34,6 @@
   letter-spacing: 2px;
   font-weight: lighter;
   width: auto;
-
-
 }
 
 .carousel-item {
@@ -50,11 +45,12 @@
   overflow: hidden;
   max-height: calc(100vh - 100px);
 }
+
 .btn{
   border: none;
   border-color: transparent !important;
-
 }
+
 .btn-danger{
   border-radius: 10px;
   background-color: #9A1E1E;

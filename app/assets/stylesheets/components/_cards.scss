@@ -3,18 +3,22 @@
   justify-content: space-evenly;
 }
 
+.dark-card {
+  background-color: rgb(55,55,55);
+}
+
 .card-category {
   cursor: pointer;
-  height: 300px;
-  width: 300px;
+  height: 200px;
   font-size: 40px;
   color: white;
   border-radius: 4px;
 }
-  a,a:hover, a:visited, a:link, a:active{
+
+a,a:hover, a:visited, a:link, a:active{
   color: #FFFFFF;
   text-decoration: none;
-  }
+}
 
 .card-running{
   background:linear-gradient(135deg, #F36265 0%,#961276 100%);

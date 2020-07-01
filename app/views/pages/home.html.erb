@@ -2,68 +2,51 @@
 <div class="landing_page">
   <div class="banner">
     <div id="carouselbanner" class="carousel slide carousel-fade" data-ride="carousel">
-
-
-
       <div class="carousel-inner">
+
         <div class="carousel-item active">
           <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80" class="d-block w-100" alt="surf">
           <div class="carousel-caption d-none d-md-block" >
-
           </div>
         </div>
 
         <div class="carousel-item">
           <img src="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"class="d-block w-100" alt="tennis">
           <div class="carousel-caption d-none d-md-block">
-
-
           </div>
         </div>
 
         <div class="carousel-item">
           <img src="https://images.unsplash.com/photo-1551927336-09d50efd69cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2855&q=80" class="d-block w-100" alt="yoga">
           <div class="carousel-caption d-none d-md-block">
-
-
-
           </div>
+
         </div>
       </div>
     </div>
   </div>
 
-  <br>
-
-
-  <br>
-
-
-
-  <br>
-  <br>
-
-  <div class="container">
-
-
-
-    <div class="cards">
-    <%= link_to competitions_path do %>
-      <div class="card-category card-jiujitsu d-flex align-items-center justify-content-center">
-        JiuJitsu
+  <div class="container my-5">
+    <!-- <div class="cards"> -->
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <%= link_to competitions_path do %>
+          <div class="w-100 card-category card-jiujitsu d-flex align-items-center justify-content-center">
+            JiuJitsu
+          </div>
+        <% end %>
       </div>
-    <% end %>
-      <div class="card-category card-tennis d-flex align-items-center justify-content-center">
-        Tennis
+      <div class="col-4">
+        <div class="w-100 card-category card-tennis d-flex align-items-center justify-content-center">
+          Tennis
+        </div>
       </div>
-
-      <div class="card-category card-running d-flex align-items-center justify-content-center">
-        <span class="disableBlur">Running</span>
-
-
+      <div class="col-4">
+        <div class="w-100 card-category card-running d-flex align-items-center justify-content-center">
+          <span class="disableBlur">Running</span>
+        </div>
       </div>
     </div>
-
   </div>
 </div>
 
