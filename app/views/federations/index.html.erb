@@ -1,1 +1,10 @@
-Federation Index!
+<div class="container">
+  <% @federations.each do |federation| %>
+    <%= link_to federation_path(federation) do %>
+      <div class='col-12 rounded shadow p-3 my-3'>
+        <h3><%= federation.name %></h3>
+        <h4><%= federation.location %></h4>
+      </div>
+    <% end %>
+  <% end %>
+</div>

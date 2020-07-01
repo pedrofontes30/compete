@@ -16,6 +16,11 @@ class Federation::CompetitionsController < ApplicationController
     @competition.federation = current_federation
     authorize @competition
     @competition.save!
+    params[:competition][:competition_divisions_attributes].each do |key, value|
+      competition_division = @competition.competition_divisions.build
+      competition_division.division_id = value[:division_id]
+      competition_division.save
+    end
     redirect_to competition_path(@competition)
   end
 
@@ -27,6 +32,11 @@ class Federation::CompetitionsController < ApplicationController
   def update
     @competition = Competition.find(params[:id])
     authorize @competition
+    @competition.update(competition_params)
+    params[:competition][:competition_divisions_attributes].each do |key, value|
+      competition_division = CompetitionDivision.find(value[:id])
+      competition_division.destroy unless value[:_destroy] == 'false'
+    end
     redirect_to competition_path(@competition)
   end
 
