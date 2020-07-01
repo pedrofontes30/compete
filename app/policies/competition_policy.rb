@@ -5,16 +5,8 @@ class CompetitionPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
-    record.federation.is_a? Federation
-  end
-
-  def index?
-    true
+    user.is_a? Federation
   end
 
   def show?
@@ -22,10 +14,12 @@ class CompetitionPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    # user may be federation
+    record.federation == user
   end
 
   def destroy?
-    record.user == user
+    # user may be federation
+    record.federation == user
   end
 end

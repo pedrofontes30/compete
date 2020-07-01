@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  #Setup the page to redirect after sign up
+  authenticated :user do
+    root 'pages#home', as: :authenticated_user_root
+  end
+  authenticated :federation do
+    root 'pages#home', as: :authenticated_federation_root
+  end
   resources :competitions, only: [:index, :new, :create, :edit, :update, :destroy]
 
 
