@@ -20,5 +20,4 @@ class CompetitionsController < ApplicationController
     authorize @competition
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
   end
-
 end
