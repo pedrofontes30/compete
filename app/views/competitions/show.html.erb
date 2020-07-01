@@ -1,50 +1,43 @@
-<div class="container rounded shadow">
-  <div class="row justify-content-between p-3 mt-3">
+<div class="container">
+  <div class="competition-header">
     <h1><%= @competition.name %></h1>
     <% unless current_federation %>
       <% if @affiliated %>
-        <%= link_to 'Register', new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+      <%= link_to 'Register', new_competition_registration_path(@competition), class: 'btn btn-primary' %>
       <% else %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
-            Affiliate
-        </button>
-      <% end %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+      Affiliate
+    </button>
+    <% end %>
     <% end %>
     <% if current_federation == @competition.federation %>
-      <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>
+    <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-6">
-      <p><%= @competition.address %></p>
-      <p><%= @competition.federation.name %></p>
-      <p><%= @competition.date %></p>
-      <p><%= @competition.registration_deadline %></p>
-      <p><%= @competition.description %></p>
-      <p><%= @competition.registration_price %></p>
-      <p><%= @competition.prize %></p>
+  <div class="competition-body">
+    <div class="competition-information">
+      <p>Federation: <%= @competition.federation.name %></p>
+      <p>Description: <%= @competition.description %></p>
+      <p>Address: <%= @competition.address %></p>
+      <p>Date: <%= @competition.date %></p>
+      <p>Prize: <%= @competition.prize %>$</p>
+      <p>Registration Deadline: <%= @competition.registration_deadline %></p>
+      <p>Registration Price: <%= @competition.registration_price %>$</p>
+    </div>
+    <div class="competition-registrations">
+      <%= form_with(url: competition_path(@competition), method: "get", local: true) do %>
+      <%= text_field_tag(:query) %>
+      <%= submit_tag("Search") %>
+      <% end %>
+      <% @divisions.each do |cp| %>
+      <p>Divisions: <%= cp.division.name %></p>
+      <% cp.registrations.each do |registration| %>
+      <p><%= registration.position.position %> Place: <%= registration.user.first_name%></p>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>
-
-
-<%= form_with(url: competition_path(@competition), method: "get", local: true) do %>
-  <%= text_field_tag(:query) %>
-  <%= submit_tag("Search") %>
-<% end %>
-
-<% @divisions.each do |cp| %>
-  <div>
-    <%= cp.division.name %>
-  </div>
-  <div>
-    <% cp.registrations.each do |registration| %>
-        <p><%= registration.user.first_name%></p>
-        <p><%= registration.position.position %></p>
-    <% end %>
-  </div>
-<% end %>
-
 <div class="modal fade" id="affiliationModal" tabindex="-1" role="dialog" aria-labelledby="affiliationModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -57,10 +50,10 @@
       <div class="modal-body">
         <%= link_to 'Edit profile information', edit_user_registration_path %>
         <%= simple_form_for [@federation, @affiliation] do |f| %>
-          <%= f.submit 'Affiliate' %>
-          <div class="modal-footer">
-            <%= f.submit 'Affiliate', class: 'btn btn-primary' %>
-          </div>
+        <%= f.submit 'Affiliate' %>
+        <div class="modal-footer">
+          <%= f.submit 'Affiliate', class: 'btn btn-primary' %>
+        </div>
         <% end %>
       </div>
     </div>
