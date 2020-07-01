@@ -1,0 +1,9 @@
+<div class="nested-fields">
+    <%= f.hidden_field :_destroy %>
+    <div>
+        <%= f.collection_select :division_id, Division.all, :id, :name %>
+    </div>
+    <div>
+        <%= link_to "Remove", '#', class: "remove_fields" %>
+    </div>
+</div>

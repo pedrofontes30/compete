@@ -8,8 +8,7 @@ class CompetitionsController < ApplicationController
       sql_query = " \
         competitions.name ILIKE :query \
         OR competitions.address ILIKE :query \
-        OR federations.name ILIKE :query \
-      "
+        OR federations.name ILIKE :query \ "
       @competitions = Competition.joins(:federation).where(sql_query, query: "%#{params[:query]}%")
     else
       @competitions = Competition.all
@@ -21,7 +20,6 @@ class CompetitionsController < ApplicationController
     authorize @competition
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
   end
-
 
   def new
     @competition = Competition.new
@@ -57,7 +55,7 @@ class CompetitionsController < ApplicationController
   private
 
   def competition_params
-    params.require(:competition).permit(:name, :address, :date, :description, :prize, :registration_deadline, :registration_price, competition_divisions_attributes: [:id])
+    params.require(:competition).permit(:name, :address, :date, :description, :prize, :registration_deadline, :registration_price, competition_divisions_attributes: [:id, :competition_id, :division_id])
   end
 
   def pundit_user
