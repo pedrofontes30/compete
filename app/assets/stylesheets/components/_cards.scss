@@ -11,6 +11,11 @@
   color: white;
   border-radius: 4px;
 }
+  a,a:hover, a:visited, a:link, a:active{
+  color: #FFFFFF;
+  text-decoration: none;
+  }
+
 .card-running{
   background:linear-gradient(135deg, #F36265 0%,#961276 100%);
 }
