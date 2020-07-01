@@ -19,18 +19,15 @@ class CompetitionPolicy < ApplicationPolicy
 
   def update?
     # user may be federation
-    # record.federation == user
-    true
+    record.federation == user
   end
 
   def edit?
-    # record.federation == user
-    true
+    record.federation == user
   end
 
   def destroy?
     # user may be federation
-    # record.federation == user
-    true
+    record.federation == user
   end
 end
