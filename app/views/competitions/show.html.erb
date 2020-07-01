@@ -1,20 +1,26 @@
-<p><%= @competition.name %></p>
-<p><%= @competition.address %></p>
-<p><%= @competition.federation.name %></p>
-<p><%= @competition.date %></p>
-<p><%= @competition.registration_deadline %></p>
-<p><%= @competition.description %></p>
-<p><%= @competition.registration_price %></p>
-<p><%= @competition.prize %></p>
-
-<% unless current_federation %>
-  <% if @affiliated %>
-    <%= link_to 'Register', new_competition_registration_path(@competition) %>
-  <% else %>
-    <%= link_to 'Affiliate', new_federation_affiliation_path(@competition.federation) %>
-  <% end %>
-<% end %>
-
-<% if current_federation == @competition.federation %>
-  <%= link_to 'Edit Competition', edit_federation_competition_path(@competition) %>
-<% end %>
+<div class="container rounded shadow">
+  <div class="row justify-content-between p-3 mt-3">
+    <h1><%= @competition.name %></h1>
+    <% unless current_federation %>
+      <% if @affiliated %>
+        <%= link_to 'Register', new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Affiliate', new_federation_affiliation_path(@competition.federation), class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+    <% if current_federation == @competition.federation %>
+      <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <p><%= @competition.address %></p>
+      <p><%= @competition.federation.name %></p>
+      <p><%= @competition.date %></p>
+      <p><%= @competition.registration_deadline %></p>
+      <p><%= @competition.description %></p>
+      <p><%= @competition.registration_price %></p>
+      <p><%= @competition.prize %></p>
+    </div>
+  </div>
+</div>
