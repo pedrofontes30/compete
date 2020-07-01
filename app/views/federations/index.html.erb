@@ -1,9 +1,13 @@
-<div class="container">
+<div class="container mt-5">
+  <h2>Federations</h2>
   <% @federations.each do |federation| %>
     <%= link_to federation_path(federation) do %>
-      <div class='col-12 rounded-lg shadow p-3 my-3'>
-        <h3><%= federation.name %></h3>
-        <h4><%= federation.location %></h4>
+      <div class='col-12 rounded-lg d-flex dark-card shadow p-3 my-3'>
+        <div class='avatar-large mr-4' style='background-color: grey;'></div>
+        <div>
+          <h3><%= federation.name %></h3>
+          <h4 class='text-muted'><%= federation.location %></h4>
+        </div>
       </div>
     <% end %>
   <% end %>

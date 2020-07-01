@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-6 offset-3 px-5 py-3 shadow rounded-lg mt-5">
+  <div class="col-6 offset-3 px-5 py-3 dark-card shadow rounded-lg mt-5">
 
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -33,7 +33,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+        <%= f.button :submit, "Update", class: 'btn btn-primary' %>
       </div>
     <% end %>
 

@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
     @competition = Competition.find(params[:competition_id])
     @registration = Registration.new
     authorize @registration
-    @divisions = CompetitionDivision.where(competition: @competition)#.map { |competition_division| competition_division.division.name }
+    @divisions = CompetitionDivision.where(competition: @competition)
   end
 
   def create
@@ -19,8 +19,6 @@ class RegistrationsController < ApplicationController
     authorize @registration
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
   end
-
-
 
   private
 

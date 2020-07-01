@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="col-6 offset-3 px-5 py-3 shadow rounded-lg mt-5">
-    <h2>Sign up</h2>
+  <div class="col-6 offset-3 px-5 py-3 dark-card shadow rounded-lg mt-5">
+    <h2>Federation Sign up</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
+        <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
       </div>
     <% end %>
 

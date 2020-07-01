@@ -3,13 +3,13 @@
     <div class='dark-card rounded-lg shadow m-3 p-3 d-flex justify-content-between'>
       <div>
         <%= link_to competition_path(competition) do  %>
+          <h4 class='text-muted'><%= competition.federation.name.upcase %></h4>
           <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
           <h5><%= competition.date %> at <%= competition.address.capitalize %></h5>
-          <h5><strong><%= icon('fas', 'trophy') %>  $<%= competition.prize %></strong></h5>
-          <p>Registration deadline: <%= competition.registration_deadline %> </p>
+          <p class='text-muted'>Registration deadline: <%= competition.registration_deadline %> </p>
         <% end %>
       </div>
-      <h5>$<%= competition.registration_price %></h5>
+        <h5><strong><%= icon('fas', 'trophy') %>  $<%= competition.prize %></strong></h5>
     </div>
   </div>
 <% end %>
