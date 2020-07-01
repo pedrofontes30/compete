@@ -22,6 +22,7 @@ class CompetitionsController < ApplicationController
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
   end
 
+
   def new
     @competition = Competition.new
     authorize @competition
@@ -66,4 +67,5 @@ class CompetitionsController < ApplicationController
       @user = current_user
     end
   end
+
 end

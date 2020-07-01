@@ -1,0 +1,14 @@
+
+<%= simple_form_for [:federation, competition] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :date, html5: true %>
+  <%= f.input :description %>
+  <%= f.input :prize %>
+  <%= f.input :registration_deadline %>
+  <%= f.input :registration_price %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <% if competition.id %>
+    <%= link_to "Delete competition", federation_competition_path(competition), class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, method: :delete %>
+  <% end %>
+<% end %>

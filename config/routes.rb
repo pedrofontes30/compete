@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
+
+  #devise_for :federations
+  #devise_for :users
+
+
   devise_for :federations, path: 'federations', controllers: { sessions: "federations/sessions", registrations: "federations/registrations" }
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -13,10 +19,9 @@ Rails.application.routes.draw do
   authenticated :federation do
     root 'pages#home', as: :authenticated_federation_root
   end
-  resources :competitions, only: [:index, :new, :create, :edit, :update, :destroy]
 
 
-  resources :competitions, only: [:show] do
+  resources :competitions, only: [:show, :index] do
     resources :registrations, only: [:new, :create]
   end
 

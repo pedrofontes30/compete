@@ -6,20 +6,31 @@ class CompetitionPolicy < ApplicationPolicy
   end
 
   def create?
-    user.is_a? Federation
+    true
   end
 
   def show?
     true
   end
 
+  def new?
+    true
+  end
+
   def update?
     # user may be federation
-    record.federation == user
+    # record.federation == user
+    true
+  end
+
+  def edit?
+    # record.federation == user
+    true
   end
 
   def destroy?
     # user may be federation
-    record.federation == user
+    # record.federation == user
+    true
   end
 end
