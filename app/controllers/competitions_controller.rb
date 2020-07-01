@@ -1,5 +1,6 @@
 class CompetitionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :update, :destroy, :new, :create]
+  # before_action :authenticate_federation!, only: [:new, :create]
 
   def index
     @competitions = policy_scope(Competition).order(created_at: :desc)
@@ -56,5 +57,13 @@ class CompetitionsController < ApplicationController
 
   def competition_params
     params.require(:competition).permit(:name, :address, :date, :description, :prize, :registration_deadline, :registration_price, competition_divisions_attributes: [:id])
+  end
+
+  def pundit_user
+    if federation_signed_in?
+      @federation = current_federation
+    elsif user_signed_in?
+      @user = current_user
+    end
   end
 end

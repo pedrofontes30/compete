@@ -6,7 +6,6 @@ class CompetitionPolicy < ApplicationPolicy
   end
 
   def create?
-    raise
     user.is_a? Federation
   end
 
