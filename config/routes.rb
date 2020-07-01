@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #devise_for :federations
-  devise_for :users
+  #devise_for :users
 
   devise_for :federations, path: 'federations'
   devise_for :users, path: 'users'

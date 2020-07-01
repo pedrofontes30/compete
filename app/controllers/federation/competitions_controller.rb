@@ -14,4 +14,11 @@ class Federation::CompetitionsController < ApplicationController
 
   end
 
+  def update
+    @competition = Competition.find(params[:id])
+    authorize @competition
+    @competition.update(competition_params)
+    redirect_to competition_path(params[:id])
+  end
+
 end
