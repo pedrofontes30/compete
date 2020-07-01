@@ -9,5 +9,7 @@ class FederationsController < ApplicationController
     @federation = Federation.find(params[:id])
     authorize @federation
     @competitions = Competition.where(federation: @federation)
+    @affiliation = Affiliation.new(federation: @federation)
+    @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @federation) != [] : nil
   end
 end

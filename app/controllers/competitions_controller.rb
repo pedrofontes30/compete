@@ -23,6 +23,8 @@ class CompetitionsController < ApplicationController
     @divisions = @competition.competition_divisions
     if params[:query].present?
       @divisions = @divisions.joins(:division).where("divisions.name ILIKE ?", "%#{params[:query]}%")
+    else
+      @divisions = []
     end
     # @registrations = @competition.competition_divisions.select{|competition_division| competition_division.registrations}
     @registrations = @competition.registrations

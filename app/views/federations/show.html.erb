@@ -1,11 +1,41 @@
-<div class="container rounded-lg shadow mt-3 p-3">
-  <div class="row">
-    <div class='pl-3'>
-      <h3><%= @federation.name %></h3>
-      <h4><%= @federation.location %></h4>
+<div class="container dark-card rounded-lg shadow mt-3 p-4">
+  <div class="row mx-3 justify-content-between">
+    <div class="d-flex">
+      <div class='avatar-large mr-4' style='background-color: grey;'></div>
+      <div>
+        <h3><%= @federation.name %></h3>
+        <h4 class='text-muted'><%= @federation.location %></h4>
+      </div>
     </div>
+    <% if !@affiliated %>
+      <button style='height: 40px;' type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+        Affiliate
+      </button>
+    <% end %>
   </div>
   <div class="row">
     <%= render "shared/competition_card" , partial: @competitions %>
+  </div>
+</div>
+
+<div class="modal fade" id="affiliationModal" tabindex="-1" role="dialog" aria-labelledby="affiliationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="affiliationModalLabel">Affiliation to <%= @federation.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= link_to 'Edit profile information', edit_user_registration_path %>
+        <%= simple_form_for [@federation, @affiliation] do |f| %>
+        <%= f.submit 'Affiliate' %>
+        <div class="modal-footer">
+          <%= f.submit 'Affiliate', class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
