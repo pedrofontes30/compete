@@ -1,8 +1,17 @@
-<div class="index_page">
-  <div class="container">
-    <h2><strong>Competitions</strong></h2>
-    <div class="container">
-      <%= render "shared/competition_card" , partial: @competitions %>
+<div class="w-100 mb-3" style='height: 40vh; background-color: grey;'>
+  <div class="container h-100 align-items-center">
+    <div class='row d-block px-3'>
+      <h1>JIU JITSU</h1>
+      <%= form_tag competitions_path, class: 'form-inline', method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a competition", size: '30' %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
     </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+        <%= render "shared/competition_card" , partial: @competitions %>
   </div>
 </div>

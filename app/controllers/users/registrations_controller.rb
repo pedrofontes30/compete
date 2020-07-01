@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
-
   include Accessible
 
   skip_before_action :check_user, except: [:new, :create]
+
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -62,14 +63,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-  private
-
-  def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :date_of_birth, :nationality, :gender)
-  end
-
-  def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :date_of_birth, :nationality, :gender)
-  end
 end

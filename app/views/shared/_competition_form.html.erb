@@ -6,6 +6,12 @@
   <%= f.input :prize %>
   <%= f.input :registration_deadline %>
   <%= f.input :registration_price %>
+  <fieldset>
+    <%= f.simple_fields_for :competition_divisions do |competition_divisions_form| %>
+              <%= render "competition_division_fields", f: competition_divisions_form %>
+          <% end %>
+          <%= link_to_add_fields "Add Division", f, :competition_divisions %>
+  </fieldset>
   <%= f.button :submit %>
   <% if competition.id %>
     <%= link_to "Delete competition", competition_path(competition), class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, method: :delete %>
