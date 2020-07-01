@@ -1,15 +1,2 @@
 <h2>New Competition</h2>
-<!-- <%= render "shared/competition_form", competition: @competition %> -->
-<%= simple_form_for (competition) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :date %>
-  <%= f.input :description %>
-  <%= f.input :prize %>
-  <%= f.input :registration_deadline %>
-  <%= f.input :registration_price %>
-  <%= f.button :submit %>
-  <% if competition.id %>
-    <%= link_to "Delete competition", competition_path(competition), class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, method: :delete %>
-  <% end %>
-<% end %>
+<%= render "shared/competition_form", competition: @competition %>
