@@ -32,7 +32,7 @@
       <% @divisions.each do |cp| %>
       <p>Divisions: <%= cp.division.name %></p>
       <% cp.registrations.each do |registration| %>
-      <p><%= registration.position.position %> Place: <%= registration.user.first_name%></p>
+      <p><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
       <% end %>
       <% end %>
     </div>
