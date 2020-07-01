@@ -18,3 +18,20 @@
 <% if current_federation == @competition.federation %>
   <%= link_to 'Edit Competition', edit_federation_competition_path(@competition) %>
 <% end %>
+
+<%= form_with(url: competition_path(@competition), method: "get", local: true) do %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% @divisions.each do |cp| %>
+  <div>
+    <%= cp.division.name %>
+  </div>
+  <div>
+    <% cp.registrations.each do |registration| %>
+        <p><%= registration.user.first_name%></p>
+        <p><%= registration.position.position %></p>
+    <% end %>
+  </div>
+<% end %>

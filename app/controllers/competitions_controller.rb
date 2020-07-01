@@ -20,6 +20,12 @@ class CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     authorize @competition
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
+    @divisions = @competition.competition_divisions
+    if params[:query].present?
+      @divisions = @divisions.joins(:division).where("divisions.name ILIKE ?", "%#{params[:query]}%")
+    end
+    # @registrations = @competition.competition_divisions.select{|competition_division| competition_division.registrations}
+    @registrations = @competition.registrations
   end
 
 

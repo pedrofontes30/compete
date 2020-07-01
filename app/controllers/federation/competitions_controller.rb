@@ -37,6 +37,10 @@ class Federation::CompetitionsController < ApplicationController
     redirect_to federation_competitions_path
   end
 
+  def pundit_user
+    current_federation
+  end
+
   private
 
   def competition_params
