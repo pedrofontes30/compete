@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="competition-header">
-    <h1><%= @competition.name %></h1>
+<div class="container dark-card rounded-lg shadow mt-5 py-3">
+  <div class="row justify-content-between align-items-center mx-3">
+    <h2><strong><%= @competition.name.upcase %></strong></h2>
     <% unless current_federation %>
       <% if @affiliated %>
       <%= link_to 'Register', new_competition_registration_path(@competition), class: 'btn btn-primary' %>
@@ -14,8 +14,9 @@
     <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>
     <% end %>
   </div>
-  <div class="competition-body">
-    <div class="competition-information">
+
+  <div class="row justify-content-between align-items-start mx-3">
+    <div class="col-6 p-0">
       <p>Federation: <%= @competition.federation.name %></p>
       <p>Description: <%= @competition.description %></p>
       <p>Address: <%= @competition.address %></p>
@@ -24,13 +25,13 @@
       <p>Registration Deadline: <%= @competition.registration_deadline %></p>
       <p>Registration Price: <%= @competition.registration_price %>$</p>
     </div>
-    <div class="competition-registrations">
+    <div class="col-6 p-0">
       <%= form_with(url: competition_path(@competition), method: "get", local: true) do %>
       <%= text_field_tag(:query) %>
       <%= submit_tag("Search") %>
       <% end %>
       <% @divisions.each do |cp| %>
-      <p>Divisions: <%= cp.division.name %></p>
+      <p><%= cp.division.name %></p>
       <% cp.registrations.each do |registration| %>
       <p><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
       <% end %>
@@ -38,6 +39,7 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="affiliationModal" tabindex="-1" role="dialog" aria-labelledby="affiliationModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

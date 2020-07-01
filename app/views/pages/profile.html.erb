@@ -1,6 +1,6 @@
 <div class="container">
   <% @registrations.each do |registration| %>
-    <div class="col-12 rounded shadow">
+    <div class="col-12 rounded-lg shadow">
       <%= link_to competition_path(registration.competition_division.competition) do %>
         <div>
           <p><%= registration.competition_division.competition.name %></p>
