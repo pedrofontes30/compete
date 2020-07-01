@@ -1,13 +1,15 @@
 <% @competitions.each do |competition| %>
   <div class="col-6">
-    <div class="col-12 rounded shadow p-3">
-      <%= link_to competition_path(competition) do  %>
-        <h2><%= competition.name.upcase %></h2>
-        <h6><%= competition.date %> at <%= competition.address.capitalize %></h6>
-        <p><strong>Prize: <%= competition.prize %></strong></p>
-        <p>Price: $<%= competition.registration_price %></p>
-        <p>Registration deadline: <%= competition.registration_deadline %> </p>
-      <% end %>
+    <div class='rounded shadow m-3 p-3 d-flex justify-content-between'>
+      <div>
+        <%= link_to competition_path(competition) do  %>
+          <h2><%= competition.name.upcase %></h2>
+          <h6><%= competition.date %> at <%= competition.address.capitalize %></h6>
+          <p><strong>Prize: $<%= competition.prize %></strong></p>
+          <p>Registration deadline: <%= competition.registration_deadline %> </p>
+        <% end %>
+      </div>
+      <p>$<%= competition.registration_price %></p>
     </div>
   </div>
 <% end %>
