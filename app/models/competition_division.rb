@@ -1,6 +1,7 @@
 class CompetitionDivision < ApplicationRecord
   belongs_to :competition
   belongs_to :division
+  has_many :registrations
 
   def select_label
     division.name

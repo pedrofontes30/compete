@@ -14,6 +14,14 @@ class RegistrationsController < ApplicationController
     redirect_to competition_path(params[:competition_id])
   end
 
+  def show
+    @registration = Registration.new(registration_params)
+    authorize @registration
+    @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
+  end
+
+
+
   private
 
   def registration_params
