@@ -10,3 +10,18 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar{
+  background-color: #0E0E0E;
+  a{
+     color: white !important;
+  }
+
+  .btn-primary{
+  border-radius: 10px;
+  background-color: #9A1E1E;
+  border-color: #9A1E1E;
+  background:linear-gradient(135deg, #e67226 0%,#da0641 100%);
+  }
+
+}

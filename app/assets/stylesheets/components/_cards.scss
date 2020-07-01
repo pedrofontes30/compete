@@ -1,0 +1,38 @@
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-category {
+  cursor: pointer;
+  height: 300px;
+  width: 300px;
+  font-size: 40px;
+  color: white;
+  border-radius: 4px;
+}
+.card-running{
+  background:linear-gradient(135deg, #F36265 0%,#961276 100%);
+}
+
+.card-running:hover {
+  background:linear-gradient(135deg, darken(#F36265, 10%) 0%, darken(#961276, 5%) 100%);
+}
+
+.card-jiujitsu{
+  background:linear-gradient(135deg, #C56CD6 0%,#3425AF 100%);
+}
+
+.card-jiujitsu:hover {
+  background:linear-gradient(135deg, darken(#C56CD6, 5%) 0%, darken(#3425AF, 5%) 100%);
+}
+
+.card-tennis{
+  background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
+}
+
+.card-tennis:hover {
+  background:linear-gradient(135deg, darken(#42e695, 5%) 0%, darken(#3bb2b8, 5%) 100%);
+}
+
+
