@@ -4,16 +4,33 @@ class CompetitionPolicy < ApplicationPolicy
       scope.all
     end
   end
-  
-  def create?
-    user.is_a? Federation
-  end
 
-  def index?
+  def create?
     true
   end
 
   def show?
+    true
+  end
+
+  def new?
+    true
+  end
+
+  def update?
+    # user may be federation
+    # record.federation == user
+    true
+  end
+
+  def edit?
+    # record.federation == user
+    true
+  end
+
+  def destroy?
+    # user may be federation
+    # record.federation == user
     true
   end
 end

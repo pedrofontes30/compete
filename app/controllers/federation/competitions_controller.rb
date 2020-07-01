@@ -1,4 +1,5 @@
 class Federation::CompetitionsController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :authenticate_federation!
   #skip_before_action :authenticate_user!, only: [:index, :show]
   def index
@@ -11,14 +12,35 @@ class Federation::CompetitionsController < ApplicationController
   end
 
   def create
+    @competition = Competition.new(competition_params)
+    @competition.federation = current_federation
+    authorize @competition
+    @competition.save!
+    redirect_to competition_path(@competition)
+  end
 
+  def edit
+    @competition = Competition.find(params[:id])
+    authorize @competition
   end
 
   def update
     @competition = Competition.find(params[:id])
     authorize @competition
-    @competition.update(competition_params)
-    redirect_to competition_path(params[:id])
+    redirect_to competition_path(@competition)
+  end
+
+  def destroy
+    @competition = Competition.find(params[:id])
+    authorize @competition
+    @competition.destroy
+    redirect_to federation_competitions_path
+  end
+
+  private
+
+  def competition_params
+    params.require(:competition).permit(:name, :address, :date, :description, :prize, :registration_deadline, :registration_price, competition_divisions_attributes: [:id])
   end
 
 end

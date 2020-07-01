@@ -1,1 +1,41 @@
 // Specific CSS for your home-page
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+
+form.searchbar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid #fa7d09;
+  float: left;
+  width: 40%;
+  background: #fff;
+}
+
+/* Style of the submit button icon */
+
+form.searchbar button {
+  float: left;
+  width: 5%;
+  padding: 10px;
+  background: #fa7d09;
+  color: white;
+  font-size: 17px;
+  border: 1px solid #fa7d09;
+  border-left: none; /* Para não ter borda dupla */
+  cursor: pointer;
+}
+
+form.searchbar button:hover {
+  background: #ff4301;
+}
+
+/* Clear floats */
+form.searchbar::after {
+  content: "";
+  clear: both;
+  display: table;
+}

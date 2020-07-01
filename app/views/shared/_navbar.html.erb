@@ -9,7 +9,10 @@
     <ul class="navbar-nav mr-auto">
       <% if !(user_signed_in? || federation_signed_in?) %>
         <li class="nav-item mx-3">
-          <%= link_to "For Federations", new_federation_registration_path, class: "nav-link" %>
+          <%= link_to "Federations", federations_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to "For Federations", new_federation_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item mx-3">
           <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
@@ -24,7 +27,7 @@
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <div class="avatar-large d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+              <div class="avatar d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
                 <%= current_user.first_name[0] + current_user.last_name[0] %>
               </div>
 
@@ -36,12 +39,12 @@
           </li>
         <% else%>
           <li class="nav-item mx-3">
-            <%= link_to 'Dashboard', '', class: "nav-link"%>
+            <%= link_to 'Dashboard', federation_competitions_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <div class="avatar-large d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
-                <%= current_federation.name[0] %>
+              <div class="avatar d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+                <%= current_federation.name ?  current_federation.name[0]  :  "n" %>
               </div>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
