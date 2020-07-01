@@ -40,7 +40,7 @@
   <div>
     <% cp.registrations.each do |registration| %>
         <p><%= registration.user.first_name%></p>
-        <p><%= registration.position.position %></p>
+        <p><%= registration.position.position if !registration.position.nil? %></p>
     <% end %>
   </div>
 <% end %>
