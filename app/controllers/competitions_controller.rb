@@ -19,6 +19,8 @@ class CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     authorize @competition
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @competition.federation) != [] : nil
+    @federation = @competition.federation
+    @affiliation = Affiliation.new(federation: @federation)
   end
 
   def new
@@ -30,6 +32,7 @@ class CompetitionsController < ApplicationController
     @competition = Competition.new(competition_params)
     @competition.federation = current_federation
     authorize @competition
+    raise
     @competition.save!
     redirect_to competition_path(@competition)
   end

@@ -5,7 +5,9 @@
       <% if @affiliated %>
         <%= link_to 'Register', new_competition_registration_path(@competition), class: 'btn btn-primary' %>
       <% else %>
-        <%= link_to 'Affiliate', new_federation_affiliation_path(@competition.federation), class: 'btn btn-primary' %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+            Affiliate
+        </button>
       <% end %>
     <% end %>
     <% if current_federation == @competition.federation %>
@@ -21,6 +23,29 @@
       <p><%= @competition.description %></p>
       <p><%= @competition.registration_price %></p>
       <p><%= @competition.prize %></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="affiliationModal" tabindex="-1" role="dialog" aria-labelledby="affiliationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="affiliationModalLabel">Affiliation to <%= @federation.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= link_to 'Edit profile information', edit_user_registration_path %>
+
+        <%= simple_form_for [@federation, @affiliation] do |f| %>
+          <%= f.submit 'Affiliate' %>
+          <div class="modal-footer">
+            <%= f.submit 'Affiliate', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
