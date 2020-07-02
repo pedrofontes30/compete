@@ -2,6 +2,8 @@
   justify-content: space-between;
   background: white;
   height: 100px;
+  font-family: Dosis;
+  letter-spacing: 3px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,6 +12,7 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  box-shadow: 0 12px 14px 0 rgba(0,0,0,2);
 }
 
 .navbar{
@@ -25,4 +28,14 @@
   background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);
   }
 
+}
+
+.btn-primary:hover {
+  background:linear-gradient(135deg, darken(#DE412A, 2%) 0%, darken(#D76420, 5%) 100%);
+}
+
+.navbar img {
+  vertical-align: middle;
+  border-style: none;
+  height: 50px;
 }
