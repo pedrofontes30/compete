@@ -34,21 +34,23 @@
   <div class="row mx-3">
     <div class="col-6 p-0">
       <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
-        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| competition_division.division.name }), { class: "custom-select flex-grow-1" }) %>
+        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1" }) %>
         <%= submit_tag("See Competitiors", { class: 'btn btn-primary' }) %>
       <% end %>
-      <% @divisions.each do |cp| %>
-      <h5 class='my-3' style='letter-spacing: 2px;'><%= cp.division.name.upcase %></h5>
-      <% cp.registrations.each do |registration| %>
-        <div class='card-light d-flex align-items-center p-2 rounded'>
-          <div class='avatar mr-3' style='background-color: grey;'></div>
-          <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
-        </div>
-      <% end %>
+      <% if @division %>
+        <h5 class='my-3' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
+        <% @division.registrations.each do |registration| %>
+          <div class='card-light d-flex align-items-center p-2 rounded mb-1'>
+            <div class='avatar mr-3' style='background-color: grey;'></div>
+            <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
+<!-- Affiliation Modal -->
 
 <div class="modal fade" id="affiliationModal" tabindex="-1" role="dialog" aria-labelledby="affiliationModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -70,4 +72,3 @@
     </div>
   </div>
 </div>
-

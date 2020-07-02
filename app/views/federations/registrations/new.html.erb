@@ -14,6 +14,7 @@
                     autofocus: true,
                     input_html: { autocomplete: "email" }, placeholder: "Email", label: false%>
         <%= f.input :affiliation_price, required: true, placeholder: "Affiliation Price", label: false   %>
+        <%= f.input :photo, as: :file %>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
