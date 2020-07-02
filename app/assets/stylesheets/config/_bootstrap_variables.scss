@@ -23,3 +23,8 @@ $border-radius-lg: 6px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+.btn-primary { border-radius: 6px;
+               background-color: #9A1E1E;
+               border-color: #9A1E1E;
+               background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); }
