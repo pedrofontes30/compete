@@ -31,9 +31,9 @@
           <li class="nav-item">
             <div class="dropdown">
               <% if current_user.photo.attached? %>
-                <%= cl_image_tag(current_user.photo.key, class: "avatar d-flex align-items-center justify-content-center", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
+                <%= cl_image_tag(current_user.photo.key, class: "avatar-large", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
               <% else %>
-                 <div class="avatar d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+                 <div class="avatar-large d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
                   <%= current_user.first_name[0] + current_user.last_name[0] %>
                  </div>
                <% end %>
@@ -50,9 +50,9 @@
           <li class="nav-item">
             <div class="dropdown">
               <% if current_federation.photo.attached? %>
-                <%= cl_image_tag(current_federation.photo.key, class: "avatar d-flex align-items-center justify-content-center", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
+                <%= cl_image_tag(current_federation.photo.key, class: "avatar-large", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
               <% else %>
-                <div class="avatar d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+                <div class="avatar-large d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
                   <%= current_federation.name ?  current_federation.name[0]  :  "n" %>
                 </div>
               <% end %>
