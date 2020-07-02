@@ -8,4 +8,5 @@ class Federation < ApplicationRecord
 
   has_many :affiliations
   has_many :competitions
+  has_one_attached :photo
 end
