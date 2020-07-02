@@ -31,3 +31,14 @@
   border-style: none;
   height: 50px;
 }
+
+.dropdown-item {
+  background-color: rgba(0,0,0,0.85);
+}
+
+.dropdown-menu {
+  background-color: rgba(0,0,0,0.85);
+   a:hover {
+   background:linear-gradient(135deg, #DE412A 0%,#D76420 100%);
+  }
+}
