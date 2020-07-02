@@ -1,4 +1,4 @@
-<div class="container dark-card rounded-lg shadow mt-5 py-4">
+<div class="container card-dark rounded-lg shadow mt-5 py-4">
   <div class="row justify-content-between align-items-center mx-3">
     <div>
       <h3 class='text-muted'><%= @competition.federation.name.upcase %></h3>
@@ -18,27 +18,29 @@
     <% end %>
   </div>
 
-  <div class="row justify-content-between align-items-start mx-3">
+  <div class="row justify-content-between align-items-start mx-3 mb-3">
     <div class="">
       <p><%= @competition.description %></p>
       <p>Address: <%= @competition.address %></p>
-      <p>Date: <%= @competition.date %></p>
-      <p>Prize: <%= @competition.prize %>$</p>
+      <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
+      <div class='d-flex flex-column justify-content-between'>
+        <h5><strong><%= icon('fas', 'trophy') %>  $<%= @competition.prize %></strong></h5>
+      </div>
     </div>
     <div>
-      <p><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline %></p>
+      <p><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
     </div>
   </div>
   <div class="row mx-3">
     <div class="col-6 p-0">
-      <%= form_with(url: competition_path(@competition), method: "get", local: true) do %>
-      <%= text_field_tag(:query) %>
-      <%= submit_tag("Search") %>
+      <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
+        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| competition_division.division.name }), { class: "custom-select flex-grow-1" }) %>
+        <%= submit_tag("See Competitiors", { class: 'btn btn-primary' }) %>
       <% end %>
       <% @divisions.each do |cp| %>
-      <h5 class='mt-3' style='letter-spacing: 2px;'><%= cp.division.name.upcase %></h5>
+      <h5 class='my-3' style='letter-spacing: 2px;'><%= cp.division.name.upcase %></h5>
       <% cp.registrations.each do |registration| %>
-        <div class='d-flex align-items-center p-2 rounded' style='background-color: rgb(80,80,80);'>
+        <div class='card-light d-flex align-items-center p-2 rounded'>
           <div class='avatar mr-3' style='background-color: grey;'></div>
           <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
         </div>
@@ -60,7 +62,6 @@
       <div class="modal-body">
         <%= link_to 'Edit profile information', edit_user_registration_path %>
         <%= simple_form_for [@federation, @affiliation] do |f| %>
-        <%= f.submit 'Affiliate' %>
         <div class="modal-footer">
           <%= f.submit 'Affiliate', class: 'btn btn-primary' %>
         </div>

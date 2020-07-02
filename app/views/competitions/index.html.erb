@@ -14,17 +14,19 @@
   <div class="row">
     <% @competitions.each do |competition| %>
       <div class="col-6">
-        <div class='dark-card rounded-lg shadow m-3 p-3 d-flex justify-content-between'>
-          <div>
-            <%= link_to competition_path(competition) do  %>
+        <%= link_to competition_path(competition) do  %>
+          <div style='position:relative;' class='card-dark rounded-lg shadow m-3 p-3 d-flex justify-content-between'>
+            <div>
               <h4 class='text-muted'><%= competition.federation.name.upcase %></h4>
               <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
-              <h5><%= competition.date %> at <%= competition.address.capitalize %></h5>
-              <p class='text-muted'>Registration deadline: <%= competition.registration_deadline %> </p>
-            <% end %>
+              <h5><%= competition.date.strftime("%d/%m/%Y") %> at <%= competition.address.capitalize %></h5>
+            </div>
+            <div class='d-flex flex-column justify-content-between'>
+              <h5><strong><%= icon('fas', 'trophy') %>  $<%= competition.prize %></strong></h5>
+            </div>
+            <p style='position:absolute; bottom:0px; right:0px; background-color: #DE412A; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
           </div>
-            <h5><strong><%= icon('fas', 'trophy') %>  $<%= competition.prize %></strong></h5>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

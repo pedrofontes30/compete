@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="dark-card rounded-lg p-3">
+  <div class="card-dark rounded-lg p-3">
     <h3>My Registrations</h3>
     <% @registrations.each do |registration| %>
         <%= link_to competition_path(registration.competition_division.competition) do %>
