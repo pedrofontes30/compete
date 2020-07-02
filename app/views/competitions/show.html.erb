@@ -5,7 +5,11 @@
         <h2><strong><%= @competition.name.upcase %></strong></h2>
       </div>
       <div>
-        <p style='position:absolute; top: 0; right:0; background-color: #DE412A; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+        <% if Date.today > @competition.registration_deadline %>
+          <p style='position:absolute; top: 0; right:0; background-color: #17706E; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+        <% else %>
+          <p style='position:absolute; top: 0; right:0; background-color: #DE412A; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+        <% end %>
         <% unless current_federation %>
           <% if @affiliated %>
             <% if @competition.registration_deadline > Date.today %>
