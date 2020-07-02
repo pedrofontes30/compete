@@ -33,7 +33,7 @@ a,a:hover, a:visited, a:link, a:active{
 }
 
 .card-running:hover {
-  background:linear-gradient(135deg, darken(#F36265, 10%) 0%, darken(#961276, 5%) 100%);
+  background:linear-gradient(45deg, #000000,#152331);
 }
 
 .card-jiujitsu{
@@ -42,17 +42,16 @@ a,a:hover, a:visited, a:link, a:active{
 }
 
 .card-jiujitsu:hover {
-  background:linear-gradient(135deg, darken(#C56CD6, 5%) 0%, darken(#3425AF, 5%) 100%);
+  background:linear-gradient(45deg, #000000,#152331);
 }
 
 .card-tennis{
-//   background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
-//
-background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);
+  //   background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
+  background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);
 }
 
 .card-tennis:hover {
-  background:linear-gradient(135deg, darken(#42e695, 5%) 0%, darken(#3bb2b8, 5%) 100%);
+  background:linear-gradient(45deg, #000000,#152331);
 }
 
 
