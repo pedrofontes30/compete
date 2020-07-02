@@ -1,3 +1,4 @@
+require "open-uri"
 require 'faker'
 
 Affiliation.destroy_all
@@ -18,6 +19,9 @@ pedro = User.create!(first_name: 'Pedro',
                     email: 'pedrof@gmail.com',
                     password: '123456')
 
+file = URI.open('https://avatars0.githubusercontent.com/u/62013843?v=4')
+pedro.photo.attach(io: file, filename: 'pedro.jpg', content_type: 'image/jpg')
+
 camila = User.create!(first_name: 'Camila',
                     last_name: 'Silva',
                     date_of_birth: Date.new(1995,5,20),
@@ -25,6 +29,9 @@ camila = User.create!(first_name: 'Camila',
                     gender: 'Female',
                     email: 'camilas@gmail.com',
                     password: '123456')
+
+file = URI.open('https://avatars3.githubusercontent.com/u/25322909?v=4')
+camila.photo.attach(io: file, filename: 'camila.jpg', content_type: 'image/jpg')
 
 rez = User.create!(first_name: 'Rezwan',
                     last_name: 'Iqbal',
@@ -34,6 +41,9 @@ rez = User.create!(first_name: 'Rezwan',
                     email: 'rezwani@gmail.com',
                     password: '123456')
 
+file = URI.open('https://avatars0.githubusercontent.com/u/62059376?v=4')
+rez.photo.attach(io: file, filename: 'rez.jpg', content_type: 'image/jpg')
+
 nuno = User.create!(first_name: 'Nuno',
                     last_name: 'Lei',
                     date_of_birth: Date.new(1995,7,5),
@@ -41,6 +51,9 @@ nuno = User.create!(first_name: 'Nuno',
                     gender: 'Male',
                     email: 'nunol@gmail.com',
                     password: '123456')
+
+file = URI.open('https://avatars1.githubusercontent.com/u/63242007?v=4')
+nuno.photo.attach(io: file, filename: 'nuno.jpg', content_type: 'image/jpg')
 
 puts 'Creating divisions...'
 
@@ -77,6 +90,9 @@ fjjrio = Federation.create!(name: 'FJJRIO',
                             password: '123456')
  # - Federação de Jiu-Jitsu do Rio
 
+file = URI.open('https://pbs.twimg.com/profile_images/655753850/LOGO_OFICIAL_FJJ-RIO_400x400.bmp')
+fjjrio.photo.attach(io: file, filename: 'fjjrio.jpg', content_type: 'image/jpg')
+
  cbjj = Federation.create!(name: 'CBJJ',
                           location: 'Brazil',
                           affiliation_price: '70',
@@ -84,12 +100,18 @@ fjjrio = Federation.create!(name: 'FJJRIO',
                           password: '123456')
  # - Confederação Brasileira de Jiu-Jitsu
 
+file = URI.open('https://cbjj.com.br/wp-content/uploads/2014/02/cbjj_logo_news2.jpg')
+cbjj.photo.attach(io: file, filename: 'cbjj.png', content_type: 'image/jpg')
+
  fpjjb = Federation.create!(name: 'FPJJ',
                           location: 'Lisbon',
                           affiliation_price: '30',
                           email: 'fpjjb@gmail.com',
                           password: '123456')
  # - Federação Portuguesa de Jiu-Jitsu
+
+file = URI.open('https://jiujitsuportugal.files.wordpress.com/2016/09/fpjjb-2.jpg?w=241')
+fpjjb.photo.attach(io: file, filename: 'fpjjb.jpg', content_type: 'image/jpg')
 
 
 sjjsaf = Federation.create!(name: 'SJJSAF',
@@ -99,6 +121,9 @@ sjjsaf = Federation.create!(name: 'SJJSAF',
                           password: '123456')
  # - Sport Jiu-Jitsu South American Federation
 
+file = URI.open('https://i.pinimg.com/280x280_RS/9c/c3/62/9cc362e08c1d1282522ab9a474ba24eb.jpg')
+sjjsaf.photo.attach(io: file, filename: 'sjjsaf.jpg', content_type: 'image/jpg')
+
 puts 'Creating competitions...'
 
 # FJJRIO
@@ -107,7 +132,7 @@ rio_open = Competition.create!(name: 'Rio Open',
                               address: 'Tijuca Tênis Clube',
                               federation: fjjrio,
                               date: Date.new(2020,8,20),
-                              description: "Comp",
+                              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                               prize: 500,
                               registration_deadline: Date.new(2020,8,13),
                               registration_price: 50)
@@ -120,7 +145,7 @@ carlson_gracie = Competition.create!(name: 'Carlson Gracie',
                                     address: 'Tijuca Tênis Clube',
                                     federation: fjjrio,
                                     date: Date.new(2020,9,18),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 300,
                                     registration_deadline: Date.new(2020,9,5),
                                     registration_price: 40)
@@ -133,7 +158,7 @@ summer_open = Competition.create!(name: 'Summer Open',
                                     address: 'Marina da Glória',
                                     federation: fjjrio,
                                     date: Date.new(2020,12,15),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 450,
                                     registration_deadline: Date.new(2020,11,30),
                                     registration_price: 40)
@@ -144,7 +169,7 @@ brasileiro = Competition.create!(name: 'Brasileiro',
                                     address: 'São Paulo',
                                     federation: cbjj,
                                     date: Date.new(2020,10,12),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 1000,
                                     registration_deadline: Date.new(2020,10,5),
                                     registration_price: 50)
@@ -157,7 +182,7 @@ brasileiro_kids = Competition.create!(name: 'Brasileiro Kids',
                                     address: 'Marina da Glória',
                                     federation: cbjj,
                                     date: Date.new(2020,10,20),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 0,
                                     registration_deadline: Date.new(2020,10,13),
                                     registration_price: 40)
@@ -168,7 +193,7 @@ lisbon_open = Competition.create!(name: 'Lisbon Open',
                                     address: 'Parque das Nações',
                                     federation: fpjjb,
                                     date: Date.new(2021,1,15),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 200,
                                     registration_deadline: Date.new(2021,1,5),
                                     registration_price: 40)
@@ -179,7 +204,7 @@ copa_america = Competition.create!(name: 'Copa America',
                                     address: 'Arena da Juventude',
                                     federation: sjjsaf,
                                     date: Date.new(2020,10,18),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 300,
                                     registration_deadline: Date.new(2020,10,4),
                                     registration_price: 30)
@@ -188,14 +213,16 @@ rio_challenge = Competition.create!(name: 'Rio Challenge',
                                     address: 'Parque das Nações',
                                     federation: sjjsaf,
                                     date: Date.new(2020,12,5),
-                                    description: "Comp",
+                                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 200,
                                     registration_deadline: Date.new(2020,11,25),
                                     registration_price: 40)
 
 puts 'Creating fake users...'
 
+count = 0
 10.times do
+  count += 1
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   fake_user = User.create!(first_name: first_name,
@@ -207,6 +234,9 @@ puts 'Creating fake users...'
                           password: '123456')
   Affiliation.create!(federation: fjjrio, user: fake_user)
   Registration.create!(competition_division: CompetitionDivision.find_by(competition: rio_open), user: fake_user)
+
+  file = URI.open('https://i.pinimg.com/originals/63/0a/02/630a028e85392f6695a3806b06f3ffd7.jpg')
+  fake_user.photo.attach(io: file, filename: 'user_fake.png', content_type: 'image/png')
 end
 
 puts 'Done 🎉'

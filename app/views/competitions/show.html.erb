@@ -1,34 +1,33 @@
-<div class="container card-dark rounded-lg shadow mt-5 py-4">
+<div style='position:relative;' class="container card-dark rounded-lg shadow mt-5 py-4">
   <div class="row justify-content-between align-items-center mx-3">
-    <div>
-      <h3 class='text-muted'><%= @competition.federation.name.upcase %></h3>
-      <h2><strong><%= @competition.name.upcase %></strong></h2>
-    </div>
-    <% unless current_federation %>
-      <% if @affiliated %>
-      <%= link_to "Register for $#{@competition.registration_price}", new_competition_registration_path(@competition), class: 'btn btn-primary' %>
-      <% else %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
-          Affiliate
-        </button>
-      <% end %>
-    <% end %>
-    <% if current_federation == @competition.federation %>
-      <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>
-    <% end %>
+      <div>
+        <h3 class='text-muted'><%= @competition.federation.name.upcase %></h3>
+        <h2><strong><%= @competition.name.upcase %></strong></h2>
+      </div>
+      <div>
+        <p style='position:absolute; top: 0; right:0; background-color: #DE412A; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+        <% unless current_federation %>
+          <% if @affiliated %>
+          <%= link_to "Register for $#{@competition.registration_price}", new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+          <% else %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+              Affiliate
+            </button>
+          <% end %>
+        <% end %>
+        <% if current_federation == @competition.federation %>
+          <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>
+        <% end %>
+      </div>
   </div>
-
   <div class="row justify-content-between align-items-start mx-3 mb-3">
     <div class="">
       <p><%= @competition.description %></p>
       <p>Address: <%= @competition.address %></p>
       <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
       <div class='d-flex flex-column justify-content-between'>
-        <h5><strong><%= icon('fas', 'trophy') %>  $<%= @competition.prize %></strong></h5>
+        <h5><strong>$<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
       </div>
-    </div>
-    <div>
-      <p><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
     </div>
   </div>
   <div class="row mx-3">
@@ -41,10 +40,21 @@
         <h5 class='my-3' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
         <% @division.registrations.each do |registration| %>
           <div class='card-light d-flex align-items-center p-2 rounded mb-1'>
-            <div class='avatar mr-3' style='background-color: grey;'></div>
+            <% if registration.user.photo.attached? %>
+              <%= cl_image_tag(registration.user.photo.key, class: "avatar mr-4")%>
+            <% else %>
+              <div class='avatar mr-4' style='background-color: grey;'></div>
+            <% end %>
             <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
           </div>
         <% end %>
+      <% end %>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+            <% if @federation.photo.attached? %>
+        <%= cl_image_tag(@federation.photo.key, class: "avatar-large ml-5")%>
+      <% else %>
+        <div class='avatar-large ml-5' style='background-color: grey;'></div>
       <% end %>
     </div>
   </div>
