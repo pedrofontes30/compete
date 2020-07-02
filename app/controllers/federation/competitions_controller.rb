@@ -33,9 +33,17 @@ class Federation::CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     authorize @competition
     @competition.update(competition_params)
-    params[:competition][:competition_divisions_attributes].each do |key, value|
-      competition_division = CompetitionDivision.find(value[:id])
-      competition_division.destroy unless value[:_destroy] == 'false'
+    unless params[:competition][:competition_divisions_attributes].nil?
+      params[:competition][:competition_divisions_attributes].each do |key, value|
+        if value[:id]
+          competition_division = CompetitionDivision.find(value[:id])
+          competition_division.destroy unless value[:_destroy] == 'false'
+        else
+          competition_division = @competition.competition_divisions.build
+          competition_division.division_id = value[:division_id]
+          competition_division.save
+        end
+      end
     end
     redirect_to competition_path(@competition)
   end

@@ -8,7 +8,11 @@
         <p style='position:absolute; top: 0; right:0; background-color: #DE412A; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% unless current_federation %>
           <% if @affiliated %>
-          <%= link_to "Register for $#{@competition.registration_price}", new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+            <% if @competition.registration_deadline > Date.today %>
+                <%= link_to "Register for $#{@competition.registration_price}", new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+              <% else %>
+                <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled' %>
+            <% end %>
           <% else %>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
               Affiliate
