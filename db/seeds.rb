@@ -3,8 +3,8 @@ require 'faker'
 
 Affiliation.destroy_all
 Registration.destroy_all
-Criterium.destroy_all
 DivisionCriterium.destroy_all
+Criterium.destroy_all
 CompetitionDivision.destroy_all
 Division.destroy_all
 Competition.destroy_all
