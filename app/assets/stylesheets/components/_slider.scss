@@ -4,9 +4,9 @@
   display: flex;
 }
 
-// .slider::-webkit-scrollbar {
-//   width: 8px;
-// }
+.slider::-webkit-scrollbar {
+  width: 0;
+}
 
 // .slider::-webkit-scrollbar-track {
 //   background: none;
