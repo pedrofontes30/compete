@@ -135,7 +135,7 @@ summer_open = Competition.create!(name: 'Summer Open',
                                     date: Date.new(2020,12,15),
                                     description: "Comp",
                                     prize: 450,
-                                    registration_deadline: Date.new(2020,11,30),
+                                    registration_deadline: Date.new(2020,07,01),
                                     registration_price: 40)
 
 # CBJJ
