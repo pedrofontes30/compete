@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-  height: 100px;
+  height: 115px;
   font-family: Dosis;
   letter-spacing: 3px;
 }
@@ -12,11 +12,11 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
-  box-shadow: 0 12px 14px 0 rgba(0,0,0,2);
 }
 
 .navbar{
   background-color: #0E0E0E;
+  box-shadow: 0 10px 30px rgba(0,0,0,1);
   a{
      color: white !important;
   }
@@ -29,7 +29,7 @@
 .navbar img {
   vertical-align: middle;
   border-style: none;
-  height: 50px;
+  height: 61px;
 }
 
 .dropdown-item {
