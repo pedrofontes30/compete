@@ -7,6 +7,7 @@
 /* Style the search field */
 
 .banner {
+  height: calc(100vh - 100px);
   width: 100vw;
   img {
     height: 100%;
@@ -25,36 +26,34 @@
 }
 
 .carousel-caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  // position: absolute;
+  // top: 50%;
+  // left: 20%;
   transform: translate(-50%, -50%);
   color: #fff;
   font-size: 20px;
   letter-spacing: 2px;
   font-weight: lighter;
-  width: 300px;
+  width: 40%;
 }
 
 .carousel-item {
   font-size: 20px;
-  box-shadow: 1px;
   letter-spacing: 2px;
   overflow: hidden;
   max-height: calc(100vh - 100px);
   transition: 0.6s ease-in-out left;
 }
 
-.btn{
-  border: none;
-  border-color: transparent !important;
+.btn-main{
+  border-radius: 30px;
+  border: 0;
+  font-size: 1.5em;
 }
 
-.btn-danger{
-  border-radius: 10px;
-  background-color: #9A1E1E;
-  border-color: #B2132A;
-  background:linear-gradient(135deg, #DE412A 0%,#D76420 100%);
+a {
+  text-decoration: none;
+  border: 0;
 }
 
 h1 {
