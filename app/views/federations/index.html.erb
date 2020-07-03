@@ -2,7 +2,7 @@
   <h2>Federations</h2>
   <% @federations.each do |federation| %>
     <%= link_to federation_path(federation) do %>
-      <div class='col-12 rounded-lg d-flex card-dark shadow p-3 my-3'>
+      <div class='col-12 grow rounded-lg d-flex card-dark shadow p-3 my-3'>
         <% if federation.photo.attached? %>
           <%= cl_image_tag(federation.photo.key, class: "avatar-large mr-4")%>
         <% else %>
