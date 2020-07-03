@@ -60,4 +60,29 @@ $yellow: #42e695;
   background:linear-gradient(135deg, darken(#42e695, 10%) 0%,darken(#3bb2b8, 10%) 100%);
 }
 
+// other cards
+
+.card-swimming{
+  background:linear-gradient(135deg, #13f1fc 0%,#0470dc 100%);
+}
+
+.card-swimming:hover {
+  background:linear-gradient(135deg, darken(#13f1fc, 10%) 0%,darken(#0470dc, 10%) 100%);
+}
+
+.card-golf{
+ background:linear-gradient(135deg, #fad961 0%,#f76b1c 100%);
+}
+
+.card-golf:hover {
+  background:linear-gradient(135deg, darken(#fad961, 10%) 0%,darken(#f76b1c, 10%) 100%);
+}
+
+.card-volleyball{
+  background:linear-gradient(135deg, #DFEC51 0%,#73AA0A 100%);
+}
+
+.card-volleyball:hover {
+  background:linear-gradient(135deg, darken(#DFEC51, 10%) 0%,darken(#73AA0A, 10%) 100%);
+}
 
