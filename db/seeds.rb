@@ -125,6 +125,7 @@ file = URI.open('https://i.pinimg.com/280x280_RS/9c/c3/62/9cc362e08c1d1282522ab9
 sjjsaf.photo.attach(io: file, filename: 'sjjsaf.jpg', content_type: 'image/jpg')
 
 
+
 puts 'Creating competitions...'
 
 # FJJRIO

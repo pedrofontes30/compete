@@ -29,10 +29,24 @@ require('./nested-forms/removeFields')
 import "bootstrap";
 import AOS from 'aos';
 
+
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-   AOS.init(); // Call your functions here, e.g:
-  // initSelect2();
+   AOS.init({
+   anchorPlacement: 'top-bottom'
+  });
+   // initSelect2();
 });
+
+
+//({startEvent: 'DOMContentLoaded'})
+//startEvent: 'DOMContentLoaded'
+
+//easing: 'ease-out-back',
+   //duration: 800,
+   //delay: 300,
+   //once: true,
+   //disable: 'mobile'
