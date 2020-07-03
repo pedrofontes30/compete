@@ -1,38 +1,47 @@
-<div class="container mt-5 alligned-cards">
-  <div class="card-dark profile-cards card-affiliations rounded-lg p-3">
-    <h3>My Affiliations</h3>
-    <% @affiliations.each do |affiliation| %>
-        <%= link_to federation_path(affiliation.federation) do %>
-          <div class='col-4 d-flex align-items-center p-3 rounded'>
-            <% if affiliation.federation.photo.attached? %>
-              <%= cl_image_tag(affiliation.federation.photo.key, class: "avatar-large mr-4")%>
-            <% else %>
-              <div class='avatar-large mr-4' style='background-color: grey;'></div>
-            <% end %>
-            <h4><%= affiliation.federation.name %></h4>
-          </div>
-        <% end %>
-    <% end %>
+<div class="container mt-5">
+  <div class="row justify-content-between mb-5">
+    <div class="col-4">
+    <div class="card-dark card-stats profile-cards rounded-lg p-4 h-100">
+      <h3 class='mb-3'><i class="far fa-chart-bar mr-3"></i> My Stats</h3>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag(current_user.photo.key, class: "avatar-large m-3")%>
+      <% else %>
+        <div class='avatar-large m-3' style='background-color: grey;'></div>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-8">
+    <div style="background-image: url('https://dhtmlx.com/blog/wp-content/uploads/2018/05/Material-small.png'); background-size: cover; height: 300px;" class="rounded-lg">
+    </div>
+    </div>
   </div>
-  <div class="card-dark card-registrations profile-cards rounded-lg p-3">
-    <h3>My Competitions</h3>
-    <% @registrations.each do |registration| %>
-        <%= link_to competition_path(registration.competition_division.competition) do %>
-          <div>
-            <p><%= registration.competition_division.competition.name %> - <span class='text-muted'><%= registration.competition_division.division.name.upcase %></span></p>
-          </div>
-        <% end %>
-    <% end %>
+  <div class="row justify-content-between">
+    <div class="col-6">
+    <div class="card-dark profile-cards card-affiliations rounded-lg p-4 h-100">
+      <h3 class='mb-3'><i class="fas fa-id-card mr-3"></i>My Affiliations</h3>
+      <% @affiliations.each do |affiliation| %>
+          <%= link_to federation_path(affiliation.federation) do %>
+            <div class='card-light d-flex align-items-center p-3 rounded'>
+              <% if affiliation.federation.photo.attached? %>
+                <%= cl_image_tag(affiliation.federation.photo.key, class: "avatar-large mr-4")%>
+              <% else %>
+                <div class='avatar-large mr-4' style='background-color: grey;'></div>
+              <% end %>
+              <h4><%= affiliation.federation.name %></h4>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-6">
+    <div class="card-dark card-registrations profile-cards rounded-lg p-4 h-100">
+      <h3 class='mb-3'><i class="fas fa-trophy mr-3"></i>My Competitions</h3>
+      <% @registrations.each do |registration| %>
+          <%= link_to competition_path(registration.competition_division.competition) do %>
+              <p class='btn btn-primary mb-3 w-100'><strong><%= registration.competition_division.competition.name %></strong> - <%= registration.competition_division.division.name.upcase %></p>
+          <% end %>
+      <% end %>
+    </div>
   </div>
-  <div class="card-dark card-stats profile-cards rounded-lg p-3">
-    <h3>My Stats</h3>
-    <% @registrations.each do |registration| %>
-        <%= link_to competition_path(registration.competition_division.competition) do %>
-          <div>
-            <p><%= registration.competition_division.competition.name %> - <span class='text-muted'><%= registration.competition_division.division.name.upcase %></span></p>
-          </div>
-
-        <% end %>
-    <% end %>
   </div>
 </div>
