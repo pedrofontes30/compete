@@ -15,7 +15,7 @@
         <% @competitions.each do |competition| %>
           <div class="col-6" data-aos="fade-up">
             <%= link_to competition_path(competition) do  %>
-              <div style='position:relative;' class='card-dark rounded-lg shadow m-3 p-3 d-flex justify-content-between'>
+              <div style='position:relative;' class='card-dark grow rounded-lg shadow m-3 p-4 d-flex justify-content-between'>
                 <div>
                   <h4 class='text-muted'><%= competition.federation.name.upcase %></h4>
                   <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
@@ -26,8 +26,8 @@
                 </div>
                 <% if Date.today > competition.registration_deadline %>
                     <p style='position:absolute; bottom:0px; right:0px; background-color: #17706E; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
-                   <% else %>
-                <p style='position:absolute; bottom:0px; right:0px; background-color: #DE412A; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+                <% else %>
+                    <p style='position:absolute; bottom:0px; right:0px; background-color: #DE412A; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
                 <% end %>
               </div>
             <% end %>

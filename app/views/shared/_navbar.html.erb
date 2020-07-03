@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon align-items-center">
 
 <%= link_to root_path, class: "navbar navbar-expand-sm navbar-light navbar-lewagon" do %>
   <%= image_tag asset_path('lettering_compete_white.png')%>
@@ -10,22 +10,22 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item mx-3">
+      <li class="nav-item mx-3 d-flex align-items-center">
         <%= link_to "Federations", federations_path, class: "nav-link" %>
       </li>
       <% if !(user_signed_in? || federation_signed_in?) %>
-        <li class="nav-item mx-3">
+        <li class="nav-item mx-3 d-flex align-items-center">
           <%= link_to "For Federations", new_federation_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item mx-3">
+        <li class="nav-item mx-3 d-flex align-items-center">
           <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item mx-3">
+        <li class="nav-item mx-3 d-flex align-items-center">
           <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
         </li>
       <% else %>
         <% if current_user %>
-          <li class="nav-item mx-3">
+          <li class="nav-item mx-3 d-flex align-items-center">
             <%= link_to "Profile", '/profile', class: "nav-link" %>
           </li>
           <li class="nav-item">
@@ -44,7 +44,7 @@
             </div>
           </li>
         <% else%>
-          <li class="nav-item mx-3">
+          <li class="nav-item mx-3 d-flex align-items-center">
             <%= link_to 'Dashboard', federation_competitions_path, class: "nav-link"%>
           </li>
           <li class="nav-item">

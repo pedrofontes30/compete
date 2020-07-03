@@ -11,6 +11,9 @@
   background-color: rgb(80,80,80);
 }
 
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
 .card-category {
 
   padding: 175px;
