@@ -1,14 +1,27 @@
 <div style='position:relative;' class="container card-dark rounded-lg shadow mt-5 py-4">
-  <div class="row justify-content-between align-items-center mx-3">
+  <div class="row justify-content-between align-items-center mx-3 mb-3">
       <div>
-        <h3 class='text-muted'><%= @competition.federation.name.upcase %></h3>
-        <h2><strong><%= @competition.name.upcase %></strong></h2>
+      <% if @federation.photo.attached? %>
+        <%= cl_image_tag(@federation.photo.key, class: "avatar ml-3 mb-3")%>
+      <% else %>
+        <div class='avatar ml-3 mb-3' style='background-color: grey;'></div>
+      <% end %>
+        <div>
+          <h3 class='text-muted'><%= @competition.federation.name.upcase %></h3>
+          <h2><strong><%= @competition.name.upcase %></strong></h2>
+        </div>
       </div>
       <div>
         <% if Date.today > @competition.registration_deadline %>
+<<<<<<< HEAD
           <p style='position:absolute; top: 0; right:0; background-color: #8E0E00; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% else %>
           <p style='position:absolute; top: 0; right:0; background-color: #17706E; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+=======
+          <p style='position:absolute; top: 0; right:0; background-color: #17706E; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+        <% else %>
+          <p style='position:absolute; top: 0; right:0; background-color: #DE412A; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+>>>>>>> 9cc7c5fb8e679f535ccd41f46d19544d58ee1cea
         <% end %>
         <% unless current_federation %>
           <% if @affiliated %>
@@ -28,26 +41,34 @@
         <% end %>
       </div>
   </div>
-  <div class="row justify-content-between align-items-start mx-3 mb-3">
-    <div class="">
+  <div class="row justify-content-between mx-3 mb-5">
+    <div class="col-5 rounded-lg card-light p-3">
       <p><%= @competition.description %></p>
+    </div>
+    <div class="col-3 rounded-lg card-light p-3">
+      <div class='d-flex flex-column justify-content-between mb-4'>
+        <h5 class='btn btn-primary text-center floating px-0 py-1'><strong>$<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
+      </div>
       <p>Address: <%= @competition.address %></p>
       <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
-      <div class='d-flex flex-column justify-content-between'>
-        <h5><strong>$<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
-      </div>
+    </div>
+    <div style="background-image: url('https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg'); background-size: cover;" class="col-3 card-light rounded-lg">
     </div>
   </div>
-  <div class="row mx-3">
-    <div class="col-6 p-0">
+  <div class="row mx-3 justify-content-center">
+      <div class='col-6'>
       <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
-        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1" }) %>
-        <%= submit_tag("See Competitiors", { class: 'btn btn-primary' }) %>
+        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
+        <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
       <% end %>
       <% if @division %>
-        <h5 class='my-3' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
+        <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
+        </div>
+  </div>
+  <div class="row mx-3 justify-content-center">
         <% @division.registrations.each do |registration| %>
-          <div class='card-light d-flex align-items-center p-2 rounded mb-1'>
+          <div class="col-6 p-0">
+          <div class='card-light d-flex align-items-center p-2 rounded m-1'>
             <% if registration.user.photo.attached? %>
               <%= cl_image_tag(registration.user.photo.key, class: "avatar mr-4")%>
             <% else %>
@@ -55,16 +76,9 @@
             <% end %>
             <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
           </div>
+          </div>
         <% end %>
       <% end %>
-    </div>
-    <div class="col-6 d-flex justify-content-end">
-            <% if @federation.photo.attached? %>
-        <%= cl_image_tag(@federation.photo.key, class: "avatar-large ml-5")%>
-      <% else %>
-        <div class='avatar-large ml-5' style='background-color: grey;'></div>
-      <% end %>
-    </div>
   </div>
 </div>
 

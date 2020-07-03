@@ -3,6 +3,8 @@ require 'faker'
 
 Affiliation.destroy_all
 Registration.destroy_all
+DivisionCriterium.destroy_all
+Criterium.destroy_all
 CompetitionDivision.destroy_all
 Division.destroy_all
 Competition.destroy_all
@@ -57,29 +59,69 @@ nuno.photo.attach(io: file, filename: 'nuno.jpg', content_type: 'image/jpg')
 
 puts 'Creating divisions...'
 
-male_juvenile_rooster = Division.create!(name: 'male juvenile rooster weight')
+age = Criterium.create!(name: 'age')
+weight = Criterium.create!(name: 'weight')
+belt = Criterium.create!(name: 'belt')
+
 male_juvenile_light = Division.create!(name: 'male juvenile light weight')
+DivisionCriterium.create!(division: male_juvenile_light, criterium: age, max: 16 )
+DivisionCriterium.create!(division: male_juvenile_light, criterium: weight, max: 64 )
+
 male_juvenile_middle = Division.create!(name: 'male juvenile middle weight')
+DivisionCriterium.create!(division: male_juvenile_middle, criterium: age, max: 16 )
+DivisionCriterium.create!(division: male_juvenile_middle, criterium: weight, max: 74 )
+
 male_juvenile_heavy = Division.create!(name: 'male juvenile heavy weight')
+DivisionCriterium.create!(division: male_juvenile_heavy, criterium: age, max: 16 )
+DivisionCriterium.create!(division: male_juvenile_heavy, criterium: weight, max: 84)
+
 male_juvenile_open_class = Division.create!(name: 'male juvenile open class')
+DivisionCriterium.create!(division: male_juvenile_open_class, criterium: age, max: 16 )
 
-male_adult_rooster = Division.create!(name: 'male adult rooster weight')
 male_adult_light = Division.create!(name: 'male adult light weight')
+DivisionCriterium.create!(division: male_adult_light, criterium: age, max: 40 )
+DivisionCriterium.create!(division: male_adult_light, criterium: weight, max: 76 )
+
 male_adult_middle = Division.create!(name: 'male adult middle weight')
+DivisionCriterium.create!(division: male_adult_middle, criterium: age, max: 40 )
+DivisionCriterium.create!(division: male_adult_middle, criterium: weight, max: 82)
+
 male_adult_heavy = Division.create!(name: 'male adult heavy weight')
+DivisionCriterium.create!(division: male_adult_heavy, criterium: age, max: 40 )
+DivisionCriterium.create!(division: male_adult_heavy, criterium: weight, max: 94)
+
 male_adult_open_class = Division.create!(name: 'male adult open class')
+DivisionCriterium.create!(division: male_adult_open_class, criterium: age, max: 40 )
 
-female_juvenile_rooster = Division.create!(name: 'female juvenile rooster weight')
 female_juvenile_light = Division.create!(name: 'female juvenile light weight')
-female_juvenile_middle = Division.create!(name: 'female juvenile middle weight')
-female_juvenile_heavy = Division.create!(name: 'female juvenile heavy weight')
-female_juvenile_open_class = Division.create!(name: 'female juvenile open class')
+DivisionCriterium.create!(division: female_juvenile_light, criterium: age, max: 16 )
+DivisionCriterium.create!(division: female_juvenile_light, criterium: weight, max: 56)
 
-female_juvenile_rooster = Division.create!(name: 'female juvenile rooster weight')
-female_juvenile_light = Division.create!(name: 'female juvenile light weight')
 female_juvenile_middle = Division.create!(name: 'female juvenile middle weight')
+DivisionCriterium.create!(division: female_juvenile_middle, criterium: age, max: 16 )
+DivisionCriterium.create!(division: female_juvenile_middle, criterium: weight, max: 60)
+
 female_juvenile_heavy = Division.create!(name: 'female juvenile heavy weight')
+DivisionCriterium.create!(division: female_juvenile_heavy, criterium: age, max: 16 )
+DivisionCriterium.create!(division: female_juvenile_heavy, criterium: weight, max: 64)
+
 female_juvenile_open_class = Division.create!(name: 'female juvenile open class')
+DivisionCriterium.create!(division: female_juvenile_open_class, criterium: age, max: 16 )
+
+female_adult_light = Division.create!(name: 'female adult light weight')
+DivisionCriterium.create!(division: female_adult_light, criterium: age, max: 40 )
+DivisionCriterium.create!(division: female_adult_light, criterium: weight, max: 64 )
+
+female_adult_middle = Division.create!(name: 'female adult middle weight')
+DivisionCriterium.create!(division: female_adult_middle, criterium: age, max: 40 )
+DivisionCriterium.create!(division: female_adult_middle, criterium: weight, max: 69)
+
+female_adult_heavy = Division.create!(name: 'female adult heavy weight')
+DivisionCriterium.create!(division: female_adult_heavy, criterium: age, max: 40 )
+DivisionCriterium.create!(division: female_adult_heavy, criterium: weight, max: 74)
+
+female_adult_open_class = Division.create!(name: 'female adult open class')
+DivisionCriterium.create!(division: female_adult_open_class, criterium: age, max: 40 )
 
 puts 'Creating federations...'
 
@@ -194,10 +236,10 @@ brasileiro_kids = Competition.create!(name: 'Brasileiro Kids',
 lisbon_open = Competition.create!(name: 'Lisbon Open',
                                     address: 'Parque das Nações',
                                     federation: fpjjb,
-                                    date: Date.new(2021,1,15),
+                                    date: Date.new(2020,6,28),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 200,
-                                    registration_deadline: Date.new(2021,1,5),
+                                    registration_deadline: Date.new(2020,6,15),
                                     registration_price: 40)
 
 # SJJSAF

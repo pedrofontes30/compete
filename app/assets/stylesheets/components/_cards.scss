@@ -11,9 +11,14 @@
   background-color: rgb(80,80,80);
 }
 
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
 .card-category {
+  // padding: 175px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
   cursor: pointer;
-  height: 200px;
+  // height: 200px;
   font-size: 30px;
   color: white;
   border-radius: 3px;
@@ -27,31 +32,32 @@ a,a:hover, a:visited, a:link, a:active{
   text-decoration: none;
 }
 
+$red: #F36265;
+$blue: #C56CD6;
+$yellow: #42e695;
+
 .card-running{
-  // background:linear-gradient(135deg, #F36265 0%,#961276 100%);
-  background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);
+  background:linear-gradient(135deg, #F36265 0%,#961276 100%);
 }
 
 .card-running:hover {
-  background:linear-gradient(45deg, #000000,#152331);
+  background:linear-gradient(135deg, darken(#F36265, 10%) 0%,darken(#961276, 10%) 100%);
 }
 
 .card-jiujitsu{
-  // background:linear-gradient(135deg, #C56CD6 0%,#3425AF 100%);
-  background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);
+  background:linear-gradient(135deg, #C56CD6 0%,#3425AF 100%);
 }
 
 .card-jiujitsu:hover {
-  background:linear-gradient(45deg, #000000,#152331);
+  background:linear-gradient(135deg, darken(#C56CD6, 10%) 0%,darken(#3425AF, 10%) 100%);
 }
 
 .card-tennis{
-  //   background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
-  background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);
+  background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
 }
 
 .card-tennis:hover {
-  background:linear-gradient(45deg, #000000,#152331);
+  background:linear-gradient(135deg, darken(#42e695, 10%) 0%,darken(#3bb2b8, 10%) 100%);
 }
 
 

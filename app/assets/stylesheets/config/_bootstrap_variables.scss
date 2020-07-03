@@ -19,12 +19,11 @@ $warning:    $orange;
 
 // Buttons & inputs' radius
 $border-radius:    2px;
-$border-radius-lg: 6px;
-$border-radius-sm: 2px;
+$border-radius-lg: 10px;
+$border-radius-sm: 6px;
 
 // Override other variables below!
 
-.btn-primary { border-radius: 6px;
-               background-color: #9A1E1E;
-               border-color: #9A1E1E;
+.btn-primary { border-radius: 6px !important;
+               border: 0 !important;
                background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); }

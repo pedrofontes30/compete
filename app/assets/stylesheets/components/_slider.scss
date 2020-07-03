@@ -1,0 +1,20 @@
+.slider {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+}
+
+.slider::-webkit-scrollbar {
+  width: 0;
+}
+
+// .slider::-webkit-scrollbar-track {
+//   background: none;
+// }
+
+// .slider::-webkit-scrollbar-thumb {
+//   border-radius: 10px;
+//   background: green;
+//   height: 4px;
+//   width: 4px;
+// }
