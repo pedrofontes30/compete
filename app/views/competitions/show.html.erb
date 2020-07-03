@@ -13,15 +13,9 @@
       </div>
       <div>
         <% if Date.today > @competition.registration_deadline %>
-<<<<<<< HEAD
-          <p style='position:absolute; top: 0; right:0; background-color: #8E0E00; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+          <p style='position:absolute; top: 0; right:0; background-color: #FA1616; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% else %>
-          <p style='position:absolute; top: 0; right:0; background-color: #17706E; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= icon('far','calendar-alt') + ' ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
-=======
-          <p style='position:absolute; top: 0; right:0; background-color: #17706E; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
-        <% else %>
-          <p style='position:absolute; top: 0; right:0; background-color: #DE412A; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
->>>>>>> 9cc7c5fb8e679f535ccd41f46d19544d58ee1cea
+          <p style='position:absolute; top: 0; right:0; background-color: #02c48a; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% end %>
         <% unless current_federation %>
           <% if @affiliated %>
