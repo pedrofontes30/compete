@@ -1,9 +1,9 @@
-<div class="container mt-5">
-  <div class="card-dark rounded-lg p-3 mb-3">
+<div class="container mt-5 alligned-cards">
+  <div class="card-dark profile-cards card-affiliations rounded-lg p-3">
     <h3>My Affiliations</h3>
     <% @affiliations.each do |affiliation| %>
         <%= link_to federation_path(affiliation.federation) do %>
-          <div class='col-4 d-flex align-items-center card-light p-3 rounded'>
+          <div class='col-4 d-flex align-items-center p-3 rounded'>
             <% if affiliation.federation.photo.attached? %>
               <%= cl_image_tag(affiliation.federation.photo.key, class: "avatar-large mr-4")%>
             <% else %>
@@ -14,13 +14,24 @@
         <% end %>
     <% end %>
   </div>
-  <div class="card-dark rounded-lg p-3">
-    <h3>My Registrations</h3>
+  <div class="card-dark card-registrations profile-cards rounded-lg p-3">
+    <h3>My Competitions</h3>
     <% @registrations.each do |registration| %>
         <%= link_to competition_path(registration.competition_division.competition) do %>
           <div>
             <p><%= registration.competition_division.competition.name %> - <span class='text-muted'><%= registration.competition_division.division.name.upcase %></span></p>
           </div>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="card-dark card-stats profile-cards rounded-lg p-3">
+    <h3>My Stats</h3>
+    <% @registrations.each do |registration| %>
+        <%= link_to competition_path(registration.competition_division.competition) do %>
+          <div>
+            <p><%= registration.competition_division.competition.name %> - <span class='text-muted'><%= registration.competition_division.division.name.upcase %></span></p>
+          </div>
+
         <% end %>
     <% end %>
   </div>
