@@ -48,3 +48,9 @@ document.addEventListener('turbolinks:load', () => {
    //delay: 300,
    //once: true,
    //disable: 'mobile'
+
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})

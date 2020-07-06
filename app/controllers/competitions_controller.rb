@@ -29,6 +29,7 @@ class CompetitionsController < ApplicationController
 
     @federation = @competition.federation
     @affiliation = Affiliation.new(federation: @federation)
+    @markers = [{ lat: @competition.latitude, lng: @competition.longitude }]
   end
 
   def new

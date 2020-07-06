@@ -36,7 +36,7 @@
       </div>
   </div>
   <div class="row justify-content-between mx-3 mb-5">
-    <div class="col-5 rounded-lg card-light p-3">
+    <div class="col-4 rounded-lg card-light p-3">
       <p><%= @competition.description %></p>
     </div>
     <div class="col-3 rounded-lg card-light p-3">
@@ -46,8 +46,10 @@
       <p>Address: <%= @competition.address %></p>
       <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
     </div>
-    <div style="background-image: url('https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg'); background-size: cover;" class="col-3 card-light rounded-lg">
-    </div>
+    <div class='col-4 rounded-lg' id="map"
+     style="width: 100%; height: 300px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
   <div class="row mx-3 justify-content-center">
       <div class='col-6'>
