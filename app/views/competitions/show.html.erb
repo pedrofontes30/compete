@@ -52,17 +52,17 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
   <div class="row mx-3 justify-content-center">
-      <div class='col-6'>
-      <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
-        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
-        <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
-      <% end %>
-      <% if @division %>
-        <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
-        </div>
+    <div class='col-6'>
+    <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
+      <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
+      <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
+    <% end %>
+  <% if @division %>
+      <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
+    </div>
   </div>
   <div class="row mx-3 justify-content-center">
-        <% @division.registrations.each do |registration| %>
+<!--         <% @division.registrations.each do |registration| %>
           <div class="col-6 p-0">
           <div class='card-light d-flex align-items-center p-2 rounded m-1'>
             <% if registration.user.photo.attached? %>
@@ -73,9 +73,83 @@
             <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
           </div>
           </div>
-        <% end %>
+        <% end %> -->
+      <% unless @division.heats.where(round: 'round of 32') == [] %>
+      <div class="col-2">
+        <h4>round of 32</h4>
+        <div class="d-flex flex-column justify-content-center h-100">
+          <% @division.heats.where(round: 'round of 32').each do |heat| %>
+            <div class='card-light mb-3 mr-3 px-3 py-1'>
+              <% HeatUser.where(heat: heat).each do |heat_user| %>
+                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
       <% end %>
-  </div>
+
+      <% unless @division.heats.where(round: 'round of 16') == [] %>
+      <div class="col-2">
+        <h4>round of 16</h4>
+        <div class="d-flex flex-column justify-content-center h-100">
+          <% @division.heats.where(round: 'round of 16').each do |heat| %>
+            <div class='card-light mb-3 mr-3 px-3 py-1'>
+              <% HeatUser.where(heat: heat).each do |heat_user| %>
+                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% unless @division.heats.where(round: 'quarter-finals') == [] %>
+      <div class="col-2">
+        <h4>quarter-finals</h4>
+        <div class="d-flex flex-column justify-content-center h-100">
+          <% @division.heats.where(round: 'quarter-finals').each do |heat| %>
+            <div class='card-light mb-3 mr-3 px-3 py-1'>
+              <% HeatUser.where(heat: heat).each do |heat_user| %>
+                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+    <% end %>
+
+    <% unless @division.heats.where(round: 'semi-finals') == [] %>
+    <div class="col-2">
+      <h4>semi-finals</h4>
+      <div class="d-flex flex-column justify-content-center h-100">
+        <% @division.heats.where(round: 'semi-finals').each do |heat| %>
+          <div class='card-light mb-3 mr-3 px-3 py-1'>
+            <% HeatUser.where(heat: heat).each do |heat_user| %>
+              <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+    <% unless @division.heats.where(round: 'final') == [] %>
+    <div class="col-2">
+      <h4>final</h4>
+      <div class="d-flex flex-column justify-content-center h-100">
+        <% @division.heats.where(round: 'final').each do |heat| %>
+          <div class='card-light mb-3 px-3 py-1'>
+            <% HeatUser.where(heat: heat).each do |heat_user| %>
+              <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+
 </div>
 
 <!-- Affiliation Modal -->
