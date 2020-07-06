@@ -53,7 +53,7 @@
       <div class='col-6'>
       <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
         <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
-        <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
+        <%= submit_tag("See Competititors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
       <% end %>
       <% if @division %>
         <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
@@ -75,6 +75,8 @@
       <% end %>
   </div>
 </div>
+
+  <%= render "competitions/tournament_brackets" %>
 
 <!-- Affiliation Modal -->
 
