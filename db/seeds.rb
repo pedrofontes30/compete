@@ -173,7 +173,7 @@ puts 'Creating competitions...'
 # FJJRIO
 
 rio_open = Competition.create!(name: 'Rio Open',
-                              address: 'Tijuca Tênis Clube',
+                              address: 'Rua Conde de Bonfim, 451 - Tijuca, Rio de Janeiro, Brasil',
                               federation: fjjrio,
                               date: Date.new(2020,8,20),
                               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -186,7 +186,7 @@ Division.all.each do |division|
 end
 
 carlson_gracie = Competition.create!(name: 'Carlson Gracie',
-                                    address: 'Tijuca Tênis Clube',
+                                    address: 'Rua Conde de Bonfim, 451 - Tijuca, Rio de Janeiro, Brasil',
                                     federation: fjjrio,
                                     date: Date.new(2020,9,18),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -199,7 +199,7 @@ Division.all.each do |division|
 end
 
 summer_open = Competition.create!(name: 'Summer Open',
-                                    address: 'Marina da Glória',
+                                    address: 'Av. Embaixador Abelardo Bueno, 3401 - Barra da Tijuca, Rio de Janeiro, Brasil',
                                     federation: fjjrio,
                                     date: Date.new(2020,12,15),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -210,7 +210,7 @@ summer_open = Competition.create!(name: 'Summer Open',
 # CBJJ
 
 brasileiro = Competition.create!(name: 'Brasileiro',
-                                    address: 'São Paulo',
+                                    address: 'São Paulo, Brasil',
                                     federation: cbjj,
                                     date: Date.new(2020,10,12),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -223,7 +223,7 @@ Division.all.each do |division|
 end
 
 brasileiro_kids = Competition.create!(name: 'Brasileiro Kids',
-                                    address: 'Marina da Glória',
+                                    address: 'Av. Embaixador Abelardo Bueno, 3401 - Barra da Tijuca, Rio de Janeiro, Brasil',
                                     federation: cbjj,
                                     date: Date.new(2020,10,20),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -234,7 +234,7 @@ brasileiro_kids = Competition.create!(name: 'Brasileiro Kids',
 # FPJJB
 
 lisbon_open = Competition.create!(name: 'Lisbon Open',
-                                    address: 'Parque das Nações',
+                                    address: 'R. João da Silva 20, 1900-098 Lisboa, Portugal',
                                     federation: fpjjb,
                                     date: Date.new(2020,6,28),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -245,7 +245,7 @@ lisbon_open = Competition.create!(name: 'Lisbon Open',
 # SJJSAF
 
 copa_america = Competition.create!(name: 'Copa America',
-                                    address: 'Arena da Juventude',
+                                    address: 'Estr. São Pedro de Alcântara, 2020 - Vila Militar, Rio de Janeiro, Brasil',
                                     federation: sjjsaf,
                                     date: Date.new(2020,10,18),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -254,7 +254,7 @@ copa_america = Competition.create!(name: 'Copa America',
                                     registration_price: 30)
 
 rio_challenge = Competition.create!(name: 'Rio Challenge',
-                                    address: 'Parque das Nações',
+                                    address: 'Estr. São Pedro de Alcântara, 2020 - Vila Militar, Rio de Janeiro, Brasil',
                                     federation: sjjsaf,
                                     date: Date.new(2020,12,5),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -279,8 +279,8 @@ count = 0
   Affiliation.create!(federation: fjjrio, user: fake_user)
   Registration.create!(competition_division: CompetitionDivision.find_by(competition: rio_open), user: fake_user)
 
-  file = URI.open('https://i.pinimg.com/originals/63/0a/02/630a028e85392f6695a3806b06f3ffd7.jpg')
-  fake_user.photo.attach(io: file, filename: 'user_fake.png', content_type: 'image/png')
+  # file = URI.open('https://i.pinimg.com/originals/63/0a/02/630a028e85392f6695a3806b06f3ffd7.jpg')
+  # fake_user.photo.attach(io: file, filename: 'user_fake.png', content_type: 'image/png')
 end
 
 puts 'Done 🎉'
