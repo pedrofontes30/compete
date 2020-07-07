@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   end
 
   namespace :federation do
-    resources :competitions
+    resources :competitions do
+      resources :heats, only: [:update]
+    end
   end
 end

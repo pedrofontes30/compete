@@ -18,16 +18,28 @@
           <p style='position:absolute; top: 0; right:0; background-color: #02c48a; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% end %>
         <% unless current_federation %>
-          <% if @affiliated %>
-            <% if @competition.registration_deadline > Date.today %>
-                <%= link_to "Register for $#{@competition.registration_price}", new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+          <%# if @affiliated %>
+              <% if @competition.check_registered?(current_user) %>
+                <%= link_to "You are already registered", '', class: 'btn btn-primary disabled' %>
+
+            <% elsif @competition.registration_deadline > Date.today %>
+            <div data-toggle="modal" data-target="#registrationModal">
+            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Are you ready to compete? 😎" >
+              Register
+            </button>
+            </div>
               <% else %>
-                <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled' %>
+                <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled alreadyregistered' %>
             <% end %>
-          <% else %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+          <%# else %>
+            <% if @affiliated %>
+                <%= link_to "You are already affiliated", '', class: 'btn btn-primary disabled' %>
+                <% else  %>
+                <div data-toggle="modal" data-target="#affiliationModal">
+            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Most competitions require affiliation first but Don't worry! We've got you covered and it only takes a click! 💪" >
               Affiliate
             </button>
+            </div>
           <% end %>
         <% end %>
         <% if current_federation == @competition.federation %>
@@ -36,7 +48,7 @@
       </div>
   </div>
   <div class="row justify-content-between mx-3 mb-5">
-    <div class="col-5 rounded-lg card-light p-3">
+    <div class="col-4 rounded-lg card-light p-3">
       <p><%= @competition.description %></p>
     </div>
     <div class="col-3 rounded-lg card-light p-3">
@@ -46,21 +58,23 @@
       <p>Address: <%= @competition.address %></p>
       <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
     </div>
-    <div style="background-image: url('https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg'); background-size: cover;" class="col-3 card-light rounded-lg">
+    <div class='col-4 rounded-lg' id="map"
+     style="width: 100%; height: 300px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+  <div class="row mx-3 justify-content-center">
+    <div class='col-6'>
+    <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
+      <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
+      <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
+    <% end %>
+  <% if @division %>
+      <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
     </div>
   </div>
   <div class="row mx-3 justify-content-center">
-      <div class='col-6'>
-      <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
-        <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
-        <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
-      <% end %>
-      <% if @division %>
-        <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
-        </div>
-  </div>
-  <div class="row mx-3 justify-content-center">
-        <% @division.registrations.each do |registration| %>
+<!--         <% @division.registrations.each do |registration| %>
           <div class="col-6 p-0">
           <div class='card-light d-flex align-items-center p-2 rounded m-1'>
             <% if registration.user.photo.attached? %>
@@ -71,10 +85,86 @@
             <p class='m-0'><%= registration.user.first_name%> <%= registration.user.last_name%> <%= ('Place: ' + registration.position.position) if !registration.position.nil? %> </p>
           </div>
           </div>
-        <% end %>
+        <% end %> -->
+      <% unless @division.heats.where(round: 'round of 32') == [] %>
+      <div class="col-2">
+        <h4>round of 32</h4>
+        <div class="d-flex flex-column justify-content-center h-100">
+          <% @division.heats.where(round: 'round of 32').each do |heat| %>
+            <div class='card-light mb-3 mr-3 px-3 py-1'>
+              <% HeatUser.where(heat: heat).each do |heat_user| %>
+                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
       <% end %>
-  </div>
+
+      <% unless @division.heats.where(round: 'round of 16') == [] %>
+      <div class="col-2">
+        <h4>round of 16</h4>
+        <div class="d-flex flex-column justify-content-center h-100">
+          <% @division.heats.where(round: 'round of 16').each do |heat| %>
+            <div class='card-light mb-3 mr-3 px-3 py-1'>
+              <% HeatUser.where(heat: heat).each do |heat_user| %>
+                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% unless @division.heats.where(round: 'quarter-finals') == [] %>
+      <div class="col-2">
+        <h4>quarter-finals</h4>
+        <div class="d-flex flex-column justify-content-center h-100">
+          <% @division.heats.where(round: 'quarter-finals').each do |heat| %>
+            <div class='card-light mb-3 mr-3 px-3 py-1'>
+              <% HeatUser.where(heat: heat).each do |heat_user| %>
+                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+    <% end %>
+
+    <% unless @division.heats.where(round: 'semi-finals') == [] %>
+    <div class="col-2">
+      <h4>semi-finals</h4>
+      <div class="d-flex flex-column justify-content-center h-100">
+        <% @division.heats.where(round: 'semi-finals').each do |heat| %>
+          <div class='card-light mb-3 mr-3 px-3 py-1'>
+            <% HeatUser.where(heat: heat).each do |heat_user| %>
+              <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+    <% unless @division.heats.where(round: 'final') == [] %>
+    <div class="col-2">
+      <h4>final</h4>
+      <div class="d-flex flex-column justify-content-center h-100">
+        <% @division.heats.where(round: 'final').each do |heat| %>
+          <div class='card-light mb-3 px-3 py-1'>
+            <% HeatUser.where(heat: heat).each do |heat_user| %>
+              <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+
 </div>
+
+  <%= render "competitions/tournament_brackets" %>
 
 <!-- Affiliation Modal -->
 
@@ -90,6 +180,7 @@
       <div class="modal-body text-center">
         <%= link_to 'Edit profile information', edit_user_registration_path, class: 'btn btn-primary', style: 'color: white;' %>
         <%= simple_form_for [@federation, @affiliation] do |f| %>
+        <%= f.input :competition_id, as: :hidden, input_html:{value: @competition.id} %>
         <div class="modal-footer mt-3">
           <%= f.submit 'Confirm affiliation', class: 'btn btn-primary' %>
         </div>
@@ -98,3 +189,5 @@
     </div>
   </div>
 </div>
+
+<%= render "registrations" %>

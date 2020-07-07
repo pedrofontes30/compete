@@ -18,7 +18,6 @@ class CompetitionPolicy < ApplicationPolicy
   end
 
   def update?
-    # user may be federation
     record.federation == user
   end
 
@@ -27,7 +26,6 @@ class CompetitionPolicy < ApplicationPolicy
   end
 
   def destroy?
-    # user may be federation
     record.federation == user
   end
 end

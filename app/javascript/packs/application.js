@@ -36,53 +36,15 @@ import AOS from 'aos';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+
 document.addEventListener('turbolinks:load', () => {
    AOS.init();
-  // var calendarEl = document.getElementById('calendar');
-  // var calendar = new Calendar(calendarEl, {
-  //   plugins: [ dayGridPlugin ],
-  //   contentHeight: 300,
-  //   events: [
-  //   {
-  //     title  : 'event1',
-  //     start  : '2020-07-04'
-  //   },
-  //   {
-  //     title  : 'event2',
-  //     start  : '2010-01-05',
-  //     end    : '2010-01-07'
-  //   },
-  //   {
-  //     title  : 'event3',
-  //     start  : '2010-01-09T12:30:00',
-  //     allDay : false // will make the time show
-  //   }
-  // ]
-  // });
-  // calendar.render();
-  //  // initSelect2();
 });
 
 
 
+import { initMapbox } from '../plugins/init_mapbox';
 
-// const eventCalendar() {
-//   return $('#calendar').fullCalendar({ });
-// };
-
-// const clearCalendar() {
-//   $('#calendar').fullCalendar('delete');
-//   $('#calendar').html('');
-// };
-
-// $(document).ready(function() {
-//   $("#calendar").fullCalendar();
-// });
-//({startEvent: 'DOMContentLoaded'})
-//startEvent: 'DOMContentLoaded'
-
-//easing: 'ease-out-back',
-   //duration: 800,
-   //delay: 300,
-   //once: true,
-   //disable: 'mobile'
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})

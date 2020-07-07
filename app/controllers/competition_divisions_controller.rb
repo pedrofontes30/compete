@@ -1,0 +1,2 @@
+class CompetitionDivisionsController < ApplicationController
+end
