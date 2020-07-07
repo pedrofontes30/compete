@@ -78,5 +78,4 @@ class CompetitionsController < ApplicationController
       @user = current_user
     end
   end
-
 end
