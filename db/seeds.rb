@@ -8,6 +8,7 @@ Criterium.destroy_all
 HeatUser.destroy_all
 Heat.destroy_all
 CompetitionDivision.destroy_all
+UserFederationDivisionScore.destroy_all
 Division.destroy_all
 Competition.destroy_all
 Federation.destroy_all
@@ -282,6 +283,7 @@ competition_division = CompetitionDivision.find_by(competition: rio_open)
                           password: '123456')
   Affiliation.create!(federation: fjjrio, user: fake_user)
   Registration.create!(competition_division: competition_division, user: fake_user)
+  UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
 
   file = URI.open(Faker::Avatar.image)
   fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
