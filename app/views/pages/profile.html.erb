@@ -22,6 +22,9 @@
       <% @affiliations.each do |affiliation| %>
           <%= link_to federation_path(affiliation.federation) do %>
             <div class='card-light d-flex align-items-center p-3 rounded mb-3'>
+              <% if affiliation.days_since_registration > 335 %>
+              <div><p> Your affiliation will expire in <%= 365 - affiliation.days_since_registration  %> days</p></div>
+              <% end %>
               <% if affiliation.federation.photo.attached? %>
                 <%= cl_image_tag(affiliation.federation.photo.key, class: "avatar-large mr-4")%>
               <% else %>
