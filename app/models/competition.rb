@@ -1,4 +1,4 @@
-class Competition < ApplicationRecord
+  class Competition < ApplicationRecord
   belongs_to :federation
   has_many :competition_divisions
   has_many :registrations, through: :competition_divisions
@@ -11,4 +11,11 @@ class Competition < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def check_registered?(user)
+    registrations.each do |registration|
+     return true if registration.user == user
+    end
+    false
+  end
 end
