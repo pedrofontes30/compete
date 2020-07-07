@@ -1,4 +1,12 @@
-@import 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&subset=latin-ext';
+/*!
+ * Responsive Tournament Bracket
+ * Copyright 2016 Jakub Hájek
+ * Licensed under MIT (https://opensource.org/licenses/MIT)
+ */
+
+//
+// GOOGLE FONT
+// ---------------------------
 
 //
 // VARIABLES
@@ -101,7 +109,7 @@ h2 {
   justify-content: center;
   height: 100%;
   min-height: 100%;
-  border-bottom: 1px dashed #e5e5e5;
+  border-bottom: 1px;
   padding-bottom: 2em;
   margin-bottom: 2em;
   transition: padding 0.2s ease-in-out, margin 0.2s ease-in-out;
@@ -114,7 +122,7 @@ h2 {
   @media (min-width: $breakpoint-sm) {
     margin-bottom: 0;
     padding-bottom: 0;
-    border-right: 1px dashed #e5e5e5;
+    border-right: 1px;
     border-bottom: 0;
   }
 
@@ -227,11 +235,11 @@ h2 {
 .tournament-bracket__match {
   display: flex;
   width: 100%;
-  background-color: #e4e3e3;
+  background-color: #eeeeee;
   padding: 1em;
   border: 1px solid transparent;
-  border-radius: 1.5em;
-  box-shadow: 2px;
+  border-radius: 1em;
+  box-shadow: 0 2px 0 0 #e5e5e5;
   outline: none;
   cursor: pointer;
   transition: padding 0.2s ease-in-out, border 0.2s linear;
@@ -476,12 +484,12 @@ h2 {
   padding: 0.2em 0.4em 0.2em;
   border-bottom: 0.075em solid transparent;
   font-size: 0.95rem;
-  background-color: #1f4068;
-  border-color: spin(shade(#1f4068, 10%), -10);
+  background-color: #D76420;
+  border-color: spin(shade(#D76420, 10%), -10);
 
   .tournament-bracket__team--winner & {
-    background-color: #D76420;
-    border-color: spin(shade(#FFF176, 2%), -10);
+    background-color: #086972;
+    border-color: spin(shade(#086972, 2%), -10);
   }
 }
 
