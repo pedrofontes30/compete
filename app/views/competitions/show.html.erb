@@ -88,12 +88,22 @@
         <% end %> -->
       <% unless @division.heats.where(round: 'round of 32') == [] %>
       <div class="col-2">
-        <h4>round of 32</h4>
+        <h3 class='tournament-bracket__round-title'>round of 32</h3>
         <div class="d-flex flex-column justify-content-center h-100">
           <% @division.heats.where(round: 'round of 32').each do |heat| %>
-            <div class='card-light mb-3 mr-3 px-3 py-1'>
+            <div class='card-heat mb-3 mr-3 px-3 py-1'>
               <% HeatUser.where(heat: heat).each do |heat_user| %>
-                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+                <div class="d-flex d-flex flex-column justify-content-around justify-content-between shadow">
+                  <div class="d-flex">
+                  <% if heat_user.user.photo.attached? %>
+                    <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
+                  <% else %>
+                    <div class='avatar-small mr-4' style='background-color: grey;'></div>
+                  <% end %>
+                  <%= heat_user.user.first_name %>
+                  </div>
+                  <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %>
+                </div>
               <% end %>
             </div>
           <% end %>
@@ -102,13 +112,23 @@
       <% end %>
 
       <% unless @division.heats.where(round: 'round of 16') == [] %>
-      <div class="col-2">
-        <h4>round of 16</h4>
+      <div class="col-3">
+        <h3 class='tournament-bracket__round-title'>round of 16</h3>
         <div class="d-flex flex-column justify-content-center h-100">
           <% @division.heats.where(round: 'round of 16').each do |heat| %>
-            <div class='card-light mb-3 mr-3 px-3 py-1'>
+            <div class='card-heat d-flex flex-column justify-content-around mb-3 mr-3 px-3 py-1 shadow'>
               <% HeatUser.where(heat: heat).each do |heat_user| %>
-                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                  <% if heat_user.user.photo.attached? %>
+                    <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
+                  <% else %>
+                    <div class='avatar-small mr-2' style='background-color: grey;'></div>
+                  <% end %>
+                  <%= heat_user.user.first_name %>
+                </div>
+                  <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %>
+                </div>
               <% end %>
             </div>
           <% end %>
@@ -117,13 +137,22 @@
       <% end %>
 
       <% unless @division.heats.where(round: 'quarter-finals') == [] %>
-      <div class="col-2">
-        <h4>quarter-finals</h4>
-        <div class="d-flex flex-column justify-content-center h-100">
+      <div class="col-3">
+        <h3 class='tournament-bracket__round-title'>quarter-finals</h3>
+        <div class="d-flex flex-column justify-content-around h-100">
           <% @division.heats.where(round: 'quarter-finals').each do |heat| %>
-            <div class='card-light mb-3 mr-3 px-3 py-1'>
+            <div class='card-heat d-flex flex-column justify-content-around mb-3 mr-3 px-3 py-1 shadow'>
               <% HeatUser.where(heat: heat).each do |heat_user| %>
-                <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                  <% if heat_user.user.photo.attached? %>
+                    <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
+                  <% else %>
+                    <div class='avatar-small mr-2' style='background-color: grey;'></div>
+                  <% end %>
+                  <%= heat_user.user.first_name %>
+                  </div>
+                  <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %></div>
               <% end %>
             </div>
           <% end %>
@@ -132,13 +161,22 @@
     <% end %>
 
     <% unless @division.heats.where(round: 'semi-finals') == [] %>
-    <div class="col-2">
-      <h4>semi-finals</h4>
-      <div class="d-flex flex-column justify-content-center h-100">
+    <div class="col-3">
+      <h3 class='tournament-bracket__round-title'>semi-finals</h3>
+      <div class="d-flex flex-column justify-content-around h-100">
         <% @division.heats.where(round: 'semi-finals').each do |heat| %>
-          <div class='card-light mb-3 mr-3 px-3 py-1'>
+          <div class='card-heat d-flex flex-column justify-content-around mb-3 mr-3 px-3 py-1 shadow'>
             <% HeatUser.where(heat: heat).each do |heat_user| %>
-              <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <% if heat_user.user.photo.attached? %>
+                    <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
+                  <% else %>
+                    <div class='avatar-small mr-2' style='background-color: grey;'></div>
+                  <% end %>
+                  <%= heat_user.user.first_name %>
+                </div>
+                <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %></div>
             <% end %>
           </div>
         <% end %>
@@ -147,13 +185,22 @@
     <% end %>
 
     <% unless @division.heats.where(round: 'final') == [] %>
-    <div class="col-2">
-      <h4>final</h4>
+    <div class="col-3">
+      <h3 class='tournament-bracket__round-title'>final</h3>
       <div class="d-flex flex-column justify-content-center h-100">
         <% @division.heats.where(round: 'final').each do |heat| %>
-          <div class='card-light mb-3 px-3 py-1'>
+          <div class='card-heat d-flex flex-column justify-content-around mb-3 px-3 py-1 shadow'>
             <% HeatUser.where(heat: heat).each do |heat_user| %>
-              <div class="d-flex justify-content-between"><%= heat_user.user.first_name %> <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), method: :patch) if heat.user.nil? %></div>
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <% if heat_user.user.photo.attached? %>
+                    <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
+                  <% else %>
+                    <div class='avatar-small mr-2' style='background-color: grey;'></div>
+                  <% end %>
+                <%= heat_user.user.first_name %>
+                </div>
+                <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %></div>
             <% end %>
           </div>
         <% end %>
@@ -161,10 +208,7 @@
     <% end %>
     </div>
   <% end %>
-
 </div>
-
-  <%= render "competitions/tournament_brackets" %>
 
 <!-- Affiliation Modal -->
 

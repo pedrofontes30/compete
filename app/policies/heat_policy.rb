@@ -6,7 +6,6 @@ class HeatPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.competition_division.competition.federation == user
   end
 end
-# record.competition_division.competition.federation == user

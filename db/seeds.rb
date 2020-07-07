@@ -5,6 +5,8 @@ Affiliation.destroy_all
 Registration.destroy_all
 DivisionCriterium.destroy_all
 Criterium.destroy_all
+HeatUser.destroy_all
+Heat.destroy_all
 CompetitionDivision.destroy_all
 Division.destroy_all
 Competition.destroy_all
@@ -265,6 +267,8 @@ rio_challenge = Competition.create!(name: 'Rio Challenge',
 puts 'Creating fake users...'
 
 count = 0
+competition_division = CompetitionDivision.find_by(competition: rio_open)
+
 10.times do
   count += 1
   first_name = Faker::Name.first_name
@@ -277,12 +281,14 @@ count = 0
                           email: Faker::Internet.free_email(name: first_name),
                           password: '123456')
   Affiliation.create!(federation: fjjrio, user: fake_user)
-  Registration.create!(competition_division: CompetitionDivision.find_by(competition: rio_open), user: fake_user)
+  Registration.create!(competition_division: competition_division, user: fake_user)
 
   file = URI.open(Faker::Avatar.image)
   fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
 end
 
+puts 'Creating heats...'
 
+competition_division.create_heats
 
 puts 'Done 🎉'
