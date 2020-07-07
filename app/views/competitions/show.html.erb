@@ -18,16 +18,28 @@
           <p style='position:absolute; top: 0; right:0; background-color: #02c48a; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% end %>
         <% unless current_federation %>
-          <% if @affiliated %>
-            <% if @competition.registration_deadline > Date.today %>
-                <%= link_to "Register for $#{@competition.registration_price}", new_competition_registration_path(@competition), class: 'btn btn-primary' %>
+          <%# if @affiliated %>
+              <% if @competition.check_registered?(current_user) %>
+                <%= link_to "You are already registered", '', class: 'btn btn-primary disabled' %>
+
+            <% elsif @competition.registration_deadline > Date.today %>
+            <div data-toggle="modal" data-target="#registrationModal">
+            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Are you ready to compete? 😎" >
+              Register
+            </button>
+            </div>
               <% else %>
-                <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled' %>
+                <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled alreadyregistered' %>
             <% end %>
-          <% else %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+          <%# else %>
+            <% if @affiliated %>
+                <%= link_to "You are already affiliated", '', class: 'btn btn-primary disabled' %>
+                <% else  %>
+                <div data-toggle="modal" data-target="#affiliationModal">
+            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Most competitions require affiliation first but Don't worry! We've got you covered and it only takes a click! 💪" >
               Affiliate
             </button>
+            </div>
           <% end %>
         <% end %>
         <% if current_federation == @competition.federation %>
@@ -92,6 +104,7 @@
       <div class="modal-body text-center">
         <%= link_to 'Edit profile information', edit_user_registration_path, class: 'btn btn-primary', style: 'color: white;' %>
         <%= simple_form_for [@federation, @affiliation] do |f| %>
+        <%= f.input :competition_id, as: :hidden, input_html:{value: @competition.id} %>
         <div class="modal-footer mt-3">
           <%= f.submit 'Confirm affiliation', class: 'btn btn-primary' %>
         </div>
@@ -100,3 +113,5 @@
     </div>
   </div>
 </div>
+
+<%= render "registrations" %>
