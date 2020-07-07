@@ -1,0 +1,35 @@
+<li class="tournament-bracket__item">
+  <div class="tournament-bracket__match border-radius:5px" tabindex="0">
+    <table class="tournament-bracket__table">
+      <caption class="tournament-bracket__caption">
+        <time datetime="<%= Date.current %>"><%= Date.current.strftime('%e %B %Y') %></time>
+      </caption>
+      <thead class="sr-only">
+        <tr>
+          <th>Country</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody class="tournament-bracket__content">
+        <tr class="tournament-bracket__team tournament-bracket__team--winner">
+          <td class="tournament-bracket__country">
+            <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"><%= cl_image_tag user.photo.key, class:"avatar-small" %></span>
+            <abbr class="tournament-bracket__code" title="<%= "#{user.first_name}" %>"><%= "#{user.first_name}" %></abbr>
+          </td>
+          <td class="tournament-bracket__score">
+            <span class="tournament-bracket__number">4</span>
+          </td>
+        </tr>
+        <tr class="tournament-bracket__team">
+          <td class="tournament-bracket__country">
+            <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"><%= cl_image_tag user.photo.key, class:"avatar-small" %></span>
+            <abbr class="tournament-bracket__code" title="<%= "#{user.first_name}" %>"><%= "#{user.first_name}" %></abbr>
+          </td>
+          <td class="tournament-bracket__score">
+            <span class="tournament-bracket__number">1</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</li>

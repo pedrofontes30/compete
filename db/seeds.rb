@@ -279,8 +279,10 @@ count = 0
   Affiliation.create!(federation: fjjrio, user: fake_user)
   Registration.create!(competition_division: CompetitionDivision.find_by(competition: rio_open), user: fake_user)
 
-  # file = URI.open('https://i.pinimg.com/originals/63/0a/02/630a028e85392f6695a3806b06f3ffd7.jpg')
-  # fake_user.photo.attach(io: file, filename: 'user_fake.png', content_type: 'image/png')
+  file = URI.open(Faker::Avatar.image)
+  fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
 end
+
+
 
 puts 'Done 🎉'
