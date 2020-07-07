@@ -1,6 +1,7 @@
 class HeatCreator
 
   def self.create_heats(registrations, id)
+    CompetitionDivision.find(id).heats.destroy_all
     if registrations.length <= 2
       round = ['final', 1]
     elsif registrations.length <= 4
