@@ -12,6 +12,7 @@ require('./nested-forms/removeFields')
 
 
 
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -28,7 +29,8 @@ require('./nested-forms/removeFields')
 // External imports
 import "bootstrap";
 import AOS from 'aos';
-
+// import { Calendar } from '@fullcalendar/core';
+// import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 // Internal imports, e.g:
@@ -37,21 +39,9 @@ import AOS from 'aos';
 
 document.addEventListener('turbolinks:load', () => {
    AOS.init();
-   // initSelect2();
-   $(document).ready(function() {
-  $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
-})
 });
 
 
-//({startEvent: 'DOMContentLoaded'})
-//startEvent: 'DOMContentLoaded'
-
-//easing: 'ease-out-back',
-   //duration: 800,
-   //delay: 300,
-   //once: true,
-   //disable: 'mobile'
 
 import { initMapbox } from '../plugins/init_mapbox';
 
