@@ -11,5 +11,8 @@ class FederationsController < ApplicationController
     @competitions = Competition.where(federation: @federation)
     @affiliation = Affiliation.new(federation: @federation)
     @affiliated = current_user.present? ? Affiliation.where(user: current_user, federation: @federation) != [] : nil
+    if params[:query].present?
+      @user_federation_division_scores = UserFederationDivisionScore.where(federation: @federation, division: params[:query]).order(:score).reverse
+    end
   end
 end

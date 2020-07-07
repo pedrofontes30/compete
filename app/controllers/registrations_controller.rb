@@ -12,6 +12,9 @@ class RegistrationsController < ApplicationController
     @registration.user = current_user
     @registration.save!
     @registration.competition_division.create_heats
+    if UserFederationDivisionScore.where(user: current_user, federation: @registration.competition_division.competition.federation) == []
+      UserFederationDivisionScore.create(user: current_user, federation: @registration.competition_division.competition.federation)
+    end
     redirect_to competition_path(params[:competition_id])
   end
 
