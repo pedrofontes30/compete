@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^profiles$)/
   end
+
+  def pundit_user
+    if federation_signed_in?
+      @federation = current_federation
+    elsif user_signed_in?
+      @user = current_user
+    end
+  end
 end

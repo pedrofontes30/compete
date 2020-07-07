@@ -5,6 +5,8 @@ Affiliation.destroy_all
 Registration.destroy_all
 DivisionCriterium.destroy_all
 Criterium.destroy_all
+HeatUser.destroy_all
+Heat.destroy_all
 CompetitionDivision.destroy_all
 Division.destroy_all
 Competition.destroy_all
@@ -12,6 +14,18 @@ Federation.destroy_all
 User.destroy_all
 
 puts 'Creating users...'
+
+pedro_admin = User.create!(first_name: 'Pedro',
+                    last_name: 'Fontes',
+                    date_of_birth: Date.new(2003,1,30),
+                    nationality: 'BR',
+                    gender: 'Male',
+                    email: 'pedroadmin@gmail.com',
+                    password: '123456',
+                    admin: true)
+
+file = URI.open('https://avatars0.githubusercontent.com/u/62013843?v=4')
+pedro_admin.photo.attach(io: file, filename: 'pedro_admin.jpg', content_type: 'image/jpg')
 
 pedro = User.create!(first_name: 'Pedro',
                     last_name: 'Fontes',
@@ -265,6 +279,8 @@ rio_challenge = Competition.create!(name: 'Rio Challenge',
 puts 'Creating fake users...'
 
 count = 0
+competition_division = CompetitionDivision.find_by(competition: rio_open)
+
 10.times do
   count += 1
   first_name = Faker::Name.first_name
@@ -277,12 +293,14 @@ count = 0
                           email: Faker::Internet.free_email(name: first_name),
                           password: '123456')
   Affiliation.create!(federation: fjjrio, user: fake_user)
-  Registration.create!(competition_division: CompetitionDivision.find_by(competition: rio_open), user: fake_user)
+  Registration.create!(competition_division: competition_division, user: fake_user)
 
   file = URI.open(Faker::Avatar.image)
   fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
 end
 
+puts 'Creating heats...'
 
+competition_division.create_heats
 
 puts 'Done 🎉'

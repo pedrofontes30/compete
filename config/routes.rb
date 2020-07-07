@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   devise_for :federations, path: 'federations', controllers: { sessions: "federations/sessions", registrations: "federations/registrations" }
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   root to: 'pages#home'
 

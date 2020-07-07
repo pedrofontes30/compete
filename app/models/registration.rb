@@ -6,4 +6,8 @@ class Registration < ApplicationRecord
   def competition
     competition_division.competition
   end
+
+  def start_time
+    self.competition_division.competition.date
+  end
 end
