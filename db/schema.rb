@@ -148,6 +148,18 @@ ActiveRecord::Schema.define(version: 2020_07_07_152444) do
     t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
+  create_table "user_federation_division_scores", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "federation_id", null: false
+    t.bigint "division_id", null: false
+    t.integer "score", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["division_id"], name: "index_user_federation_division_scores_on_division_id"
+    t.index ["federation_id"], name: "index_user_federation_division_scores_on_federation_id"
+    t.index ["user_id"], name: "index_user_federation_division_scores_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -181,4 +193,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_152444) do
   add_foreign_key "registrations", "competition_divisions"
   add_foreign_key "registrations", "positions"
   add_foreign_key "registrations", "users"
+  add_foreign_key "user_federation_division_scores", "divisions"
+  add_foreign_key "user_federation_division_scores", "federations"
+  add_foreign_key "user_federation_division_scores", "users"
 end
