@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :registrations
   has_many :competition_divisions, through: :registrations
   has_one_attached :photo
+  has_many :orders
 end
