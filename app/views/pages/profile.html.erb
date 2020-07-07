@@ -11,17 +11,14 @@
     </div>
     </div>
     <div class="col-8">
-      <div>
+      <div class='card-dark rounded-lg p-4 h-100'>
         <%= month_calendar(events: @registrations) do |date, registrations| %>
            <%= date.day %>
           <% registrations.each do |registration| %>
-            <div><%= registration.competition_division.competition.name %></div>
+            <!-- <div><%= registration.competition_division.competition.name %></div> -->
           <% end %>
         <% end %>
       </div>
-    </div>
-
-
     </div>
   </div>
   <div class="row justify-content-between mb-5">
@@ -55,9 +52,6 @@
       <% end %>
     </div>
   </div>
-  </div>
-  <div>
-
   </div>
 </div>
 
