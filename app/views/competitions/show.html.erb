@@ -7,8 +7,8 @@
         <div class='avatar ml-3 mb-3' style='background-color: grey;'></div>
       <% end %>
         <div>
-          <h3 class='text-muted'><%= @competition.federation.name.upcase %></h3>
-          <h2><strong><%= @competition.name.upcase %></strong></h2>
+          <h4 class='text-muted'><%= @competition.federation.name.upcase %></h4>
+          <h3><strong><%= @competition.name.upcase %></strong></h3>
         </div>
       </div>
       <div>
@@ -18,29 +18,28 @@
           <p style='position:absolute; top: 0; right:0; background-color: #4AC141; border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
         <% end %>
         <% unless current_federation %>
-          <%# if @affiliated %>
-              <% if @competition.check_registered?(current_user) %>
-                <%= link_to "You are already registered", '', class: 'btn btn-primary disabled' %>
-
-            <% elsif @competition.registration_deadline > Date.today %>
-            <div data-toggle="modal" data-target="#registrationModal">
-            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Are you ready to compete? 😎" >
-              Register
-            </button>
-            </div>
-              <% else %>
-                <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled alreadyregistered' %>
-            <% end %>
-          <%# else %>
-            <% if @affiliated %>
-                <%= link_to "You are already affiliated", '', class: 'btn btn-primary disabled' %>
-                <% else  %>
-                <div data-toggle="modal" data-target="#affiliationModal">
-            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Most competitions require affiliation first but Don't worry! We've got you covered and it only takes a click! 💪" >
-              Affiliate
-            </button>
+          <div class="d-flex">
+          <% if @affiliated %>
+            <%= link_to "You are already affiliated", '', class: 'btn btn-primary disabled mr-2' %>
+          <% else  %>
+            <div data-toggle="modal" data-target="#affiliationModal">
+              <button type="button" class="btn btn-primary mr-2" data-toggle="tooltip" data-placement="bottom" title="Most competitions require affiliation first but Don't worry! We've got you covered and it only takes a click! 💪" >
+                Affiliate
+              </button>
             </div>
           <% end %>
+          <% if @competition.check_registered?(current_user) %>
+            <%= link_to "You are already registered", '', class: 'btn btn-primary disabled' %>
+          <% elsif @competition.registration_deadline > Date.today %>
+            <div data-toggle="modal" data-target="#registrationModal">
+              <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Are you ready to compete? 😎" >
+                Register
+              </button>
+            </div>
+          <% else %>
+            <%= link_to "Registrations closed", '', class: 'btn btn-primary disabled alreadyregistered' %>
+          <% end %>
+          </div>
         <% end %>
         <% if current_federation == @competition.federation %>
           <%= link_to 'Edit Competition', edit_federation_competition_path(@competition), class: 'btn btn-primary' %>

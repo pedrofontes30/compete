@@ -31,7 +31,7 @@
                   <h5><%= competition.date.strftime("%d/%m/%Y") %> at <%= competition.address.capitalize %></h5>
                 </div>
                 <div class='d-flex flex-column justify-content-between'>
-                  <h5><strong>$<%= competition.prize %></strong> <%= icon('fas', 'trophy') %></h5>
+                  <h5><strong>$<%= competition.registration_price %></strong></h5>
                 </div>
                 <% if Date.today > competition.registration_deadline %>
                     <p style='position:absolute; bottom:0px; right:0px; background-color: #DA394B; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
