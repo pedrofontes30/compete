@@ -11,12 +11,14 @@
     </div>
     </div>
     <div class="col-8">
-    <div id="calendar">
-      <%= month_calendar  do |date| %>
-         <%= date.day %>
-          </div>
+      <div>
+        <%= month_calendar(events: @registrations) do |date, registrations| %>
+           <%= date.day %>
+          <% registrations.each do |registration| %>
+            <div><%= registration.competition_division.competition.name %></div>
+          <% end %>
         <% end %>
-    </div>
+      </div>
     </div>
 
 
