@@ -8,28 +8,6 @@ class CompetitionDivision < ApplicationRecord
     division.name
   end
 
-  # def create_heats(registrations)
-  #   if registrations.length <= 2
-  #     round = ['final', 1]
-  #   elsif registrations.length <= 4
-  #     round = ['semi-finals', 2]
-  #   elsif registrations.length <= 8
-  #     round = ['quarter-finals', 4]
-  #   elsif registrations.length <= 16
-  #     round = ['round of 16', 8]
-  #   elsif registrations.length <= 32
-  #     round = ['round of 32', 16]
-  #   end
-  #   puts(round)
-  #   registrations.in_groups(round[1]) do |group|
-  #     heat = Heat.new(competition_division_id: id, round: round[0])
-  #     heat.user_id = group.first.user_id if group.any? { |e| e.nil? }
-  #     heat.save!
-  #     group.each { |registration| HeatUser.create(heat: heat, user_id: registration.user_id) unless registration.nil? }
-  #   end
-  # end
-
-  # Use background jobs
   def create_heats
     if registrations.length <= 2
       round = ['final', 1]

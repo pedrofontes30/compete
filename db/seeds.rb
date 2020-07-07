@@ -289,6 +289,6 @@ end
 
 puts 'Creating heats...'
 
-HeatCreator.create_heats(competition_division.registrations, competition_division.id)
+competition_division.create_heats
 
 puts 'Done 🎉'
