@@ -9,6 +9,7 @@ class CompetitionDivision < ApplicationRecord
   end
 
   def create_heats
+    heats.destroy_all
     if registrations.length <= 2
       round = ['final', 1]
     elsif registrations.length <= 4
