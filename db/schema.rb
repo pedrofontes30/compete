@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_105137) do
+ActiveRecord::Schema.define(version: 2020_07_06_121014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_07_02_105137) do
     t.integer "registration_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["federation_id"], name: "index_competitions_on_federation_id"
   end
 
@@ -105,6 +107,25 @@ ActiveRecord::Schema.define(version: 2020_07_02_105137) do
     t.integer "affiliation_price"
     t.index ["email"], name: "index_federations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_federations_on_reset_password_token", unique: true
+  end
+
+  create_table "heat_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "heat_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["heat_id"], name: "index_heat_users_on_heat_id"
+    t.index ["user_id"], name: "index_heat_users_on_user_id"
+  end
+
+  create_table "heats", force: :cascade do |t|
+    t.bigint "competition_division_id", null: false
+    t.integer "user_id"
+    t.string "round"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["competition_division_id"], name: "index_heats_on_competition_division_id"
+    t.index ["user_id"], name: "index_heats_on_user_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -150,6 +171,10 @@ ActiveRecord::Schema.define(version: 2020_07_02_105137) do
   add_foreign_key "competitions", "federations"
   add_foreign_key "division_criteria", "criteria"
   add_foreign_key "division_criteria", "divisions"
+  add_foreign_key "heat_users", "heats"
+  add_foreign_key "heat_users", "users"
+  add_foreign_key "heats", "competition_divisions"
+  add_foreign_key "heats", "users"
   add_foreign_key "registrations", "competition_divisions"
   add_foreign_key "registrations", "positions"
   add_foreign_key "registrations", "users"

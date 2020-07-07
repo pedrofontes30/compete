@@ -34,9 +34,13 @@ import AOS from 'aos';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+
 document.addEventListener('turbolinks:load', () => {
    AOS.init();
    // initSelect2();
+   $(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
+})
 });
 
 
@@ -48,3 +52,9 @@ document.addEventListener('turbolinks:load', () => {
    //delay: 300,
    //once: true,
    //disable: 'mobile'
+
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
