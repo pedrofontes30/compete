@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 2020_07_07_102830) do
     t.integer "registration_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "start_time"
     t.index ["federation_id"], name: "index_competitions_on_federation_id"
   end
 
