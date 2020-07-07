@@ -15,18 +15,6 @@ User.destroy_all
 
 puts 'Creating users...'
 
-pedro_admin = User.create!(first_name: 'Pedro',
-                    last_name: 'Fontes',
-                    date_of_birth: Date.new(2003,1,30),
-                    nationality: 'BR',
-                    gender: 'Male',
-                    email: 'pedroadmin@gmail.com',
-                    password: '123456',
-                    admin: true)
-
-file = URI.open('https://avatars0.githubusercontent.com/u/62013843?v=4')
-pedro_admin.photo.attach(io: file, filename: 'pedro_admin.jpg', content_type: 'image/jpg')
-
 pedro = User.create!(first_name: 'Pedro',
                     last_name: 'Fontes',
                     date_of_birth: Date.new(2003,1,30),

@@ -11,6 +11,7 @@ class RegistrationsController < ApplicationController
     authorize @registration
     @registration.user = current_user
     @registration.save!
+    HeatCreator.create_heats(@registration.competition_division.registrations, @registration.competition_division.id)
     redirect_to competition_path(params[:competition_id])
   end
 

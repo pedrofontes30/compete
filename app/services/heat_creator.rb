@@ -1,15 +1,6 @@
-class CreateHeatsJob < ApplicationJob
-  queue_as :default
+class HeatCreator
 
-  def perform(competition_division)
-    competition_division = CompetitionDivision.find(competition_division.id)
-    if competition_division.competition.registration_deadline == Date.today
-      competition_division.heats.destroy_all
-      create_heats(competition_division.registrations, competition_division.id)
-    end
-  end
-
-  def create_heats(registrations, id)
+  def self.create_heats(registrations, id)
     if registrations.length <= 2
       round = ['final', 1]
     elsif registrations.length <= 4
