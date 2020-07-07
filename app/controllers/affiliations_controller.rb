@@ -1,4 +1,7 @@
 class AffiliationsController < ApplicationController
+#before_action :set_time_zone, if: :user_signed_in?
+
+
 
   def new
     @federation = Federation.find(params[:federation_id])
@@ -14,7 +17,7 @@ class AffiliationsController < ApplicationController
     redirect_to competitions_path
   end
 
-  # private
+ # private
 
   # def affiliation_params
   #   params.require(:affiliation).permit(:federation_id)

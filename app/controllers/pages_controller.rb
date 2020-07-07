@@ -8,5 +8,6 @@ class PagesController < ApplicationController
   def profile
     @registrations = current_user.registrations
     @affiliations = current_user.affiliations
+    @competitions = Competition.all
   end
 end

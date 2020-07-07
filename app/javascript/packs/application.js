@@ -12,6 +12,7 @@ require('./nested-forms/removeFields')
 
 
 
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -28,7 +29,8 @@ require('./nested-forms/removeFields')
 // External imports
 import "bootstrap";
 import AOS from 'aos';
-
+// import { Calendar } from '@fullcalendar/core';
+// import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 // Internal imports, e.g:
@@ -36,10 +38,46 @@ import AOS from 'aos';
 
 document.addEventListener('turbolinks:load', () => {
    AOS.init();
-   // initSelect2();
+  // var calendarEl = document.getElementById('calendar');
+  // var calendar = new Calendar(calendarEl, {
+  //   plugins: [ dayGridPlugin ],
+  //   contentHeight: 300,
+  //   events: [
+  //   {
+  //     title  : 'event1',
+  //     start  : '2020-07-04'
+  //   },
+  //   {
+  //     title  : 'event2',
+  //     start  : '2010-01-05',
+  //     end    : '2010-01-07'
+  //   },
+  //   {
+  //     title  : 'event3',
+  //     start  : '2010-01-09T12:30:00',
+  //     allDay : false // will make the time show
+  //   }
+  // ]
+  // });
+  // calendar.render();
+  //  // initSelect2();
 });
 
 
+
+
+// const eventCalendar() {
+//   return $('#calendar').fullCalendar({ });
+// };
+
+// const clearCalendar() {
+//   $('#calendar').fullCalendar('delete');
+//   $('#calendar').html('');
+// };
+
+// $(document).ready(function() {
+//   $("#calendar").fullCalendar();
+// });
 //({startEvent: 'DOMContentLoaded'})
 //startEvent: 'DOMContentLoaded'
 

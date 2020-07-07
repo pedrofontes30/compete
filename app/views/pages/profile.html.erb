@@ -11,8 +11,15 @@
     </div>
     </div>
     <div class="col-8">
-    <div style="background-image: url('https://dhtmlx.com/blog/wp-content/uploads/2018/05/Material-small.png'); background-size: cover; height: 300px;" class="rounded-lg">
+    <div id="calendar">
+      <%= month_calendar  do |date| %>
+         <%= date.day %>
+          </div>
+        <% end %>
     </div>
+    </div>
+
+
     </div>
   </div>
   <div class="row justify-content-between mb-5">
@@ -44,4 +51,8 @@
     </div>
   </div>
   </div>
+  <div>
+
+  </div>
 </div>
+
