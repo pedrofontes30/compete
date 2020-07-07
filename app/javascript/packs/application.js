@@ -38,7 +38,7 @@ import AOS from 'aos';
 
 
 document.addEventListener('turbolinks:load', () => {
-   AOS.init();
+ AOS.init();
 });
 
 
@@ -46,5 +46,8 @@ document.addEventListener('turbolinks:load', () => {
 import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
-  initMapbox();
+ $('[data-toggle="tooltip"]').tooltip()
+ initMapbox();
 })
+
+
