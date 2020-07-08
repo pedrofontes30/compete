@@ -86,8 +86,8 @@ $yellow: #42e695;
   background:linear-gradient(135deg, darken(#673AB7, 10%) 0%,darken(#512DA8, 10%) 100%);
 }
 
-.slider .card-dark {
-  min-width: 350px;
-  background-color: #0F0F0F;
+.slider .card-light {
+  min-width: 400px;
+  height: 150px !important;
 }
 

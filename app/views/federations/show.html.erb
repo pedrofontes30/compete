@@ -41,6 +41,7 @@
     <% if @user_federation_division_scores %>
     <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= Division.find(params[:query]).name.upcase %></h5>
   </div>
+ </div>
   <div class="row mx-3 justify-content-center">
     <div class='col-8'>
       <% @user_federation_division_scores.each_with_index do |user_federation_division_score, index| %>
@@ -54,8 +55,6 @@
     </div>
     <% end %>
   </div>
-</div>
-<% end %>
 </div>
 
 <!-- Affiliation Modal -->
