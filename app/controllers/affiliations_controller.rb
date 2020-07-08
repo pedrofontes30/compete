@@ -12,7 +12,7 @@ class AffiliationsController < ApplicationController
 
   def create
     # @competition = Competition.find(params[:affiliation][:competition_id])
-    @affiliation = Affiliation.new(federation_id: params[:federation_id])
+    @affiliation = Affiliation.new(federation_id: params[:federation_id], team: params[:affiliation][:team])
     @affiliation.user = current_user
     authorize @affiliation
     @affiliation.save!

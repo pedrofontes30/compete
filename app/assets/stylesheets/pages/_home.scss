@@ -14,17 +14,6 @@
   }
 }
 
-.footer {
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
-  min-height: 150px;
-}
-
 .carousel-caption {
   // position: absolute;
   // top: 50%;
@@ -98,7 +87,6 @@ form.searchbar input[type=text] {
 }
 
 .footer {
-  background: #262626;
   display: flex;
   align-items: center;
   justify-content: space-between;

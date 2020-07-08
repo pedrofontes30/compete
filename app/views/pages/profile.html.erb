@@ -61,7 +61,10 @@
               <% else %>
                 <div class='avatar-large mr-4' style='background-color: grey;'></div>
               <% end %>
-              <h4><%= affiliation.federation.name %></h4>
+              <div>
+                <h4><%= affiliation.federation.name %></h4>
+                <h5>Team: <%= affiliation.team %></h5>
+              </div>
             </div>
           <% end %>
       <% end %>

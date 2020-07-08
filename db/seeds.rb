@@ -282,7 +282,7 @@ competition_division = CompetitionDivision.find_by(competition: rio_open)
                           gender: Faker::Gender.binary_type,
                           email: Faker::Internet.free_email(name: first_name),
                           password: '123456')
-  Affiliation.create!(federation: fjjrio, user: fake_user)
+  Affiliation.create!(federation: fjjrio, user: fake_user, team: ['Gordo', 'Leão Teixeira', 'Gracie Barra', 'Aliance', 'Atos'].sample)
   Registration.create!(competition_division: competition_division, user: fake_user)
   UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
 

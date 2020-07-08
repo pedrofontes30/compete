@@ -23,7 +23,23 @@
       <div class="row">
         <% @competitions.each do |competition| %>
           <div class="col-6" data-aos="fade-up">
-           <%= render "competition_card", competition: competition  %>
+            <%= link_to competition_path(competition) do  %>
+              <div style='position:relative; height: 175px;' class='card-dark grow rounded-lg shadow m-3 p-4 d-flex justify-content-between'>
+                <div>
+                  <h4 class='text-muted' style='letter-spacing: 2px;'><strong><%= competition.federation.name %></strong></h3>
+                  <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
+                  <h5><%= competition.date.strftime("%B %d, %Y") %> in <%= competition.city %></h5>
+                </div>
+                <div class='d-flex flex-column justify-content-between'>
+                  <h5><strong>$<%= competition.registration_price %></strong></h5>
+                </div>
+                <% if Date.today > competition.registration_deadline %>
+                  <p style='position:absolute; bottom:0px; right:0px; background:linear-gradient(135deg, #ba2233 50%,#DA394B 100%); box-shadow: -1px -1px 20px rgba(218,57,75,0.6); border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'>Deadline: <%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+                <% else %>
+                  <p style='position:absolute; bottom:0px; right:0px; background:linear-gradient(135deg, #4AC141 50%,#2fed21 100%); box-shadow: -1px -1px 20px rgba(74,193,65,0.6); border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'>Deadline: <%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
