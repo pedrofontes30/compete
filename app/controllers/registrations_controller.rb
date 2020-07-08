@@ -7,28 +7,20 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @registration = Registration.new(registration_params)
-    authorize @registration
-    @registration.user = current_user
-    @registration.price = @registration.competition.registration_price
-    @registration.save!
-    @registration.competition_division.create_heats
-    if UserFederationDivisionScore.where(user: current_user, federation: @registration.competition_division.competition.federation) == []
-      UserFederationDivisionScore.create!(user: current_user, federation: @registration.competition_division.competition.federation, division: @registration.competition_division.division)
-    end
+    competition_division = CompetitionDivision.find(params[:registration][:competition_division_id])
     #redirect_to competition_path(params[:competition_id])
-    order = Order.create!(registration: @registration, amount: @registration.price, state: 'pending', user: current_user)
-
+    order = Order.create!(amount: competition_division.competition.registration_price, state: 'pending', user: current_user)
+    authorize order
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: @registration.competition.name,
-        amount: @registration.price_cents,
-        currency: 'eur',
+        name: competition_division.competition.name,
+        amount: (order.amount * 100).to_i,
+        currency: 'usd',
         quantity: 1
       }],
-      success_url: order_url(order),
-      cancel_url: order_url(order)
+      success_url: order_url(id: order.id, competition_division_id: competition_division.id),
+      cancel_url: competition_url(competition_division.competition)
     )
 
     order.update(checkout_session_id: session.id)

@@ -12,23 +12,21 @@ class AffiliationsController < ApplicationController
 
   def create
     # @competition = Competition.find(params[:affiliation][:competition_id])
-    @affiliation = Affiliation.new(federation_id: params[:federation_id], team: params[:affiliation][:team])
-    @affiliation.user = current_user
-    authorize @affiliation
-    @affiliation.save!
 
-    order = Order.create!(affiliation: @affiliation, amount: @affiliation.federation.affiliation_price, state: 'pending', user: current_user)
+    federation = Federation.find(params[:federation_id])
+    order = Order.create!(amount: federation.affiliation_price, state: 'pending', user: current_user)
+    authorize order
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: @affiliation.federation.name,
-        amount: @affiliation.federation.affiliation_price * 100,
-        currency: 'eur',
+        name: federation.name,
+        amount: federation.affiliation_price * 100,
+        currency: 'usd',
         quantity: 1
       }],
-      success_url: order_url(order),
-      cancel_url: order_url(order)
+      success_url: order_url(id: order.id, federation_id: params[:federation_id]),
+      cancel_url: federation_url(federation)
     )
 
     order.update(checkout_session_id: session.id)
