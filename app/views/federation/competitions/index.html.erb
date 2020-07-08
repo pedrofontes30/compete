@@ -26,9 +26,9 @@
                   <h5 style=" white-space: nowrap; overflow: hidden;"><strong>$<%= competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
                 </div>
                 <% if Date.today > competition.registration_deadline %>
-                    <p style='position:absolute; bottom:0px; right:0px; background-color: #FA1616; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+                    <p style='position:absolute; bottom:0px; right:0px; background-color: #DA394B; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
                 <% else %>
-                    <p style='position:absolute; bottom:0px; right:0px; background-color: #02c48a; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+                    <p style='position:absolute; bottom:0px; right:0px; background-color: #4AC141; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
                 <% end %>              </div>
             <% end %>
         <% end %>
@@ -36,3 +36,5 @@
     </div>
   </div>
 </div>
+
+
