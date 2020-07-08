@@ -2,9 +2,9 @@
   <div class="row mx-3 justify-content-between">
     <div class="d-flex">
       <% if @federation.photo.attached? %>
-        <%= cl_image_tag(@federation.photo.key, class: "avatar-large mr-4")%>
+      <%= cl_image_tag(@federation.photo.key, class: "avatar-large mr-4")%>
       <% else %>
-        <div class='avatar-large mr-4' style='background-color: grey;'></div>
+      <div class='avatar-large mr-4' style='background-color: grey;'></div>
       <% end %>
       <div>
         <h3><%= @federation.name %></h3>
@@ -26,34 +26,20 @@
   <div class="slider">
     <div class="d-flex justify-content-center">
       <% @competitions.each do |competition| %>
-          <%= link_to competition_path(competition) do  %>
-            <div style='position:relative; width: 400px;' class='card-light grow rounded-lg shadow m-3 p-3 d-flex justify-content-between'>
-              <div class='mb-3'>
-                <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
-                <h5><%= competition.date.strftime("%d/%m/%Y") %> at <%= competition.address.capitalize %></h5>
-              </div>
-              <div class='d-flex flex-column justify-content-between'>
-                <h5 style=" white-space: nowrap; overflow: hidden;"><strong>$<%= competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
-              </div>
-              <% if Date.today > competition.registration_deadline %>
-                  <p style='position:absolute; bottom:0px; right:0px; background-color: #FA1616; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
-              <% else %>
-                  <p style='position:absolute; bottom:0px; right:0px; background-color: #02c48a; border-radius: 6px 0 6px 0;' class='px-2 py-1 m-0'><%= competition.registration_deadline.strftime("%d/%m/%Y") %></p>
-              <% end %>
-            </div>
-          <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row mx-3 justify-content-center">
-    <div class='col-6'>
+
+       <%= render "competitions/competition_card", competition: competition  %>
+
+     <% end %>
+   </div>
+ </div>
+ <div class="row mx-3 justify-content-center">
+  <div class='col-6'>
     <%= form_with(url: federation_path(@federation), method: "get", local: true, class: 'form-inline') do %>
-      <%= select_tag(:query, options_for_select(Division.all.map{ |division| [division.name, division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
-      <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
+    <%= select_tag(:query, options_for_select(Division.all.map{ |division| [division.name, division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
+    <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
     <% end %>
     <% if @user_federation_division_scores %>
     <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= Division.find(params[:query]).name.upcase %></h5>
-    </div>
   </div>
   <div class="row mx-3 justify-content-center">
     <div class='col-8'>
@@ -66,8 +52,10 @@
         </div>
       <% end %>
     </div>
+    <% end %>
   </div>
-  <% end %>
+</div>
+<% end %>
 </div>
 
 <!-- Affiliation Modal -->

@@ -1,5 +1,6 @@
 .slider {
   overflow-x: scroll;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   display: flex;
 }
@@ -17,4 +18,15 @@
 //   background: green;
 //   height: 4px;
 //   width: 4px;
+// }
+
+// .slider::-webkit-scrollbar {
+//   background: $orange;
+//   border-radius: 4px;
+//   height: 8px;
+//   width: 8px;
+// }
+// .slider::-webkit-scrollbar-thumb {
+//   background: none;
+//   border-radius: 4px;
 // }
