@@ -1,22 +1,49 @@
 <div class="container">
-  <div class="row py-4">
-    <div class="col-md-3"></div>
-    <div class="col">
-      <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
+  <div class="row mt-5 justify-content-center">
+    <div class="col-4 p-4 card-dark rounded-lg text-center">
+      <i style='font-size: 65px;' class="far fa-check-circle mb-3"></i>
+      <h3>Payment confirmation</h3>
+      <div class="col-10 mx-auto my-3">
       <ul class="list-unstyled">
-        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
+        <li>
+          <div class="d-flex justify-content-between">
+            <div class='text-muted'>ORDER №</div>
+            <div><%= @order.id %></div> <!-- <small><span class="badge badge-success"><%= @order.state %></span></small> -->
+          </div>
+        </li>
+        <li>
+          <div class="d-flex justify-content-between">
+            <div class='text-muted'>ISSUED ON</div>
+            <div><%= @order.created_at.to_date %></div>
+          </div>
+        </li>
         <% if @order.registration %>
-        <li><strong>COMPETITION</strong> <%= @order.registration.competition.name %></li>
+        <li>
+          <div class="d-flex justify-content-between">
+            <div class='text-muted'>COMPETITION:</div>
+            <div><%= @order.registration.competition.name %></div>
+          </div>
+        </li>
         <% else %>
-        <li><strong>AFFILIATION</strong> <%= @order.affiliation.federation.name %></li>
+        <li>
+          <div class="d-flex justify-content-between">
+            <div class='text-muted'>AFFILIATION TO</div>
+            <div><%= @order.affiliation.federation.name %></div>
+          </div>
+        </li>
         <% end %>
-        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
+        <li>
+          <div class="d-flex justify-content-between">
+            <div class='text-muted'>TOTAL</div>
+            <div><%= humanized_money_with_symbol @order.amount %></div>
+          </div>
         </li>
       </ul>
+      </div>
       <% if @order.registration %>
-        <%= link_to "See competition detail", competition_path(@order.registration.competition), class: "btn btn-primary" %>
+        <%= link_to "See competition details", competition_path(@order.registration.competition), class: "btn btn-primary" %>
       <% else %>
-        <%= link_to "See federation detail", federation_path(@order.affiliation.federation), class: "btn btn-primary" %>
+        <%= link_to "See federation details", federation_path(@order.affiliation.federation), class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
