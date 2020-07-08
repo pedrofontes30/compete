@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-3"></div>
+    <div class="col">
+      <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
+      <ul class="list-unstyled">
+        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
+        <% if @order.registration %>
+        <li><strong>COMPETITION</strong> <%= @order.registration.competition.name %></li>
+        <% else %>
+        <li><strong>AFFILIATION</strong> <%= @order.affiliation.federation.name %></li>
+        <% end %>
+        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
+        </li>
+      </ul>
+      <% if @order.registration %>
+        <%= link_to "See competition detail", competition_path(@order.registration.competition), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "See federation detail", federation_path(@order.affiliation.federation), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

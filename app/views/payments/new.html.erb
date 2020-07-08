@@ -1,0 +1,13 @@
+<div style='font-size: 80px;' class="text-center mt-5"><i class="fas fa-pulse fa-spinner"></i></div>
+<button id="pay" class="d-none">Pay</button>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const paymentButton = document.getElementById('pay');
+  paymentButton.addEventListener('click', () => {
+    const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+    stripe.redirectToCheckout({
+      sessionId: '<%= @order.checkout_session_id %>'
+    });
+  });
+  paymentButton.click();
+</script>
