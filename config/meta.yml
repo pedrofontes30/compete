@@ -1,0 +1,5 @@
+meta_product_name: "Compete"
+meta_title: "Best way to start competing."
+meta_description: "Unleash the Champion Inside of You!"
+meta_image: "ffacebook.png" # should exist in `app/assets/images/`
+twitter_account: "@compete_twitter_account"   # required for Twitter Cards
