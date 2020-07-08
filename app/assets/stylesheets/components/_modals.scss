@@ -1,10 +1,12 @@
-.modal-content {
-  color: black;
-
-  a {
-    color: black;
-  }
+.modal-header {
+  border-bottom: 2px solid rgb(65,65,65);
 }
+
+.modal-content {
+  background-color: rgb(80,80,80) !important;
+}
+
 .modal-footer {
   justify-content: center;
+  border-top: 2px solid rgb(65,65,65);
 }

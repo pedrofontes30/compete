@@ -1,17 +1,22 @@
 <div class="container mt-5" >
-  <h2>Federations</h2>
+  <h2 class='text-center'>Federations</h2>
   <% @federations.each do |federation| %>
     <%= link_to federation_path(federation) do %>
-      <div data-aos="zoom-in" class='col-12 rounded-lg d-flex card-dark grow shadow p-3 my-3' >
-          <% if federation.photo.attached? %>
-            <%= cl_image_tag(federation.photo.key, class: "avatar-large mr-4")%>
-          <% else %>
-            <div class='avatar-large mr-4' style='background-color: grey;'></div>
-          <% end %>
-          <div>
-            <h3><%= federation.name %></h3>
-            <h4 class='text-muted'><%= federation.location %></h4>
+      <div data-aos="zoom-in" class='col-10 offset-1 rounded-lg d-flex justify-content-between align-items-center card-dark grow shadow py-3 px-4 my-3' >
+          <div class="d-flex">
+            <% if federation.photo.attached? %>
+              <%= cl_image_tag(federation.photo.key, class: "avatar-large mr-4")%>
+            <% else %>
+              <div class='avatar-large mr-4' style='background-color: grey;'></div>
+            <% end %>
+            <div>
+              <h3><%= federation.name %></h3>
+              <h4 class='text-muted'><%= federation.location %></h4>
+            </div>
           </div>
+          <button type="button" style='height: 40px;' class="btn btn-primary" >
+            Show more
+          </button>
       </div>
     <% end %>
   <% end %>
