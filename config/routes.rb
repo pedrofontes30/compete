@@ -21,13 +21,18 @@ Rails.application.routes.draw do
     resources :registrations, only: [:new, :create]
   end
 
-  resources :federations, only: [:index, :show] do
+    resources :federations, only: [:index, :show] do
     resources :affiliations, only: [:new, :create]
   end
 
-  namespace :federation do
+   namespace :federation do
     resources :competitions do
       resources :heats, only: [:update]
     end
   end
+  resources :orders, only: [:show, :create]  do
+    resources :payments, only: :new
+  end
+
 end
+

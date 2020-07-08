@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :registrations
   has_many :competition_divisions, through: :registrations
   has_one_attached :photo
+  has_many :orders
+
 
   def win_count
     Heat.where(user: self).select { |heat| heat.heat_users.length > 1 }.count
@@ -21,4 +23,5 @@ class User < ApplicationRecord
   def age
     (Date.today - date_of_birth).to_i / 365
   end
+
 end

@@ -10,12 +10,29 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(registration_params)
     authorize @registration
     @registration.user = current_user
+    @registration.price = @registration.competition.registration_price
     @registration.save!
     @registration.competition_division.create_heats
     if UserFederationDivisionScore.where(user: current_user, federation: @registration.competition_division.competition.federation) == []
       UserFederationDivisionScore.create!(user: current_user, federation: @registration.competition_division.competition.federation, division: @registration.competition_division.division)
     end
-    redirect_to competition_path(params[:competition_id])
+    #redirect_to competition_path(params[:competition_id])
+    order = Order.create!(registration: @registration, amount: @registration.price, state: 'pending', user: current_user)
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: @registration.competition.name,
+        amount: @registration.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url: order_url(order),
+      cancel_url: order_url(order)
+    )
+
+    order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(order)
   end
 
   def show
