@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row py-4">
-    <div class="col-md-3"><%= image_tag @order.teddy.photo_url, width: '100%' %></div>
     <div class="col">
       <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @order.teddy.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <% if @order.registration %>
+      <p>Purchase of <strong><%= @order.registration.competition.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <% else %>
+      <p>Purchase of <strong><%= @order.affiliation.federation.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <% end %>
       <button id="pay" class="btn btn-primary">Pay</button>
-       # Commented for the lecture, remove comments.
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');

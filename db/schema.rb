@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_07_07_212610) do
+ActiveRecord::Schema.define(version: 2020_07_08_112000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,11 +68,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_212610) do
     t.datetime "start_time"
     t.float "latitude"
     t.float "longitude"
-<<<<<<< HEAD
-=======
-    t.datetime "start_time"
     t.string "city"
->>>>>>> 6708da866abd1800dd8c3be59b399dc2cbb1cc5c
     t.index ["federation_id"], name: "index_competitions_on_federation_id"
   end
 
@@ -141,9 +136,11 @@ ActiveRecord::Schema.define(version: 2020_07_07_212610) do
     t.integer "amount_cents", default: 0, null: false
     t.string "checkout_session_id"
     t.bigint "user_id", null: false
-    t.bigint "registration_id", null: false
+    t.bigint "registration_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "affiliation_id"
+    t.index ["affiliation_id"], name: "index_orders_on_affiliation_id"
     t.index ["registration_id"], name: "index_orders_on_registration_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -210,6 +207,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_212610) do
   add_foreign_key "heat_users", "users"
   add_foreign_key "heats", "competition_divisions"
   add_foreign_key "heats", "users"
+  add_foreign_key "orders", "affiliations"
   add_foreign_key "orders", "registrations"
   add_foreign_key "orders", "users"
   add_foreign_key "registrations", "competition_divisions"

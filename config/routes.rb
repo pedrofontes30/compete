@@ -29,10 +29,9 @@ Rails.application.routes.draw do
     resources :competitions do
       resources :heats, only: [:update]
     end
-
+  end
   resources :orders, only: [:show, :create]  do
     resources :payments, only: :new
-  end
   end
 
 end
