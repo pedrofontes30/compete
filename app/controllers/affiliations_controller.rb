@@ -31,12 +31,12 @@ class AffiliationsController < ApplicationController
     order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
 
-    if params[:affiliation]
-      @competition = Competition.find(params[:affiliation][:competition_id])
-      redirect_to competition_path(@competition)
-    else
-      redirect_to federation_path(@affiliation.federation)
-    end
+    # if params[:affiliation]
+    #   @competition = Competition.find(params[:affiliation][:competition_id])
+    #   redirect_to competition_path(@competition)
+    # else
+    #   redirect_to federation_path(@affiliation.federation)
+    # end
   end
 
  # private
