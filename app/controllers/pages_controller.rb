@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @registrations = current_user.registrations
+    @registrations = current_user.registrations.joins(competition_division: :competition)
     @affiliations = current_user.affiliations
     @competitions = Competition.all
   end

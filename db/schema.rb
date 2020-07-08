@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2020_07_08_112000) do
     t.datetime "start_time"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "start_time"
     t.string "city"
     t.index ["federation_id"], name: "index_competitions_on_federation_id"
   end

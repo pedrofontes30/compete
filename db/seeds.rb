@@ -1,6 +1,7 @@
 require "open-uri"
 require 'faker'
 
+Order.destroy_all
 Affiliation.destroy_all
 Registration.destroy_all
 DivisionCriterium.destroy_all
