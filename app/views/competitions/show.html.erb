@@ -52,7 +52,7 @@
     </div>
     <div class="col-3 rounded-lg card-light p-3">
       <div class='d-flex flex-column justify-content-between mb-4'>
-        <h5 class='btn btn-primary text-center floating px-0 py-1'><strong>$<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
+        <h5 style='background:linear-gradient(135deg, rgba(255,148,7,1) 50%, rgba(255,216,83,1) 100%);' class='rounded text-center floating px-0 py-1'><strong>Prize: $<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
       </div>
       <p>Address: <%= @competition.address %></p>
       <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
