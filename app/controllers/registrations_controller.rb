@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
     @registration.save!
     @registration.competition_division.create_heats
     if UserFederationDivisionScore.where(user: current_user, federation: @registration.competition_division.competition.federation) == []
-      UserFederationDivisionScore.create(user: current_user, federation: @registration.competition_division.competition.federation)
+      UserFederationDivisionScore.create!(user: current_user, federation: @registration.competition_division.competition.federation, division: @registration.competition_division.division)
     end
     #redirect_to competition_path(params[:competition_id])
     order = Order.create!(registration: @registration, amount: @registration.price, state: 'pending', user: current_user)

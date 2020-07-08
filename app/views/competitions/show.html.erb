@@ -30,6 +30,12 @@
           <% end %>
           <% if @competition.check_registered?(current_user) %>
             <%= link_to "You are already registered", '', class: 'btn btn-primary disabled' %>
+          <% elsif !@affiliated %>
+            <div>
+              <button type="button" class="btn btn-primary btn-disabled" data-toggle="tooltip" data-placement="bottom" title="You need to be affiliated in order to register 😎" >
+                Register
+              </button>
+            </div>
           <% elsif @competition.registration_deadline > Date.today %>
             <div data-toggle="modal" data-target="#registrationModal">
               <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Are you ready to compete? 😎" >
@@ -52,7 +58,7 @@
     </div>
     <div class="col-3 rounded-lg card-light p-3">
       <div class='d-flex flex-column justify-content-between mb-4'>
-        <h5 class='btn btn-primary text-center floating px-0 py-1'><strong>$<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
+        <h5 style='background:linear-gradient(135deg, rgba(255,148,7,1) 50%, rgba(255,216,83,1) 100%);' class='rounded text-center floating px-0 py-1'><strong>Prize: $<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
       </div>
       <p>Address: <%= @competition.address %></p>
       <p>Date: <%= @competition.date.strftime("%d/%m/%Y") %></p>
@@ -93,7 +99,7 @@
             <div class='card-heat mb-3 mr-3 px-3 py-1'>
               <% HeatUser.where(heat: heat).each do |heat_user| %>
                 <div class="d-flex d-flex flex-column justify-content-around justify-content-between shadow">
-                  <div class="d-flex">
+                  <div class="d-flex" data-toggle="tooltip" data-placement="bottom" title="<strong> <%= heat_user.user.date_of_birth  %> <br> <%= heat_user.user.nationality  %> <br> <%= heat_user.user.gender  %> </strong>" >
                   <% if heat_user.user.photo.attached? %>
                     <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
                   <% else %>
@@ -117,7 +123,7 @@
           <% @division.heats.where(round: 'round of 16').each do |heat| %>
             <div class='card-heat d-flex flex-column justify-content-around mb-3 mr-3 px-3 py-1 shadow'>
               <% HeatUser.where(heat: heat).each do |heat_user| %>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<strong> <%= heat_user.user.date_of_birth  %> <br> <%= heat_user.user.nationality  %> <br> <%= heat_user.user.gender  %> </strong>" >
                   <div class="d-flex">
                   <% if heat_user.user.photo.attached? %>
                     <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
@@ -142,7 +148,7 @@
           <% @division.heats.where(round: 'quarter-finals').each do |heat| %>
             <div class='card-heat d-flex flex-column justify-content-around mb-3 mr-3 px-3 py-1 shadow'>
               <% HeatUser.where(heat: heat).each do |heat_user| %>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<strong> <%= heat_user.user.date_of_birth  %> <br> <%= heat_user.user.nationality  %> <br> <%= heat_user.user.gender  %> </strong>">
                   <div class="d-flex">
                   <% if heat_user.user.photo.attached? %>
                     <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
@@ -166,7 +172,7 @@
         <% @division.heats.where(round: 'semi-finals').each do |heat| %>
           <div class='card-heat d-flex flex-column justify-content-around mb-3 mr-3 px-3 py-1 shadow'>
             <% HeatUser.where(heat: heat).each do |heat_user| %>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<strong> <%= heat_user.user.date_of_birth  %> <br> <%= heat_user.user.nationality  %> <br> <%= heat_user.user.gender  %> </strong>">
                 <div class="d-flex">
                   <% if heat_user.user.photo.attached? %>
                     <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>
@@ -190,7 +196,7 @@
         <% @division.heats.where(round: 'final').each do |heat| %>
           <div class='card-heat d-flex flex-column justify-content-around mb-3 px-3 py-1 shadow'>
             <% HeatUser.where(heat: heat).each do |heat_user| %>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<strong> <%= heat_user.user.date_of_birth  %> <br> <%= heat_user.user.nationality  %> <br> <%= heat_user.user.gender  %> </strong>">
                 <div class="d-flex">
                   <% if heat_user.user.photo.attached? %>
                     <%= cl_image_tag(heat_user.user.photo.key, class: "avatar-small mr-2")%>

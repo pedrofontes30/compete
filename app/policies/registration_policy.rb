@@ -10,6 +10,6 @@ class RegistrationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && Registration.where(user: user, competition_division: record.competition_division) == [] && record.competition.registration_deadline > Date.today
+    user.present? && Affiliation.where(user: user, federation: record.competition_division.competition.federation) != [] && Registration.where(user: user, competition_division: record.competition_division) == [] && record.competition.registration_deadline > Date.today
   end
 end
