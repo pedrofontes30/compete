@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_112000) do
     t.integer "registration_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time"
     t.float "latitude"
     t.float "longitude"
     t.datetime "start_time"

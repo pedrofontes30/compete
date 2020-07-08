@@ -30,7 +30,7 @@ class CompetitionsController < ApplicationController
 
     @federation = @competition.federation
     @affiliation = Affiliation.new(federation: @federation)
-    @markers = [{ lat: @competition.latitude, lng: @competition.longitude }]
+    @markers = [{ lat: @competition.latitude, lng: @competition.longitude, image_url: helpers.asset_url('competeLOGO.png')}]
   end
 
   def new
