@@ -11,10 +11,12 @@
         <h4 class='text-muted'><%= @federation.location %></h4>
       </div>
     </div>
-    <% if !@affiliated %>
-      <button style='height: 40px;' type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
-        Affiliate
-      </button>
+    <% unless current_federation %>
+      <% if !@affiliated  %>
+        <button style='height: 40px;' type="button" class="btn btn-primary" data-toggle="modal" data-target="#affiliationModal">
+          Affiliate
+        </button>
+      <% end %>
     <% end %>
   </div>
   <div class="slider">
