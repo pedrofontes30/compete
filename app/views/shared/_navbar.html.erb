@@ -10,27 +10,27 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item mx-4 d-flex align-items-center">
+      <li class="nav-item mr-4 d-flex align-items-center">
         <%= link_to "Federations", federations_path, class: "nav-link" %>
       </li>
       <% if !(user_signed_in? || federation_signed_in?) %>
-        <li class="nav-item mx-4 d-flex align-items-center">
+        <li class="nav-item mr-4 d-flex align-items-center">
           <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item mx-4 d-flex align-items-center">
+        <li class="nav-item mr-4 d-flex align-items-center">
           <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
         </li>
       <% else %>
         <% if current_user %>
-          <li class="nav-item mx-3 d-flex align-items-center">
+          <li class="nav-item mr-4 d-flex align-items-center">
             <%= link_to "Profile", '/profile', class: "nav-link" %>
           </li>
           <li class="nav-item">
             <div class="dropdown">
               <% if current_user.photo.attached? %>
-                <%= cl_image_tag(current_user.photo.key, class: "avatar-large", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
+                <%= cl_image_tag(current_user.photo.key, class: "avatar-large mr-4", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
               <% else %>
-                 <div class="avatar-large d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+                 <div class="avatar-large d-flex align-items-center justify-content-center mr-4" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
                   <%= current_user.first_name[0] + current_user.last_name[0] %>
                  </div>
                <% end %>
@@ -42,14 +42,14 @@
           </li>
         <% else%>
           <li class="nav-item mx-4 d-flex align-items-center">
-            <%= link_to 'Dashboard', federation_competitions_path, class: "nav-link"%>
+            <%= link_to 'Dashboard', federation_competitions_path, class: "nav-link mr-4"%>
           </li>
           <li class="nav-item">
             <div class="dropdown">
               <% if current_federation.photo.attached? %>
-                <%= cl_image_tag(current_federation.photo.key, class: "avatar-large", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
+                <%= cl_image_tag(current_federation.photo.key, class: "avatar-large mr-4", id: "dropdownMenu", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}) %>
               <% else %>
-                <div class="avatar-large d-flex align-items-center justify-content-center" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
+                <div class="avatar-large d-flex align-items-center justify-content-center mr-4" id="dropdownMenu" data-toggle="dropdown" aria-haspopup=true aria-expanded=false style='color: white; background-color: rgb(50,50,50);' id="navbarDropdown" data-toggle="dropdown" aria-haspopup='true' aria-expanded='false'>
                   <%= current_federation.name ?  current_federation.name[0]  :  "n" %>
                 </div>
               <% end %>

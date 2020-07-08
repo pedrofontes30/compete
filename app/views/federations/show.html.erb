@@ -36,7 +36,7 @@
   <div class='col-6'>
     <%= form_with(url: federation_path(@federation), method: "get", local: true, class: 'form-inline') do %>
       <%= select_tag(:query, options_for_select(Division.all.map{ |division| [division.name, division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
-      <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
+      <%= submit_tag("See Leaderboard", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
     <% end %>
   </div>
  </div>
