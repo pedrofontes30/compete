@@ -72,9 +72,9 @@
 
   <div class="row mx-3 mb-5 justify-content-center">
     <div class='col-6'>
-      <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'form-inline') do %>
+      <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'd-flex') do %>
         <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
-        <%= submit_tag("See Competitiors", { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
+        <%= submit_tag((current_federation && current_federation == @competition.federation ? 'Input Results' : "See Competitiors"), { class: 'px-3', style: 'color: white; border-radius: 0 20px 20px 0; background:linear-gradient(135deg, #D76420 0%,#DE412A 100%); border: 0; height: 38px;' }) %>
       <% end %>
     </div>
   </div>
