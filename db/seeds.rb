@@ -245,7 +245,7 @@ lisbon_open = Competition.create!(name: 'Lisbon Open',
 # SJJSAF
 
 copa_america = Competition.create!(name: 'Copa America',
-                                    address: 'Estr. São Pedro de Alcântara, 2020 - Vila Militar, Rio de Janeiro, Brasil',
+                                    address: 'Av. das Américas, 6501 - Barra da Tijuca, Rio de Janeiro, Brasil',
                                     federation: sjjsaf,
                                     date: Date.new(2020,10,18),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
@@ -254,7 +254,7 @@ copa_america = Competition.create!(name: 'Copa America',
                                     registration_price: 30)
 
 rio_challenge = Competition.create!(name: 'Rio Challenge',
-                                    address: 'Estr. São Pedro de Alcântara, 2020 - Vila Militar, Rio de Janeiro, Brasil',
+                                    address: 'Av. das Américas, 6501 - Barra da Tijuca, Rio de Janeiro, Brasil',
                                     federation: sjjsaf,
                                     date: Date.new(2020,12,5),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
