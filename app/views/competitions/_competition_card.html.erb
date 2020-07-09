@@ -1,5 +1,5 @@
  <%= link_to competition_path(competition) do  %>
- <div style='position:relative;' class='card-light grow rounded-lg shadow m-3 p-4 d-flex justify-content-between'>
+ <div style='position:relative;' class='card-light grow rounded-lg shadow m-3 mb-4 p-4 d-flex justify-content-between'>
   <div>
     <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
     <h5><%= competition.date.strftime("%B %d, %Y") %> in <%= competition.city %></h5>
