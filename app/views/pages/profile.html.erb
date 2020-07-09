@@ -1,6 +1,6 @@
 
-  <div class="row justify-content-between mb-4">
-    <div class="col-4">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-4 mb-4">
     <div class="card-dark card-stats profile-cards rounded-lg p-4 h-100">
       <h3 class='mb-3'><i class="far fa-chart-bar mr-3"></i> My Stats</h3>
       <div class="row justify-content-center">
@@ -31,7 +31,7 @@
       </div>
     </div>
     </div>
-    <div class="col-8">
+    <div class="col-12 col-md-8 mb-4">
       <div class='card-dark rounded-lg p-4 h-100'>
         <%= month_calendar(events: @registrations) do |date, registrations| %>
            <% unless @registrations.where(competitions: {date: date}).any? %>
@@ -46,8 +46,8 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-between mb-5">
-    <div class="col-6">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-6 mb-4">
     <div class="card-dark profile-cards card-affiliations rounded-lg p-4 h-100">
       <h3 class='mb-3'><i class="fas fa-id-card mr-3"></i>My Affiliations</h3>
       <% @affiliations.each do |affiliation| %>
@@ -70,7 +70,7 @@
       <% end %>
     </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6 mb-4">
     <div class="card-dark card-registrations profile-cards rounded-lg p-4 h-100">
       <h3 class='mb-3'><i class="fas fa-trophy mr-3"></i>My Competitions</h3>
       <% @registrations.each do |registration| %>
