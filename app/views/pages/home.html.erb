@@ -1,5 +1,5 @@
 
-<div class="banner">
+<div class="banner d-none d-lg-block ">
     <div id="carouselbanner" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
 
@@ -8,7 +8,7 @@
         </div>
 
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"class="d-block w-100" alt="tennis">
+          <img src="https://photoresources.wtatennis.com/photo-resources/2020/01/10/e88cf90b-561e-4df4-8968-628542e74775/GettyImages-1192592007.jpg?width=1440&height=797"class="d-block w-100" alt="tennis">
         </div>
 
         <div class="carousel-item">
@@ -28,7 +28,7 @@
 </div>
 
 
-  <div class="banner d-flex align-items-center" style="position: absolute; top: 100px; z-index: 3; background-image: linear-gradient(90deg, rgba(14,14,14,1) 20%, rgba(14,14,14,0.8) 60%, rgba(14,14,14,0.3))">
+  <div class="banner d-none d-lg-flex align-items-center" style="position: absolute; top: 100px; z-index: 3; background-image: linear-gradient(90deg, rgba(14,14,14,1) 20%, rgba(14,14,14,0.8) 60%, rgba(14,14,14,0.3))">
     <div class='from-left' style='margin-left: 115px; width: 50%;'>
       <h1 style='font-size: 69px; font-weight: bold;' class='mb-5'><strong>Unleash the champion inside <br>of you!</strong></h1>
       <p style='font-size: 27px;letter-spacing: 1px; font-weight: lighter; opacity: 0.5' class='mb-5'>Affiliate to federations and register<br> to competitions in a couple of clicks.</p>
@@ -40,12 +40,12 @@
   </div>
 
   <section id="sports">
-    <div class="container py-5">
+    <div class="container pt-5">
 
 <!-- Card JiuJitsu -->
 
-    <div class="row justify-content-between mb-5">
-      <div class="col-4">
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-4 mb-5">
         <%= link_to competitions_path do %>
           <div class="w-100 rounded-lg card-category card-jiujitsu d-flex flex-column align-items-center justify-content-center px-4 py-5">
               <i style='font-size: 80px;' class="fas fa-child mb-3"></i>
@@ -56,7 +56,7 @@
 
 <!-- Card Tennis -->
 
-      <div class="col-4">
+      <div class="col-12 col-md-4 mb-5">
         <div class="w-100 rounded-lg card-category card-tennis d-flex flex-column align-items-center justify-content-center px-4 py-5">
           <i style='font-size: 80px;' class="fas fa-table-tennis mb-3"></i>
           <span>Tennis</span>
@@ -65,7 +65,7 @@
 
 <!-- Card Running -->
 
-      <div class="col-4">
+      <div class="col-12 col-md-4 mb-5">
         <div class="w-100 rounded-lg card-category card-running d-flex flex-column align-items-center justify-content-center px-4 py-5">
             <i style='font-size: 80px;' class="fas fa-running mb-3"></i>
           <span class="disableBlur">Running</span>
@@ -76,7 +76,7 @@
 <!-- Card Swimming -->
 
     <div class="row justify-content-between">
-      <div class="col-4">
+      <div class="col-12 col-md-4 mb-5">
         <%= link_to competitions_path do %>
           <div class="w-100 rounded-lg card-category card-swimming d-flex flex-column align-items-center justify-content-center px-4 py-5">
               <i style='font-size: 80px;' class="fas fa-swimmer mb-3"></i>
@@ -87,7 +87,7 @@
 
 <!-- Card Golf -->
 
-      <div class="col-4">
+      <div class="col-12 col-md-4 mb-5">
         <div class="w-100 rounded-lg card-category card-golf d-flex flex-column align-items-center justify-content-center px-4 py-5">
           <i style='font-size: 80px;' class="fas fa-golf-ball mb-3"></i>
           <span>Golf</span>
@@ -96,14 +96,21 @@
 
 <!-- Card Volleyball -->
 
-      <div class="col-4">
+      <div class="col-12 col-md-4 mb-5">
         <div class="w-100 rounded-lg card-category card-volleyball d-flex flex-column align-items-center justify-content-center px-4 py-5">
             <i style='font-size: 80px;' class="fas fa-snowboarding mb-3"></i>
           <span class="disableBlur">Surf</span>
         </div>
       </div>
   </div>
+
+  <div class='col-12 d-flex justify-content-around d-lg-none mb-5'>
+    <%= link_to "I'm a competitor", new_user_session_path, class: 'btn btn-main mr-3 px-4 py-3', style: 'background:linear-gradient(135deg, #D76420 0%,#DE412A 100%);' %>
+    <%= link_to "I'm a federation", new_federation_session_path, class: 'btn btn-main mx-3 px-4 py-3', style: 'background-color: rgba(255,255,255,0.15);' %>
+  </div>
 </div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>

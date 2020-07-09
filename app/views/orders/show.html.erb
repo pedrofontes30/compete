@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row mt-5 justify-content-center">
-    <div class="col-4 p-4 card-dark rounded-lg text-center">
+    <div class="col-12 col-md-6 col-xl-4 p-4 card-dark rounded-lg text-center shadow">
       <i style='font-size: 65px;' class="far fa-check-circle mb-3"></i>
       <h3>Payment confirmation</h3>
-      <div class="col-10 mx-auto my-3">
       <ul class="list-unstyled">
         <li>
           <div class="d-flex justify-content-between">
@@ -39,7 +38,6 @@
           </div>
         </li>
       </ul>
-      </div>
       <% if @order.registration %>
         <%= link_to "See competition details", competition_path(@order.registration.competition), class: "btn btn-primary" %>
       <% else %>

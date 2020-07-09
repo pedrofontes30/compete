@@ -53,24 +53,24 @@
       </div>
   </div>
 
-  <div class="row justify-content-between mx-3 mb-5">
-    <div class="col-4 rounded-lg card-light p-3">
+  <div class="row justify-content-between mx-3">
+    <div class="d-none d-md-block col-12 col-lg-4 rounded-lg card-light p-3 mb-5">
       <p><%= @competition.description %></p>
     </div>
-    <div class="col-3 rounded-lg card-light p-3">
+    <div class="col-12 col-lg-3 rounded-lg card-light p-3 mb-5">
       <div class='d-flex flex-column justify-content-between mb-4 pulsate'>
         <h5 style='background:linear-gradient(135deg, rgba(255,148,7,1) 50%, rgba(255,216,83,1) 100%); border-radius: 6px; letter-spacing: 1px;' class='text-center px-0 py-2 scale-up-center'><strong>Prize: $<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
       </div>
       <p>Date: <%= @competition.date.strftime("%B %d, %Y") %></p>
       <p>Address: <%= @competition.address %></p>
     </div>
-    <div class='col-4 rounded-lg' id="map"
+    <div class='col-12 col-lg-4 rounded-lg mb-5' id="map"
      style="width: 100%; height: 300px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 
-  <div class="row mx-3 mb-5 justify-content-center">
+  <div class="d-none d-md-flex row mx-3 mb-5 justify-content-center">
     <div class='col-6'>
       <%= form_with(url: competition_path(@competition), method: "get", local: true, class: 'd-flex') do %>
         <%= select_tag(:query, options_for_select(@competition.competition_divisions.map{ |competition_division| [competition_division.division.name, competition_division.id] }), { class: "custom-select flex-grow-1", style: 'border-radius: 20px 0 0 20px; background-color: rgb(80,80,80); border: 0; color: white;' }) %>
@@ -79,9 +79,9 @@
     </div>
   </div>
       <% if @division %>
-        <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
+        <h5 class='d-none d-md-block my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
 
-        <section id='draw'>
+        <section class='d-none d-md-block' id='draw'>
 
         <div class="row mx-3 justify-content-center">
             <% unless @division.heats.where(round: 'round of 32') == [] %>
