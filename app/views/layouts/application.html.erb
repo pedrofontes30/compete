@@ -37,8 +37,15 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <% unless controller_name == 'pages' && action_name == 'home' %>
+        <div class="container mt-5 footer-height">
+    <% else %>
+        <div>
+    <% end %>
     <%= yield %>
-    <div class="container">
+    </div>
+
+
       <div class="footer">
         <div class="footer-links">
           <a href="#"><i style='font-size: 35px;' class="fab fa-instagram"></i></a>
@@ -50,6 +57,6 @@
            <%= image_tag asset_path('compete_white.png'), style: 'width: auto; height: 45px;' %>
         </div>
       </div>
-    </div>
+
   </body>
 </html>
