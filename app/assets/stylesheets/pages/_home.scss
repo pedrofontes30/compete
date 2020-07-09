@@ -87,16 +87,15 @@ form.searchbar input[type=text] {
 }
 
 .footer-height {
-  min-height: 60vh;
+  min-height: 70vh;
 }
-
 
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 65px;
-  padding: 0px 50px;
+  height: 100px;
+  padding: 0px 160px;
   color: rgba(0,0,0,0.3);
 }
 .footer-links {
