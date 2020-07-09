@@ -285,8 +285,10 @@ competition_division = CompetitionDivision.find_by(competition: summer_open)
   Registration.create!(competition_division: competition_division, user: fake_user)
   UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
 
-  file = URI.open(Faker::Avatar.image)
+
+  file = URI.open("https://i.pravatar.cc/400?img=#{rand(1..70)}")
   fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
+  p "photo attached"
 end
 
 competition_division.create_heats
@@ -310,8 +312,9 @@ competition_division = CompetitionDivision.find_by(competition: rio_open)
   Registration.create!(competition_division: competition_division, user: fake_user)
   UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
 
-  file = URI.open(Faker::Avatar.image)
+  file = URI.open("https://i.pravatar.cc/400?img=#{rand(1..70)}")
   fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
+  p "photo attached"
 end
 
 puts 'Creating heats...'
