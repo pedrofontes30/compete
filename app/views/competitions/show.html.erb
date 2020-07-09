@@ -1,4 +1,4 @@
-<div style='position:relative;' class="card-dark rounded-lg shadow mt-5 py-4">
+<div style='position:relative;' class="card-dark rounded-lg shadow mt-5 p-4">
   <div class="row justify-content-between align-items-center mx-3 mb-3">
       <div>
         <% if @federation.photo.attached? %>
@@ -7,7 +7,7 @@
           <div class='avatar ml-3 mb-3' style='background-color: grey;'></div>
         <% end %>
         <div>
-          <h4><%= link_to @competition.federation.name.upcase, federation_path(@competition.federation), class: 'text-muted' %></h4>
+          <h4><%= link_to @competition.federation.name.upcase, federation_path(@competition.federation), class: 'muted-link' %></h4>
           <h3><strong><%= @competition.name.upcase %></strong></h3>
         </div>
       </div>
@@ -102,7 +102,7 @@
                         </div>
                         <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %>
                         <% if heat.user && heat_user.user == heat.user %>
-                          W
+                          🔥
                         <% end %>
                       </div>
                     <% end %>
@@ -130,7 +130,7 @@
                       </div>
                         <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %>
                         <% if heat.user && heat_user.user == heat.user && heat.heat_users.count > 1 %>
-                          W
+                          🔥
                         <% end %>
                       </div>
                     <% end %>
@@ -158,7 +158,7 @@
                         </div>
                         <%= (link_to 'win', federation_competition_heat_path(@competition,heat_user.heat, user: heat_user.user), class: 'link', method: :patch) if heat.user.nil? && policy(heat).update? %>
                         <% if heat.user && heat_user.user == heat.user && heat.heat_users.count > 1 %>
-                          W
+                          🔥
                         <% end %>
                       </div>
                     <% end %>

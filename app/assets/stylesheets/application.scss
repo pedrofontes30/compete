@@ -46,3 +46,12 @@ body {
   -webkit-animation: scale-up-center 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
           animation: scale-up-center 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
+
+.muted-link {
+  color: rgb(120,120,120) !important;
+  transition: 0.3s ease-in-out;
+}
+
+.muted-link:hover {
+    color: white !important;
+  }
