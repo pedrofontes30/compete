@@ -18,8 +18,16 @@
 .navbar{
   background-color: #0E0E0E;
   a{
-     color: white !important;
+    color: white !important;
   }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  transition: 0.3s !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #DE412A !important;
 }
 
 .btn-primary:hover {
