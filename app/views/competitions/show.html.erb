@@ -81,6 +81,8 @@
       <% if @division %>
         <h5 class='my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
 
+        <section id='draw'>
+
         <div class="row mx-3 justify-content-center">
             <% unless @division.heats.where(round: 'round of 32') == [] %>
             <div class="col-2">
@@ -237,6 +239,7 @@
         </div>
       <% end %>
 </div>
+</section>
 
 
 <!-- Affiliation Modal -->
@@ -265,3 +268,11 @@
 </div>
 
 <%= render "registrations" %>
+
+<script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  if (urlParams.get('scroll') == 'true') {
+    document.getElementById('draw').scrollIntoView();
+  }
+</script>
