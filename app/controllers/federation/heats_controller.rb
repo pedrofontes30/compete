@@ -14,6 +14,6 @@ class Federation::HeatsController < ApplicationController
     user = User.find(params[:user])
     competition_division = @heat.competition_division
     competition_division.update_heat(user, @heat)
-    redirect_to competition_path(params[:competition_id], query: @heat.competition_division.id)
+    redirect_to competition_path(params[:competition_id], query: @heat.competition_division.id, scroll: 'true')
   end
 end
