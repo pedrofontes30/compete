@@ -30,3 +30,7 @@ class ApplicationController < ActionController::Base
     end
   end
 end
+
+def default_url_options
+  { host: ENV["www.competeapp.io"] || "localhost:3000" }
+end
