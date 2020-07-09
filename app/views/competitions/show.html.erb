@@ -58,7 +58,7 @@
       <p><%= @competition.description %></p>
     </div>
     <div class="col-3 rounded-lg card-light p-3">
-      <div class='d-flex flex-column justify-content-between mb-4'>
+      <div class='d-flex flex-column justify-content-between mb-4 pulsate'>
         <h5 style='background:linear-gradient(135deg, rgba(255,148,7,1) 50%, rgba(255,216,83,1) 100%); border-radius: 6px; letter-spacing: 1px;' class='text-center px-0 py-2 scale-up-center'><strong>Prize: $<%= @competition.prize %> <%= icon('fas', 'trophy') %></strong></h5>
       </div>
       <p>Date: <%= @competition.date.strftime("%B %d, %Y") %></p>
@@ -205,7 +205,7 @@
             <h3 class='tournament-bracket__round-title'>final</h3>
             <div class="d-flex flex-column justify-content-center h-100">
               <% @division.heats.where(round: 'final').each do |heat| %>
-                <div style='overflow: hidden; border-radius: 10px;' class='d-flex flex-column justify-content-around mb-3 shadow'>
+                <div style='overflow: hidden; border-radius: 10px;' class='d-flex flex-column justify-content-around mb-3 shadow pulsate'>
                   <% HeatUser.where(heat: heat).each do |heat_user| %>
                   <% if heat.user && heat_user.user == heat.user %>
                     <div class="d-flex px-4 py-3 justify-content-between align-items-center" style='background:linear-gradient(135deg, rgba(255,148,7,1) 0%, rgba(255,216,83,1) 100%);' data-toggle="tooltip" data-html="true" data-placement="top" title="<strong> Age: <%= heat_user.user.age  %> <br> Nationality: <%= heat_user.user.nationality  %> <br> Team: <%= heat_user.user.affiliations.where(federation: @federation).first.team %> <br> Wins: <%= heat_user.user.win_count %> <br> Losses: <%= heat_user.user.loss_count %> </strong>">
