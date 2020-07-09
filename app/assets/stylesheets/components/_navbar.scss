@@ -18,6 +18,7 @@
 .navbar{
   background-color: #0E0E0E;
   a{
+    background: none;
     color: white !important;
   }
 }
@@ -31,7 +32,7 @@
 }
 
 .btn-primary:hover {
-  background:linear-gradient(135deg, darken(#DE412A, 2%) 0%, darken(#D76420, 5%) 100%);
+  background:linear-gradient(135deg, darken(#DE412A, 2%) 0%, darken(#D76420, 5%) 100%) !important;
 }
 
 .navbar img {

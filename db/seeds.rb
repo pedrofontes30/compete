@@ -234,7 +234,7 @@ brasileiro_kids = Competition.create!(name: 'Brasileiro Kids',
 # FPJJB
 
 lisbon_open = Competition.create!(name: 'Lisbon Open',
-                                    address: 'R. João da Silva 20, 1900-098 Lisboa, Portugal',
+                                    address: 'Lisboa, Portugal',
                                     federation: fpjjb,
                                     date: Date.new(2020,6,28),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',

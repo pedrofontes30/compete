@@ -2,11 +2,16 @@
 <%= simple_form_for [:federation, competition] do |f| %>
   <%= f.input :name, placeholder: "Name", label: false %>
   <%= f.input :address, placeholder: "Address", label: false %>
-  <%= f.input :date, html5: true, placeholder: "Date", label: false  %>
   <%= f.input :description, placeholder: "Description", label: false %>
-  <%= f.input :prize, placeholder: "Prize", label: false %>
-  <%= f.input :registration_deadline, html5: true, placeholder: "Registration deadline", label: false %>
-  <%= f.input :registration_price, placeholder: "Registration price", label: false %>
+  <div class="d-flex justify-content-between">
+    <%= f.input :date, html5: true, label: "Date"  %>
+    <%= f.input :registration_deadline, html5: true, label: "Registration deadline" %>
+  </div>
+  <div class="d-flex justify-content-between">
+    <%= f.input :registration_price, placeholder: "Registration price", label: false %>
+    <%= f.input :prize, placeholder: "Prize", label: false %>
+  </div>
+
   <fieldset>
 
     <%= f.simple_fields_for :competition_divisions do |competition_divisions_form| %>
@@ -14,7 +19,7 @@
           <% end %>
           <%= link_to_add_fields "Add Division", f, :competition_divisions %>
   </fieldset>
-  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= f.button :submit, class: 'btn btn-primary mt-3' %>
   <% if competition.id %>
     <%= link_to "Delete competition", federation_competition_path(competition), class: 'btn btn-danger', data: {confirm: 'Are you sure?'}, method: :delete %>
   <% end %>

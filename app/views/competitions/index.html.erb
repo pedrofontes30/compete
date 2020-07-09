@@ -1,5 +1,5 @@
 
-      <div class='row py-5'>
+      <div class='d-none d-lg-block row py-5'>
         <div class="col-12 mx-3">
           <h1 class='mb-3'>JIU JITSU</h1>
           <%= form_tag competitions_path, class: 'form-inline', method: :get do %>
@@ -10,7 +10,7 @@
       </div>
       <div class="row">
         <% @competitions.each do |competition| %>
-          <div class="col-6" data-aos="fade-up">
+          <div class="col-12 col-lg-6" data-aos="fade-up">
             <%= link_to competition_path(competition) do  %>
               <div style='position:relative; height: 175px;' class='card-dark grow rounded-lg shadow m-3 p-4 d-flex justify-content-between'>
                 <div>
