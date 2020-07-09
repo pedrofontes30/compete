@@ -5,28 +5,16 @@
   display: flex;
 }
 
-.slider::-webkit-scrollbar {
-  width: 0;
+::-webkit-scrollbar {
+  height: 12px;
 }
 
-// .slider::-webkit-scrollbar-track {
-//   background: none;
-// }
+.slider::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: none;
+}
 
-// .slider::-webkit-scrollbar-thumb {
-//   border-radius: 10px;
-//   background: green;
-//   height: 4px;
-//   width: 4px;
-// }
-
-// .slider::-webkit-scrollbar {
-//   background: $orange;
-//   border-radius: 4px;
-//   height: 8px;
-//   width: 8px;
-// }
-// .slider::-webkit-scrollbar-thumb {
-//   background: none;
-//   border-radius: 4px;
-// }
+.slider::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+}
