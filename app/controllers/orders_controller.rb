@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
 
     if params[:federation_id]
-      affiliation = Affiliation.new(federation_id: params[:federation_id], team: params[:affiliation][:team])
+      affiliation = Affiliation.new(federation_id: params[:federation_id], team: params[:team])
       affiliation.user = current_user
       affiliation.save
       @order.update(state: 'paid', affiliation: affiliation)

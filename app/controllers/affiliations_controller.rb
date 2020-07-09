@@ -25,7 +25,7 @@ class AffiliationsController < ApplicationController
         currency: 'usd',
         quantity: 1
       }],
-      success_url: order_url(id: order.id, federation_id: params[:federation_id]),
+      success_url: order_url(id: order.id, federation_id: params[:federation_id], team: params[:affiliation][:team]),
       cancel_url: federation_url(federation)
     )
 
