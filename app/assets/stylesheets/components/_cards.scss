@@ -45,19 +45,19 @@ $yellow: #42e695;
 }
 
 .card-jiujitsu{
-  background:linear-gradient(135deg, #C56CD6 0%,#3425AF 100%);
+   background:linear-gradient(135deg, #f46b45 0%,#eea849 100%);
 }
 
 .card-jiujitsu:hover {
-  background:linear-gradient(135deg, darken(#C56CD6, 10%) 0%,darken(#3425AF, 10%) 100%);
+  background:linear-gradient(135deg, darken(#f46b45, 10%) 0%,darken(#eea849, 10%) 100%);
 }
 
 .card-tennis{
-  background:linear-gradient(135deg, #42e695 0%,#3bb2b8 100%);
+  background:linear-gradient(135deg, #C56CD6 0%,#3425AF 100%);
 }
 
 .card-tennis:hover {
-  background:linear-gradient(135deg, darken(#42e695, 10%) 0%,darken(#3bb2b8, 10%) 100%);
+   background:linear-gradient(135deg, darken(#C56CD6, 10%) 0%,darken(#3425AF, 10%) 100%);
 }
 
 // other cards
@@ -71,19 +71,19 @@ $yellow: #42e695;
 }
 
 .card-golf{
- background:linear-gradient(135deg, #f46b45 0%,#eea849 100%);
+  background:linear-gradient(135deg, #56ab2f 0%,#a8e063 100%);
 }
 
 .card-golf:hover {
-  background:linear-gradient(135deg, darken(#f46b45, 10%) 0%,darken(#eea849, 10%) 100%);
+   background:linear-gradient(135deg, darken(#56ab2f, 10%) 0%,darken(#a8e063, 10%) 100%);
 }
 
 .card-volleyball{
-  background:linear-gradient(135deg, #673AB7 0%,#512DA8 100%);
+  background:linear-gradient(135deg, #2193b0 0%,#6dd5ed 100%);
 }
 
 .card-volleyball:hover {
-  background:linear-gradient(135deg, darken(#673AB7, 10%) 0%,darken(#512DA8, 10%) 100%);
+  background:linear-gradient(135deg, darken(#2193b0, 10%) 0%,darken(#6dd5ed, 10%) 100%);
 }
 
 .slider .card-light {

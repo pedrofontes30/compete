@@ -9,8 +9,8 @@
 .banner {
   height: calc(100vh - 100px);
   width: 100vw;
-  img {
-    height: 100%;
+  div img {
+    min-height: calc(100vh - 100px);
   }
 }
 
