@@ -20,7 +20,7 @@ puts 'Creating users...'
 pedro = User.create!(first_name: 'Pedro',
                     last_name: 'Fontes',
                     date_of_birth: Date.new(2003,1,30),
-                    nationality: 'BR',
+                    nationality: '🇧🇷',
                     gender: 'Male',
                     email: 'pedrof@gmail.com',
                     password: '123456')
@@ -31,7 +31,7 @@ pedro.photo.attach(io: file, filename: 'pedro.jpg', content_type: 'image/jpg')
 camila = User.create!(first_name: 'Camila',
                     last_name: 'Silva',
                     date_of_birth: Date.new(1995,5,20),
-                    nationality: 'BR',
+                    nationality: '🇧🇷',
                     gender: 'Female',
                     email: 'camilas@gmail.com',
                     password: '123456')
@@ -42,7 +42,7 @@ camila.photo.attach(io: file, filename: 'camila.jpg', content_type: 'image/jpg')
 rez = User.create!(first_name: 'Rezwan',
                     last_name: 'Iqbal',
                     date_of_birth: Date.new(1995,6,10),
-                    nationality: 'ROM',
+                    nationality: '🇹🇩',
                     gender: 'Male',
                     email: 'rezwani@gmail.com',
                     password: '123456')
@@ -53,7 +53,7 @@ rez.photo.attach(io: file, filename: 'rez.jpg', content_type: 'image/jpg')
 nuno = User.create!(first_name: 'Nuno',
                     last_name: 'Lei',
                     date_of_birth: Date.new(1995,7,5),
-                    nationality: 'PT',
+                    nationality: '🇵🇹',
                     gender: 'Male',
                     email: 'nunol@gmail.com',
                     password: '123456')
@@ -67,65 +67,57 @@ age = Criterium.create!(name: 'age')
 weight = Criterium.create!(name: 'weight')
 belt = Criterium.create!(name: 'belt')
 
-male_juvenile_light = Division.create!(name: 'male juvenile light weight 🚤')
+male_juvenile_light = Division.create!(name: 'MALE 🚹 JUVENILE LIGHT WEIGHT 🍃')
 DivisionCriterium.create!(division: male_juvenile_light, criterium: age, max: 16 )
 DivisionCriterium.create!(division: male_juvenile_light, criterium: weight, max: 64 )
 
-male_juvenile_middle = Division.create!(name: 'male juvenile middle weight 🛥')
+male_juvenile_middle = Division.create!(name: 'MALE 🚹 JUVENILE MIDDLE WEIGHT 🌱')
 DivisionCriterium.create!(division: male_juvenile_middle, criterium: age, max: 16 )
 DivisionCriterium.create!(division: male_juvenile_middle, criterium: weight, max: 74 )
 
-male_juvenile_heavy = Division.create!(name: 'male juvenile heavy weight 🚢')
+male_juvenile_heavy = Division.create!(name: 'MALE 🚹 JUVENILE HEAVY WEIGHT 🌳')
 DivisionCriterium.create!(division: male_juvenile_heavy, criterium: age, max: 16 )
 DivisionCriterium.create!(division: male_juvenile_heavy, criterium: weight, max: 84)
 
-male_juvenile_open_class = Division.create!(name: 'male juvenile open class 🚀')
-DivisionCriterium.create!(division: male_juvenile_open_class, criterium: age, max: 16 )
 
-male_adult_light = Division.create!(name: 'male adult light weight 🚤')
+male_adult_light = Division.create!(name: 'MALE 🚹 ADULT LIGHT WEIGHT 🍃')
 DivisionCriterium.create!(division: male_adult_light, criterium: age, max: 40 )
 DivisionCriterium.create!(division: male_adult_light, criterium: weight, max: 76 )
 
-male_adult_middle = Division.create!(name: 'male adult middle weight 🛥')
+male_adult_middle = Division.create!(name: 'MALE 🚹 ADULT MIDDLE WEIGHT 🌱')
 DivisionCriterium.create!(division: male_adult_middle, criterium: age, max: 40 )
 DivisionCriterium.create!(division: male_adult_middle, criterium: weight, max: 82)
 
-male_adult_heavy = Division.create!(name: 'male adult heavy weight 🚢')
+male_adult_heavy = Division.create!(name: 'MALE 🚹 ADULT HEAVY WEIGHT 🌳')
 DivisionCriterium.create!(division: male_adult_heavy, criterium: age, max: 40 )
 DivisionCriterium.create!(division: male_adult_heavy, criterium: weight, max: 94)
 
-male_adult_open_class = Division.create!(name: 'male adult open class 🚀')
-DivisionCriterium.create!(division: male_adult_open_class, criterium: age, max: 40 )
 
-female_juvenile_light = Division.create!(name: 'female juvenile light weight 🚤')
+female_juvenile_light = Division.create!(name: 'FEMALE 🚺 JUVENILE LIGHT WEIGHT 🍃')
 DivisionCriterium.create!(division: female_juvenile_light, criterium: age, max: 16 )
 DivisionCriterium.create!(division: female_juvenile_light, criterium: weight, max: 56)
 
-female_juvenile_middle = Division.create!(name: 'female juvenile middle weight 🛥')
+female_juvenile_middle = Division.create!(name: 'FEMALE 🚺 JUVENILE MIDDLE WEIGHT 🌱')
 DivisionCriterium.create!(division: female_juvenile_middle, criterium: age, max: 16 )
 DivisionCriterium.create!(division: female_juvenile_middle, criterium: weight, max: 60)
 
-female_juvenile_heavy = Division.create!(name: 'female juvenile heavy weight 🚢')
+female_juvenile_heavy = Division.create!(name: 'FEMALE 🚺 JUVENILE HEAVY WEIGHT 🌳')
 DivisionCriterium.create!(division: female_juvenile_heavy, criterium: age, max: 16 )
 DivisionCriterium.create!(division: female_juvenile_heavy, criterium: weight, max: 64)
 
-female_juvenile_open_class = Division.create!(name: 'female juvenile open class 🚀')
-DivisionCriterium.create!(division: female_juvenile_open_class, criterium: age, max: 16 )
 
-female_adult_light = Division.create!(name: 'female adult light weight 🚤')
+female_adult_light = Division.create!(name: 'FEMALE 🚺 ADULT LIGHT WEIGHT 🍃')
 DivisionCriterium.create!(division: female_adult_light, criterium: age, max: 40 )
 DivisionCriterium.create!(division: female_adult_light, criterium: weight, max: 64 )
 
-female_adult_middle = Division.create!(name: 'female adult middle weight 🛥')
+female_adult_middle = Division.create!(name: 'FEMALE 🚺 ADULT MIDDLE WEIGHT 🌱')
 DivisionCriterium.create!(division: female_adult_middle, criterium: age, max: 40 )
 DivisionCriterium.create!(division: female_adult_middle, criterium: weight, max: 69)
 
-female_adult_heavy = Division.create!(name: 'female adult heavy weight 🚢')
+female_adult_heavy = Division.create!(name: 'FEMALE 🚺 ADULT HEAVY WEIGHT 🌳')
 DivisionCriterium.create!(division: female_adult_heavy, criterium: age, max: 40 )
 DivisionCriterium.create!(division: female_adult_heavy, criterium: weight, max: 74)
 
-female_adult_open_class = Division.create!(name: 'female adult open class 🚀')
-DivisionCriterium.create!(division: female_adult_open_class, criterium: age, max: 40 )
 
 puts 'Creating federations...'
 
@@ -208,8 +200,12 @@ summer_open = Competition.create!(name: 'Summer Open',
                                     date: Date.new(2020,12,15),
                                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit arcu a erat egestas, sed cursus nunc congue. Quisque feugiat finibus dolor sit amet consequat. Morbi ut finibus neque. Nam tristique augue turpis, nec vehicula enim blandit eget. Sed vel tellus faucibus, condimentum leo non, hendrerit magna. Aliquam consequat sed.',
                                     prize: 450,
-                                    registration_deadline: Date.new(2020,07,01),
+                                    registration_deadline: Date.new(2020,07,15),
                                     registration_price: 40)
+
+Division.all.each do |division|
+  CompetitionDivision.create!(competition: summer_open, division: division)
+end
 
 # CBJJ
 
@@ -266,19 +262,47 @@ rio_challenge = Competition.create!(name: 'Rio Challenge',
                                     registration_deadline: Date.new(2020,11,25),
                                     registration_price: 40)
 
+puts 'Creating affiliations...'
+
+Affiliation.create!(federation: fjjrio, user: pedro, team: 'Leão Teixeira')
+Affiliation.create!(federation: sjjsaf, user: pedro, team: 'Leão Teixeira')
+
 puts 'Creating fake users...'
 
-count = 0
-competition_division = CompetitionDivision.find_by(competition: rio_open)
+competition_division = CompetitionDivision.find_by(competition: summer_open)
 
-10.times do
-  count += 1
+16.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   fake_user = User.create!(first_name: first_name,
                           last_name: last_name,
-                          date_of_birth: Faker::Date.between(from: '1980-01-01', to: '2005-01-01'),
-                          nationality: Faker::Nation.nationality,
+                          date_of_birth: Faker::Date.between(from: '1998-01-01', to: '2004-01-01'),
+                          nationality: Faker::Nation.flag,
+                          gender: Faker::Gender.binary_type,
+                          email: Faker::Internet.free_email(name: first_name),
+                          password: '123456')
+  Affiliation.create!(federation: fjjrio, user: fake_user, team: ['Gordo', 'Leão Teixeira', 'Gracie Barra', 'Aliance', 'Atos'].sample)
+  Registration.create!(competition_division: competition_division, user: fake_user)
+  UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
+
+  file = URI.open(Faker::Avatar.image)
+  fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
+end
+
+competition_division.create_heats
+
+summer_open.registration_deadline = Date.new(2020,07,1)
+summer_open.save
+
+competition_division = CompetitionDivision.find_by(competition: rio_open)
+
+7.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  fake_user = User.create!(first_name: first_name,
+                          last_name: last_name,
+                          date_of_birth: Faker::Date.between(from: '1998-01-01', to: '2004-01-01'),
+                          nationality: Faker::Nation.flag,
                           gender: Faker::Gender.binary_type,
                           email: Faker::Internet.free_email(name: first_name),
                           password: '123456')
