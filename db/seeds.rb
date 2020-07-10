@@ -282,8 +282,8 @@ competition_division = CompetitionDivision.find_by(competition: summer_open)
                           email: Faker::Internet.free_email(name: first_name),
                           password: '123456')
   Affiliation.create!(federation: fjjrio, user: fake_user, team: ['Gordo', 'Leão Teixeira', 'Gracie Barra', 'Aliance', 'Atos'].sample)
+  UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division, score: [0, 0, 0, 10, 15, 5, 15, 45, 90, 105, 150].sample)
   Registration.create!(competition_division: competition_division, user: fake_user)
-  UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
 
 
   file = URI.open("https://i.pravatar.cc/400?img=#{rand(1..70)}")
@@ -309,8 +309,8 @@ competition_division = CompetitionDivision.find_by(competition: rio_open)
                           email: Faker::Internet.free_email(name: first_name),
                           password: '123456')
   Affiliation.create!(federation: fjjrio, user: fake_user, team: ['Gordo', 'Leão Teixeira', 'Gracie Barra', 'Aliance', 'Atos'].sample)
+  UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division, score: [0, 0, 0, 10, 15, 5, 15, 45, 90, 105, 150].sample)
   Registration.create!(competition_division: competition_division, user: fake_user)
-  UserFederationDivisionScore.create!(user: fake_user, federation: fjjrio, division: competition_division.division)
 
   file = URI.open("https://i.pravatar.cc/400?img=#{rand(1..70)}")
   fake_user.photo.attach(io: file, filename: 'user_fake.jpg', content_type: 'image/jpg')
