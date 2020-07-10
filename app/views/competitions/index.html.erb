@@ -16,7 +16,7 @@
                 <div>
                   <h4 class='text-muted' style='letter-spacing: 2px;'><strong><%= competition.federation.name %></strong></h3>
                   <h3 style='letter-spacing: 2px;'><strong><%= competition.name.upcase %></strong></h3>
-                  <h5><%= competition.date.strftime("%B %d, %Y") %> in <%= competition.city %></h5>
+                  <h5 class='d-none d-sm-block'><%= competition.date.strftime("%B %d, %Y") %> in <%= competition.city %></h5>
                 </div>
                 <div class='d-flex flex-column justify-content-between'>
                   <h5><strong>$<%= competition.registration_price %></strong></h5>

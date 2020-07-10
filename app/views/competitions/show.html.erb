@@ -13,9 +13,9 @@
       </div>
       <div>
         <% if Date.today > @competition.registration_deadline %>
-          <p style='position:absolute; top: 0; right:0; background:linear-gradient(135deg, #ba2233 50%,#DA394B 100%); box-shadow: -1px -1px 20px rgba(218,57,75,0.6); border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+          <span class='d-flex p-2' style='position:absolute; top: 0; right:0; background:linear-gradient(135deg, #ba2233 50%,#DA394B 100%); box-shadow: -1px -1px 20px rgba(218,57,75,0.6); border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><span class='d-none d-sm-flex mr-2'>Registration deadline: </span><%= @competition.registration_deadline.strftime("%d/%m/%Y") %></span>
         <% else %>
-          <p style='position:absolute; top: 0; right:0; background-color: #4AC141; box-shadow: -1px -1px 20px rgba(74,193,65,0.6); border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><%= 'Registration deadline: ' + @competition.registration_deadline.strftime("%d/%m/%Y") %></p>
+          <span class='d-flex p-2' style='position:absolute; top: 0; right:0; background-color: #4AC141; box-shadow: -1px -1px 20px rgba(74,193,65,0.6); border-radius: 0 6px 0 6px;' class='px-2 py-1 m-0'><span class='d-none d-sm-flex mr-2'>Registration deadline: </span><%= @competition.registration_deadline.strftime("%d/%m/%Y") %></span>
         <% end %>
         <% unless current_federation %>
           <div class="d-flex">
