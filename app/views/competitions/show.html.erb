@@ -79,8 +79,10 @@
     </div>
   </div>
       <% if @division %>
-        <h5 class='d-none d-md-block my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
-
+      <h5 class='d-none d-md-block my-3 text-center' style='letter-spacing: 2px;'><%= @division.division.name.upcase %></h5>
+      <% if @division.registrations == [] %>
+        <h5 class='text-muted text-center'>No registrations yet :(</h5>
+      <% end %>
         <section class='d-none d-md-block' id='draw'>
 
         <div class="row mx-3 justify-content-center">
